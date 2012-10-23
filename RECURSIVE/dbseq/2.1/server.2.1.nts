@@ -1,0 +1,440 @@
+nts foo ; 
+len_A2S_next__0,len_A2S_next__1,len_A2S_next__2,written_A2S_next__0,written_A2S_next__1,written_A2S_next__2,num_A2S_next__0,num_A2S_next__1,num_A2S_next__2,A2S_delays,Seq_flag,len__0,len__1,len__2,written__0,written__1,written__2,num__0,num__1,num__2,len_A2S_0__0,len_A2S_0__1,len_A2S_0__2,written_A2S_0__0,written_A2S_0__1,written_A2S_0__2,num_A2S_0__0,num_A2S_0__1,num_A2S_0__2,A2S_ROUNDS,A2S_DELAYBOUND : int;
+init A2S_ROUNDS = 2 and A2S_DELAYBOUND = 1;
+altmain{
+in k_0 : int;
+
+k,len_A2S_save__0,len_A2S_save__1,len_A2S_save__2,written_A2S_save__0,written_A2S_save__1,written_A2S_save__2,num_A2S_save__0,num_A2S_save__1,num_A2S_save__2,len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2 : int;
+initial anon0;
+final L362;
+ 
+ L320->L321 { boogie_si_record_int(k_0) and havoc() } 
+ L321->L322 { len_A2S_save__0' = len__0 and havoc(len_A2S_save__0) } 
+ L322->L323 { len_A2S_save__1' = len__1 and havoc(len_A2S_save__1) } 
+ L323->L324 { len_A2S_save__2' = len__2 and havoc(len_A2S_save__2) } 
+ L324->L325 { written_A2S_save__0' = written__0 and havoc(written_A2S_save__0) } 
+ L325->L326 { written_A2S_save__1' = written__1 and havoc(written_A2S_save__1) } 
+ L326->L327 { written_A2S_save__2' = written__2 and havoc(written_A2S_save__2) } 
+ L327->L328 { num_A2S_save__0' = num__0 and havoc(num_A2S_save__0) } 
+ L328->L329 { num_A2S_save__1' = num__1 and havoc(num_A2S_save__1) } 
+ L329->L330 { num_A2S_save__2' = num__2 and havoc(num_A2S_save__2) } 
+ L330->L331 { len__0' = len_A2S_next__0 and havoc(len__0) } 
+ L331->L332 { len__1' = len_A2S_next__1 and havoc(len__1) } 
+ L332->L333 { len__2' = len_A2S_next__2 and havoc(len__2) } 
+ L333->L334 { written__0' = written_A2S_next__0 and havoc(written__0) } 
+ L334->L335 { written__1' = written_A2S_next__1 and havoc(written__1) } 
+ L335->L336 { written__2' = written_A2S_next__2 and havoc(written__2) } 
+ L336->L337 { num__0' = num_A2S_next__0 and havoc(num__0) } 
+ L337->L338 { num__1' = num_A2S_next__1 and havoc(num__1) } 
+ L338->L339 { num__2' = num_A2S_next__2 and havoc(num__2) } 
+ L339->L340 { havoc(len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2) } 
+ L340->L341 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L341->L342 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ L342->L343 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L343->L344 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L344->L345 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L345->L346 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L346->L347 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L347->L348 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L348->L349 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L349->L350 { server(k) and havoc() } 
+ L350->L351 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L351->L352 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L352->L353 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L353->L354 { len__0' = len_A2S_save__0 and havoc(len__0) } 
+ L354->L355 { len__1' = len_A2S_save__1 and havoc(len__1) } 
+ L355->L356 { len__2' = len_A2S_save__2 and havoc(len__2) } 
+ L356->L357 { written__0' = written_A2S_save__0 and havoc(written__0) } 
+ L357->L358 { written__1' = written_A2S_save__1 and havoc(written__1) } 
+ L358->L359 { written__2' = written_A2S_save__2 and havoc(written__2) } 
+ L359->L360 { num__0' = num_A2S_save__0 and havoc(num__0) } 
+ L360->L361 { num__1' = num_A2S_save__1 and havoc(num__1) } 
+ L361->L362 { num__2' = num_A2S_save__2 and havoc(num__2) } 
+ anon0->L320 { k' = k_0 and havoc(k) }
+}
+main{
+
+len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2 : int;
+initial anon0;
+//final L29;
+error L29;
+ 
+ L1->L2 { havoc() } 
+ L10->L11 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L11->L12 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L12->L13 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L13->L14 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L14->L15 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L15->L16 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L16->L17 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L17->L18 { altmain(0) and havoc() } 
+ L18->L19 { havoc() } 
+ L19->L20 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L2->L3 { A2S_delays' = 0 and havoc(A2S_delays) } 
+ L20->L21 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L21->L22 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L22->L23 { len_A2S_next__0 = len_A2S_0__1 and havoc() } 
+ L23->L24 { written_A2S_next__0 = written_A2S_0__1 and havoc() } 
+ L24->L25 { num_A2S_next__0 = num_A2S_0__1 and havoc() } 
+ L25->L26 { len_A2S_next__1 = len_A2S_0__2 and havoc() } 
+ L26->L27 { written_A2S_next__1 = written_A2S_0__2 and havoc() } 
+ L27->L28 { num_A2S_next__1 = num_A2S_0__2 and havoc() } 
+ L28->L29 { Seq_flag = 1 and havoc() } 
+ L3->L4 { boogie_si_record_int(A2S_ROUNDS) and havoc() } 
+ L4->L5 { boogie_si_record_int(A2S_DELAYBOUND) and havoc() } 
+ L5->L6 { (len__0 = len_A2S_0__0 and len__1 = len_A2S_0__1) and len__2 = len_A2S_0__2 and havoc() } 
+ L6->L7 { (written__0 = written_A2S_0__0 and written__1 = written_A2S_0__1) and written__2 = written_A2S_0__2 and havoc() } 
+ L7->L8 { (num__0 = num_A2S_0__0 and num__1 = num_A2S_0__1) and num__2 = num_A2S_0__2 and havoc() } 
+ L8->L9 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L9->L10 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ anon0->L1 { Seq_flag' = 0 and havoc(Seq_flag) }
+}
+server{
+in k_0 : int;
+
+k,len_A2S_save__0,len_A2S_save__1,len_A2S_save__2,written_A2S_save__0,written_A2S_save__1,written_A2S_save__2,num_A2S_save__0,num_A2S_save__1,num_A2S_save__2,len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2 : int;
+initial anon0;
+final L123,L79;
+ 
+ A2S_DELAY_1->L32 { k < A2S_ROUNDS-1 and havoc() } 
+ L100->L101 { havoc(len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2) } 
+ L101->L102 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L102->L103 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ L103->L104 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L104->L105 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L105->L106 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L106->L107 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L107->L108 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L108->L109 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L109->L110 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L110->L111 { service_req(k) and havoc() } 
+ L111->L112 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L112->L113 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L113->L114 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L114->L115 { len__0' = len_A2S_save__0 and havoc(len__0) } 
+ L115->L116 { len__1' = len_A2S_save__1 and havoc(len__1) } 
+ L116->L117 { len__2' = len_A2S_save__2 and havoc(len__2) } 
+ L117->L118 { written__0' = written_A2S_save__0 and havoc(written__0) } 
+ L118->L119 { written__1' = written_A2S_save__1 and havoc(written__1) } 
+ L119->L120 { written__2' = written_A2S_save__2 and havoc(written__2) } 
+ L120->L121 { num__0' = num_A2S_save__0 and havoc(num__0) } 
+ L121->L122 { num__1' = num_A2S_save__1 and havoc(num__1) } 
+ L122->L123 { num__2' = num_A2S_save__2 and havoc(num__2) } 
+ L30->L31 { boogie_si_record_int(k_0) and havoc() } 
+ L31->anon2_LoopHead { havoc() } 
+ L32->L33 { A2S_delays < A2S_DELAYBOUND and havoc() } 
+ L33->L34 { k' = k+1 and havoc(k) } 
+ L34->L35 { A2S_delays' = A2S_delays+1 and havoc(A2S_delays) } 
+ L35->anon2_LoopHead { havoc() } 
+ L36->L37 { len__0 > 0 and havoc() } 
+ L37->L38 { written__0' = 0 and havoc(written__0) } 
+ L38->L39 { len_A2S_save__0' = len__0 and havoc(len_A2S_save__0) } 
+ L39->L40 { len_A2S_save__1' = len__1 and havoc(len_A2S_save__1) } 
+ L40->L41 { len_A2S_save__2' = len__2 and havoc(len_A2S_save__2) } 
+ L41->L42 { written_A2S_save__0' = written__0 and havoc(written_A2S_save__0) } 
+ L42->L43 { written_A2S_save__1' = written__1 and havoc(written_A2S_save__1) } 
+ L43->L44 { written_A2S_save__2' = written__2 and havoc(written_A2S_save__2) } 
+ L44->L45 { num_A2S_save__0' = num__0 and havoc(num_A2S_save__0) } 
+ L45->L46 { num_A2S_save__1' = num__1 and havoc(num_A2S_save__1) } 
+ L46->L47 { num_A2S_save__2' = num__2 and havoc(num_A2S_save__2) } 
+ L47->L48 { len__0' = len_A2S_next__0 and havoc(len__0) } 
+ L48->L49 { len__1' = len_A2S_next__1 and havoc(len__1) } 
+ L49->L50 { len__2' = len_A2S_next__2 and havoc(len__2) } 
+ L50->L51 { written__0' = written_A2S_next__0 and havoc(written__0) } 
+ L51->L52 { written__1' = written_A2S_next__1 and havoc(written__1) } 
+ L52->L53 { written__2' = written_A2S_next__2 and havoc(written__2) } 
+ L53->L54 { num__0' = num_A2S_next__0 and havoc(num__0) } 
+ L54->L55 { num__1' = num_A2S_next__1 and havoc(num__1) } 
+ L55->L56 { num__2' = num_A2S_next__2 and havoc(num__2) } 
+ L56->L57 { havoc(len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2) } 
+ L57->L58 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L58->L59 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ L59->L60 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L60->L61 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L61->L62 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L62->L63 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L63->L64 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L64->L65 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L65->L66 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L66->L67 { service_req(k) and havoc() } 
+ L67->L68 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L68->L69 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L69->L70 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L70->L71 { len__0' = len_A2S_save__0 and havoc(len__0) } 
+ L71->L72 { len__1' = len_A2S_save__1 and havoc(len__1) } 
+ L72->L73 { len__2' = len_A2S_save__2 and havoc(len__2) } 
+ L73->L74 { written__0' = written_A2S_save__0 and havoc(written__0) } 
+ L74->L75 { written__1' = written_A2S_save__1 and havoc(written__1) } 
+ L75->L76 { written__2' = written_A2S_save__2 and havoc(written__2) } 
+ L76->L77 { num__0' = num_A2S_save__0 and havoc(num__0) } 
+ L77->L78 { num__1' = num_A2S_save__1 and havoc(num__1) } 
+ L78->L79 { num__2' = num_A2S_save__2 and havoc(num__2) } 
+ L80->L81 { len__1 > 0 and havoc() } 
+ L81->L82 { written__1' = 0 and havoc(written__1) } 
+ L82->L83 { len_A2S_save__0' = len__0 and havoc(len_A2S_save__0) } 
+ L83->L84 { len_A2S_save__1' = len__1 and havoc(len_A2S_save__1) } 
+ L84->L85 { len_A2S_save__2' = len__2 and havoc(len_A2S_save__2) } 
+ L85->L86 { written_A2S_save__0' = written__0 and havoc(written_A2S_save__0) } 
+ L86->L87 { written_A2S_save__1' = written__1 and havoc(written_A2S_save__1) } 
+ L87->L88 { written_A2S_save__2' = written__2 and havoc(written_A2S_save__2) } 
+ L88->L89 { num_A2S_save__0' = num__0 and havoc(num_A2S_save__0) } 
+ L89->L90 { num_A2S_save__1' = num__1 and havoc(num_A2S_save__1) } 
+ L90->L91 { num_A2S_save__2' = num__2 and havoc(num_A2S_save__2) } 
+ L91->L92 { len__0' = len_A2S_next__0 and havoc(len__0) } 
+ L92->L93 { len__1' = len_A2S_next__1 and havoc(len__1) } 
+ L93->L94 { len__2' = len_A2S_next__2 and havoc(len__2) } 
+ L94->L95 { written__0' = written_A2S_next__0 and havoc(written__0) } 
+ L95->L96 { written__1' = written_A2S_next__1 and havoc(written__1) } 
+ L96->L97 { written__2' = written_A2S_next__2 and havoc(written__2) } 
+ L97->L98 { num__0' = num_A2S_next__0 and havoc(num__0) } 
+ L98->L99 { num__1' = num_A2S_next__1 and havoc(num__1) } 
+ L99->L100 { num__2' = num_A2S_next__2 and havoc(num__2) } 
+ __k_0->L36 { k = 0 and havoc() } 
+ __k_1->L80 { k = 1 and havoc() } 
+ anon0->L30 { k' = k_0 and havoc(k) } 
+ anon2_LoopDone->__k_0 { havoc() } 
+ anon2_LoopDone->__k_1 { havoc() } 
+ anon2_LoopHead->A2S_DELAY_1 { havoc() } 
+ anon2_LoopHead->anon2_LoopDone { havoc() }
+}
+service_req{
+in k_0 : int;
+
+k,len_A2S_save__0,len_A2S_save__1,len_A2S_save__2,written_A2S_save__0,written_A2S_save__1,written_A2S_save__2,num_A2S_save__0,num_A2S_save__1,num_A2S_save__2,len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2 : int;
+initial anon0;
+final L179,L182,L224,L274,L277,L319;
+ 
+ A2S_DELAY_2->L126 { k < A2S_ROUNDS-1 and havoc() } 
+ L124->L125 { boogie_si_record_int(k_0) and havoc() } 
+ L125->anon16_LoopHead { havoc() } 
+ L126->L127 { A2S_delays < A2S_DELAYBOUND and havoc() } 
+ L127->L128 { k' = k+1 and havoc(k) } 
+ L128->L129 { A2S_delays' = A2S_delays+1 and havoc(A2S_delays) } 
+ L129->anon16_LoopHead { havoc() } 
+ L130->anon17_Else { havoc() } 
+ L130->anon17_Then { havoc() } 
+ L131->anon18_Else { havoc() } 
+ L131->anon18_Then { havoc() } 
+ L132->L133 { Seq_flag' = 1 and havoc(Seq_flag) } 
+ L133->anon4 { havoc() } 
+ L134->anon4 { havoc() } 
+ L135->anon4 { havoc() } 
+ L136->L137 { num__0 <=  len__0-written__0 and havoc() } 
+ L137->anon19_Else { havoc() } 
+ L137->anon19_Then { havoc() } 
+ L138->L139 { len_A2S_save__0' = len__0 and havoc(len_A2S_save__0) } 
+ L139->L140 { len_A2S_save__1' = len__1 and havoc(len_A2S_save__1) } 
+ L140->L141 { len_A2S_save__2' = len__2 and havoc(len_A2S_save__2) } 
+ L141->L142 { written_A2S_save__0' = written__0 and havoc(written_A2S_save__0) } 
+ L142->L143 { written_A2S_save__1' = written__1 and havoc(written_A2S_save__1) } 
+ L143->L144 { written_A2S_save__2' = written__2 and havoc(written_A2S_save__2) } 
+ L144->L145 { num_A2S_save__0' = num__0 and havoc(num_A2S_save__0) } 
+ L145->L146 { num_A2S_save__1' = num__1 and havoc(num_A2S_save__1) } 
+ L146->L147 { num_A2S_save__2' = num__2 and havoc(num_A2S_save__2) } 
+ L147->L148 { len__0' = len_A2S_next__0 and havoc(len__0) } 
+ L148->L149 { len__1' = len_A2S_next__1 and havoc(len__1) } 
+ L149->L150 { len__2' = len_A2S_next__2 and havoc(len__2) } 
+ L150->L151 { written__0' = written_A2S_next__0 and havoc(written__0) } 
+ L151->L152 { written__1' = written_A2S_next__1 and havoc(written__1) } 
+ L152->L153 { written__2' = written_A2S_next__2 and havoc(written__2) } 
+ L153->L154 { num__0' = num_A2S_next__0 and havoc(num__0) } 
+ L154->L155 { num__1' = num_A2S_next__1 and havoc(num__1) } 
+ L155->L156 { num__2' = num_A2S_next__2 and havoc(num__2) } 
+ L156->L157 { havoc(len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2) } 
+ L157->L158 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L158->L159 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ L159->L160 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L160->L161 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L161->L162 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L162->L163 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L163->L164 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L164->L165 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L165->L166 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L166->L167 { service_req(k) and havoc() } 
+ L167->L168 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L168->L169 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L169->L170 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L170->L171 { len__0' = len_A2S_save__0 and havoc(len__0) } 
+ L171->L172 { len__1' = len_A2S_save__1 and havoc(len__1) } 
+ L172->L173 { len__2' = len_A2S_save__2 and havoc(len__2) } 
+ L173->L174 { written__0' = written_A2S_save__0 and havoc(written__0) } 
+ L174->L175 { written__1' = written_A2S_save__1 and havoc(written__1) } 
+ L175->L176 { written__2' = written_A2S_save__2 and havoc(written__2) } 
+ L176->L177 { num__0' = num_A2S_save__0 and havoc(num__0) } 
+ L177->L178 { num__1' = num_A2S_save__1 and havoc(num__1) } 
+ L178->L179 { num__2' = num_A2S_save__2 and havoc(num__2) } 
+ L180->L181 { written__0' = written__0+num__0 and havoc(written__0) } 
+ L181->anon20_Else { havoc() } 
+ L181->anon20_Then { havoc() } 
+ L183->L184 { len_A2S_save__0' = len__0 and havoc(len_A2S_save__0) } 
+ L184->L185 { len_A2S_save__1' = len__1 and havoc(len_A2S_save__1) } 
+ L185->L186 { len_A2S_save__2' = len__2 and havoc(len_A2S_save__2) } 
+ L186->L187 { written_A2S_save__0' = written__0 and havoc(written_A2S_save__0) } 
+ L187->L188 { written_A2S_save__1' = written__1 and havoc(written_A2S_save__1) } 
+ L188->L189 { written_A2S_save__2' = written__2 and havoc(written_A2S_save__2) } 
+ L189->L190 { num_A2S_save__0' = num__0 and havoc(num_A2S_save__0) } 
+ L190->L191 { num_A2S_save__1' = num__1 and havoc(num_A2S_save__1) } 
+ L191->L192 { num_A2S_save__2' = num__2 and havoc(num_A2S_save__2) } 
+ L192->L193 { len__0' = len_A2S_next__0 and havoc(len__0) } 
+ L193->L194 { len__1' = len_A2S_next__1 and havoc(len__1) } 
+ L194->L195 { len__2' = len_A2S_next__2 and havoc(len__2) } 
+ L195->L196 { written__0' = written_A2S_next__0 and havoc(written__0) } 
+ L196->L197 { written__1' = written_A2S_next__1 and havoc(written__1) } 
+ L197->L198 { written__2' = written_A2S_next__2 and havoc(written__2) } 
+ L198->L199 { num__0' = num_A2S_next__0 and havoc(num__0) } 
+ L199->L200 { num__1' = num_A2S_next__1 and havoc(num__1) } 
+ L200->L201 { num__2' = num_A2S_next__2 and havoc(num__2) } 
+ L201->L202 { havoc(len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2) } 
+ L202->L203 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L203->L204 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ L204->L205 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L205->L206 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L206->L207 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L207->L208 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L208->L209 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L209->L210 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L210->L211 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L211->L212 { service_req(k) and havoc() } 
+ L212->L213 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L213->L214 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L214->L215 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L215->L216 { len__0' = len_A2S_save__0 and havoc(len__0) } 
+ L216->L217 { len__1' = len_A2S_save__1 and havoc(len__1) } 
+ L217->L218 { len__2' = len_A2S_save__2 and havoc(len__2) } 
+ L218->L219 { written__0' = written_A2S_save__0 and havoc(written__0) } 
+ L219->L220 { written__1' = written_A2S_save__1 and havoc(written__1) } 
+ L220->L221 { written__2' = written_A2S_save__2 and havoc(written__2) } 
+ L221->L222 { num__0' = num_A2S_save__0 and havoc(num__0) } 
+ L222->L223 { num__1' = num_A2S_save__1 and havoc(num__1) } 
+ L223->L224 { num__2' = num_A2S_save__2 and havoc(num__2) } 
+ L225->anon21_Else { havoc() } 
+ L225->anon21_Then { havoc() } 
+ L226->anon22_Else { havoc() } 
+ L226->anon22_Then { havoc() } 
+ L227->L228 { Seq_flag' = 1 and havoc(Seq_flag) } 
+ L228->anon11 { havoc() } 
+ L229->anon11 { havoc() } 
+ L230->anon11 { havoc() } 
+ L231->L232 { num__1 <=  len__1-written__1 and havoc() } 
+ L232->anon23_Else { havoc() } 
+ L232->anon23_Then { havoc() } 
+ L233->L234 { len_A2S_save__0' = len__0 and havoc(len_A2S_save__0) } 
+ L234->L235 { len_A2S_save__1' = len__1 and havoc(len_A2S_save__1) } 
+ L235->L236 { len_A2S_save__2' = len__2 and havoc(len_A2S_save__2) } 
+ L236->L237 { written_A2S_save__0' = written__0 and havoc(written_A2S_save__0) } 
+ L237->L238 { written_A2S_save__1' = written__1 and havoc(written_A2S_save__1) } 
+ L238->L239 { written_A2S_save__2' = written__2 and havoc(written_A2S_save__2) } 
+ L239->L240 { num_A2S_save__0' = num__0 and havoc(num_A2S_save__0) } 
+ L240->L241 { num_A2S_save__1' = num__1 and havoc(num_A2S_save__1) } 
+ L241->L242 { num_A2S_save__2' = num__2 and havoc(num_A2S_save__2) } 
+ L242->L243 { len__0' = len_A2S_next__0 and havoc(len__0) } 
+ L243->L244 { len__1' = len_A2S_next__1 and havoc(len__1) } 
+ L244->L245 { len__2' = len_A2S_next__2 and havoc(len__2) } 
+ L245->L246 { written__0' = written_A2S_next__0 and havoc(written__0) } 
+ L246->L247 { written__1' = written_A2S_next__1 and havoc(written__1) } 
+ L247->L248 { written__2' = written_A2S_next__2 and havoc(written__2) } 
+ L248->L249 { num__0' = num_A2S_next__0 and havoc(num__0) } 
+ L249->L250 { num__1' = num_A2S_next__1 and havoc(num__1) } 
+ L250->L251 { num__2' = num_A2S_next__2 and havoc(num__2) } 
+ L251->L252 { havoc(len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2) } 
+ L252->L253 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L253->L254 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ L254->L255 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L255->L256 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L256->L257 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L257->L258 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L258->L259 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L259->L260 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L260->L261 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L261->L262 { service_req(k) and havoc() } 
+ L262->L263 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L263->L264 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L264->L265 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L265->L266 { len__0' = len_A2S_save__0 and havoc(len__0) } 
+ L266->L267 { len__1' = len_A2S_save__1 and havoc(len__1) } 
+ L267->L268 { len__2' = len_A2S_save__2 and havoc(len__2) } 
+ L268->L269 { written__0' = written_A2S_save__0 and havoc(written__0) } 
+ L269->L270 { written__1' = written_A2S_save__1 and havoc(written__1) } 
+ L270->L271 { written__2' = written_A2S_save__2 and havoc(written__2) } 
+ L271->L272 { num__0' = num_A2S_save__0 and havoc(num__0) } 
+ L272->L273 { num__1' = num_A2S_save__1 and havoc(num__1) } 
+ L273->L274 { num__2' = num_A2S_save__2 and havoc(num__2) } 
+ L275->L276 { written__1' = written__1+num__1 and havoc(written__1) } 
+ L276->anon24_Else { havoc() } 
+ L276->anon24_Then { havoc() } 
+ L278->L279 { len_A2S_save__0' = len__0 and havoc(len_A2S_save__0) } 
+ L279->L280 { len_A2S_save__1' = len__1 and havoc(len_A2S_save__1) } 
+ L280->L281 { len_A2S_save__2' = len__2 and havoc(len_A2S_save__2) } 
+ L281->L282 { written_A2S_save__0' = written__0 and havoc(written_A2S_save__0) } 
+ L282->L283 { written_A2S_save__1' = written__1 and havoc(written_A2S_save__1) } 
+ L283->L284 { written_A2S_save__2' = written__2 and havoc(written_A2S_save__2) } 
+ L284->L285 { num_A2S_save__0' = num__0 and havoc(num_A2S_save__0) } 
+ L285->L286 { num_A2S_save__1' = num__1 and havoc(num_A2S_save__1) } 
+ L286->L287 { num_A2S_save__2' = num__2 and havoc(num_A2S_save__2) } 
+ L287->L288 { len__0' = len_A2S_next__0 and havoc(len__0) } 
+ L288->L289 { len__1' = len_A2S_next__1 and havoc(len__1) } 
+ L289->L290 { len__2' = len_A2S_next__2 and havoc(len__2) } 
+ L290->L291 { written__0' = written_A2S_next__0 and havoc(written__0) } 
+ L291->L292 { written__1' = written_A2S_next__1 and havoc(written__1) } 
+ L292->L293 { written__2' = written_A2S_next__2 and havoc(written__2) } 
+ L293->L294 { num__0' = num_A2S_next__0 and havoc(num__0) } 
+ L294->L295 { num__1' = num_A2S_next__1 and havoc(num__1) } 
+ L295->L296 { num__2' = num_A2S_next__2 and havoc(num__2) } 
+ L296->L297 { havoc(len_A2S_guess__0,len_A2S_guess__1,len_A2S_guess__2,written_A2S_guess__0,written_A2S_guess__1,written_A2S_guess__2,num_A2S_guess__0,num_A2S_guess__1,num_A2S_guess__2) } 
+ L297->L298 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
+ L298->L299 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
+ L299->L300 { len_A2S_next__2' = len_A2S_guess__2 and havoc(len_A2S_next__2) } 
+ L300->L301 { written_A2S_next__0' = written_A2S_guess__0 and havoc(written_A2S_next__0) } 
+ L301->L302 { written_A2S_next__1' = written_A2S_guess__1 and havoc(written_A2S_next__1) } 
+ L302->L303 { written_A2S_next__2' = written_A2S_guess__2 and havoc(written_A2S_next__2) } 
+ L303->L304 { num_A2S_next__0' = num_A2S_guess__0 and havoc(num_A2S_next__0) } 
+ L304->L305 { num_A2S_next__1' = num_A2S_guess__1 and havoc(num_A2S_next__1) } 
+ L305->L306 { num_A2S_next__2' = num_A2S_guess__2 and havoc(num_A2S_next__2) } 
+ L306->L307 { service_req(k) and havoc() } 
+ L307->L308 { (len__0 = len_A2S_guess__0 and len__1 = len_A2S_guess__1) and len__2 = len_A2S_guess__2 and havoc() } 
+ L308->L309 { (written__0 = written_A2S_guess__0 and written__1 = written_A2S_guess__1) and written__2 = written_A2S_guess__2 and havoc() } 
+ L309->L310 { (num__0 = num_A2S_guess__0 and num__1 = num_A2S_guess__1) and num__2 = num_A2S_guess__2 and havoc() } 
+ L310->L311 { len__0' = len_A2S_save__0 and havoc(len__0) } 
+ L311->L312 { len__1' = len_A2S_save__1 and havoc(len__1) } 
+ L312->L313 { len__2' = len_A2S_save__2 and havoc(len__2) } 
+ L313->L314 { written__0' = written_A2S_save__0 and havoc(written__0) } 
+ L314->L315 { written__1' = written_A2S_save__1 and havoc(written__1) } 
+ L315->L316 { written__2' = written_A2S_save__2 and havoc(written__2) } 
+ L316->L317 { num__0' = num_A2S_save__0 and havoc(num__0) } 
+ L317->L318 { num__1' = num_A2S_save__1 and havoc(num__1) } 
+ L318->L319 { num__2' = num_A2S_save__2 and havoc(num__2) } 
+ __k_0->L130 { k = 0 and havoc() } 
+ __k_1->L225 { k = 1 and havoc() } 
+ anon0->L124 { k' = k_0 and havoc(k) } 
+ anon11->L231 { havoc(num__0,num__1,num__2) } 
+ anon16_LoopDone->__k_0 { havoc() } 
+ anon16_LoopDone->__k_1 { havoc() } 
+ anon16_LoopHead->A2S_DELAY_2 { havoc() } 
+ anon16_LoopHead->anon16_LoopDone { havoc() } 
+ anon17_Else->L135 { Seq_flag != 0 and havoc() } 
+ anon17_Then->L131 { Seq_flag = 0 and havoc() } 
+ anon18_Else->L134 { written__0 >= 0 and havoc() } 
+ anon18_Then->L132 { not (written__0 >= 0) and havoc() } 
+ anon19_Else->L180 { 0 < num__0 and havoc() } 
+ anon19_Then->L138 { num__0 <=  0 and havoc() } 
+ anon20_Else->L183 { len__0 != written__0 and havoc() } 
+ anon20_Then->L182 { len__0 = written__0 and havoc() } 
+ anon21_Else->L230 { Seq_flag != 0 and havoc() } 
+ anon21_Then->L226 { Seq_flag = 0 and havoc() } 
+ anon22_Else->L229 { written__1 >= 0 and havoc() } 
+ anon22_Then->L227 { not (written__1 >= 0) and havoc() } 
+ anon23_Else->L275 { 0 < num__1 and havoc() } 
+ anon23_Then->L233 { num__1 <=  0 and havoc() } 
+ anon24_Else->L278 { len__1 != written__1 and havoc() } 
+ anon24_Then->L277 { len__1 = written__1 and havoc() } 
+ anon4->L136 { havoc(num__0,num__1,num__2) }
+}
+
+boogie_si_record_int {
+in k: int;
+
+initial anon0;
+final exit;
+ anon0 -> exit { havoc() }
+}
+        
