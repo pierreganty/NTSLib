@@ -46,7 +46,7 @@ main{
 
 sent_A2S_guess__0,sent_A2S_guess__1,recv_A2S_guess__0,recv_A2S_guess__1,n_A2S_guess__0,n_A2S_guess__1 : int;
 initial anon0;
-final L23;
+//final L23;
 error L23;
  
  L1->L2 { havoc() } 
