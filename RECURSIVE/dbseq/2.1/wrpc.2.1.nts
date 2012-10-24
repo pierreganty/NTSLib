@@ -6,8 +6,7 @@ in k_0 : int;
 
 k,sent_A2S_save__0,sent_A2S_save__1,sent_A2S_save__2,recv_A2S_save__0,recv_A2S_save__1,recv_A2S_save__2,n_A2S_save__0,n_A2S_save__1,n_A2S_save__2,sent_A2S_guess__0,sent_A2S_guess__1,sent_A2S_guess__2,recv_A2S_guess__0,recv_A2S_guess__1,recv_A2S_guess__2,n_A2S_guess__0,n_A2S_guess__1,n_A2S_guess__2 : int;
 initial anon0;
-//final L386;
-error L386;
+final L386;
  
  L342->L343 { boogie_si_record_int(k_0) and havoc() } 
  L343->L344 { sent__0' = 0 and havoc(sent__0) } 
@@ -60,6 +59,7 @@ main{
 sent_A2S_guess__0,sent_A2S_guess__1,sent_A2S_guess__2,recv_A2S_guess__0,recv_A2S_guess__1,recv_A2S_guess__2,n_A2S_guess__0,n_A2S_guess__1,n_A2S_guess__2 : int;
 initial anon0;
 final L29;
+error L29;
  
  L1->L2 { havoc() } 
  L10->L11 { sent_A2S_next__2' = sent_A2S_guess__2 and havoc(sent_A2S_next__2) } 
