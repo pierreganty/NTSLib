@@ -58,7 +58,7 @@ main{
 
 sent_A2S_guess__0,sent_A2S_guess__1,sent_A2S_guess__2,recv_A2S_guess__0,recv_A2S_guess__1,recv_A2S_guess__2,n_A2S_guess__0,n_A2S_guess__1,n_A2S_guess__2 : int;
 initial anon0;
-//final L29;
+final _F_;
 error L29;
  
  L1->L2 { havoc() } 
