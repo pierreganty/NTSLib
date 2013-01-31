@@ -1,0 +1,388 @@
+nts __Veridyc_simple_veridyc_simlpe ; 
+validity__count_,count,validity__free_mem_,free_mem,validity__size_,size,validity__inp_,offset__inp_,validity__outp_,offset__outp_,validity__head_,offset__head_: int;
+main{
+
+size_mem,tmp,offset__line_,size_mem_0,tmp_2,offset__data_,s,offset__tmp_3_,offset__data_0_,size_entry,s_0,offset__tmp_4_,offset__tmp_5_,__retres,_ndet_arg_0,validity__tmp_5_,validity__tmp_4_,validity__tmp_3_,validity__tmp_2_,validity__size_entry_,validity__line_,validity__data_0_,validity__data_,validity____nts__naffected_ret_val__,__nts__naffected_ret_val_,mid_1_size,mid_1_base,mid_2_size,mid_2_base,mid_3_size,mid_3_base,mid_4_size,mid_4_base,mid_6_size,mid_6_base,mid_8_size,mid_8_base,mid_9_size,mid_9_base,mid_10_size,mid_10_base,mid_11_size,mid_11_base,mid_13_size,mid_13_base,mid_15_size,mid_15_base: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s145,s208;
+error s1,s101,s103,s105,s107,s109,s11,s112,s114,s115,s117,s119,s121,s126,s128,s130,s132,s135,s137,s139,s141,s147,s149,s153,s156,s157,s159,s163,s165,s167,s169,s171,s175,s177,s183,s186,s188,s190,s192,s27,s40,s43,s48,s5,s53,s59,s65,s68,s7,s70,s76,s81,s84,s85,s87,s9,s93,s96,s98; 
+ s0->s2 { size_mem' = 24 and havoc(size_mem) } 
+ s10->s12 { size' = size_mem and havoc(size) } 
+ s100->s111 { offset__tmp_5_ = offset__line_ and havoc() } 
+ s100->s113 { offset__tmp_5_ != offset__line_ and havoc() } 
+ s102->s116 { free_mem' = free_mem-4 and havoc(free_mem) } 
+ s104->s118 { offset__outp_' = offset__outp_+size*1 and validity__outp_' = validity__outp_ and havoc(validity__outp_,offset__outp_) } 
+ s106->sinter47 { havoc() } 
+ s108->s121 { havoc() } 
+ s110->s122 { havoc() } 
+ s111->s123 { havoc() } 
+ s113->s124 { havoc() } 
+ s116->s125 { havoc() } 
+ s118->s127 { free_mem' = free_mem-size_mem_0 and havoc(free_mem) } 
+ s12->s13 { size <=  0 and validity__head_' = 0 and havoc(validity__head_) } 
+ s12->s14 { size > 0 and mid_1_base' = 1 and mid_1_size' = size and offset__head_' = 0 and validity__head_' = 1 and havoc(validity__head_,offset__head_,mid_1_size,mid_1_base) } 
+ s120->sinter48 { havoc() } 
+ s122->s131 { offset__inp_ = offset__head_+size*1 and offset__inp_' = offset__head_ and validity__inp_' = validity__head_ and havoc(validity__inp_,offset__inp_) } 
+ s122->s132 { validity__size_entry_ != 1 and offset__inp_ != offset__head_+size*1 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s122->s133 { (validity__size_entry_ = 1 and size_entry <=  0) and offset__inp_ != offset__head_+size*1 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s122->s134 { (validity__size_entry_ = 1 and size_entry > 0) and offset__inp_ != offset__head_+size*1 and mid_6_base' = 6 and mid_6_size' = size_entry and offset__data_0_' = 0 and validity__data_0_' = 1 and havoc(validity__data_0_,offset__data_0_,mid_6_size,mid_6_base) } 
+ s122->s134 { (validity__size_entry_ = 1 and size_entry > 0) and offset__inp_ != offset__head_+size*1 and mid_4_base' = 4 and mid_4_size' = size_entry and offset__data_0_' = 0 and validity__data_0_' = 1 and havoc(validity__data_0_,offset__data_0_,mid_4_size,mid_4_base) } 
+ s123->s136 { __retres' = 0 and havoc(__retres) } 
+ s124->s19 { 80*1 <=  0 and validity__line_' = 0 and havoc(validity__line_) } 
+ s124->s20 { 80*1 > 0 and mid_8_base' = 8 and mid_8_size' = 80*1 and offset__line_' = 0 and validity__line_' = 1 and havoc(validity__line_,offset__line_,mid_8_size,mid_8_base) } 
+ s125->s138 { offset__outp_ = offset__head_+size*1 and offset__outp_' = offset__head_ and validity__outp_' = validity__head_ and havoc(validity__outp_,offset__outp_) } 
+ s125->s95 { offset__outp_ != offset__head_+size*1 and havoc() } 
+ s127->s140 { count' = count+1 and havoc(count) } 
+ s129->s142 { offset__outp_' = offset__head_+size_mem_0*1-s-1 and validity__outp_' = validity__head_ and havoc(validity__outp_,offset__outp_) } 
+ s13->s15 { havoc() } 
+ s131->s132 { validity__size_entry_ != 1 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s131->s133 { validity__size_entry_ = 1 and size_entry <=  0 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s131->s134 { validity__size_entry_ = 1 and size_entry > 0 and mid_9_base' = 9 and mid_9_size' = size_entry and offset__data_0_' = 0 and validity__data_0_' = 1 and havoc(validity__data_0_,offset__data_0_,mid_9_size,mid_9_base) } 
+ s133->s143 { havoc() } 
+ s134->s144 { havoc() } 
+ s136->s145 { ret_val_' = __retres and havoc(ret_val_) } 
+ s138->s95 { havoc() } 
+ s14->s16 { havoc() } 
+ s140->s146 { havoc() } 
+ s142->s127 { free_mem' = free_mem-size_mem_0 and havoc(free_mem) } 
+ s143->s150 { offset__inp_+size_entry*1 > offset__head_+size*1 and havoc(s_0) } 
+ s143->sinter49 { offset__inp_+size_entry*1 <=  offset__head_+size*1 and havoc() } 
+ s144->s152 { offset__inp_+size_entry*1 > offset__head_+size*1 and havoc(s_0) } 
+ s144->sinter50 { offset__inp_+size_entry*1 <=  offset__head_+size*1 and havoc() } 
+ s146->s154 { size_mem_0%4 != 0 and offset__outp_' = offset__outp_+(4-size_mem_0%4)*1 and validity__outp_' = validity__outp_ and havoc(validity__outp_,offset__outp_) } 
+ s146->s155 { size_mem_0%4 = 0 and havoc() } 
+ s148->s158 { offset__inp_' = offset__inp_+size_entry*1 and validity__inp_' = validity__inp_ and havoc(validity__inp_,offset__inp_) } 
+ s15->s17 { havoc() } 
+ s150->sinter51 { havoc() } 
+ s151->s161 { offset__inp_' = offset__inp_+size_entry*1 and validity__inp_' = validity__inp_ and havoc(validity__inp_,offset__inp_) } 
+ s152->sinter52 { havoc() } 
+ s154->s164 { free_mem' = free_mem-(4-size_mem_0%4) and havoc(free_mem) } 
+ s155->s166 { offset__outp_ = offset__head_+size*1 and offset__outp_' = offset__head_ and validity__outp_' = validity__head_ and havoc(validity__outp_,offset__outp_) } 
+ s155->sinter53 { offset__outp_ != offset__head_+size*1 and havoc() } 
+ s155->sinter54 { offset__outp_ != offset__head_+size*1 and havoc() } 
+ s158->s170 { free_mem' = free_mem+size_entry and havoc(free_mem) } 
+ s16->s18 { havoc() } 
+ s160->sinter55 { havoc() } 
+ s161->s173 { free_mem' = free_mem+size_entry and havoc(free_mem) } 
+ s162->sinter56 { havoc() } 
+ s164->s155 { havoc() } 
+ s166->sinter57 { havoc() } 
+ s168->s42 { havoc() } 
+ s17->s19 { 80*1 <=  0 and validity__line_' = 0 and havoc(validity__line_) } 
+ s17->s20 { 80*1 > 0 and mid_2_base' = 2 and mid_2_size' = 80*1 and offset__line_' = 0 and validity__line_' = 1 and havoc(validity__line_,offset__line_,mid_2_size,mid_2_base) } 
+ s170->s176 { count' = count-1 and havoc(count) } 
+ s172->s178 { offset__inp_' = offset__head_+(size_entry-s_0)*1 and validity__inp_' = validity__head_ and havoc(validity__inp_,offset__inp_) } 
+ s173->s179 { count' = count-1 and havoc(count) } 
+ s174->s180 { offset__inp_' = offset__head_+(size_entry-s_0)*1 and validity__inp_' = validity__head_ and havoc(validity__inp_,offset__inp_) } 
+ s176->s181 { havoc() } 
+ s178->s170 { free_mem' = free_mem+size_entry and havoc(free_mem) } 
+ s179->s182 { havoc() } 
+ s18->s21 { 80*1 <=  0 and validity__line_' = 0 and havoc(validity__line_) } 
+ s18->s22 { 80*1 > 0 and mid_3_base' = 3 and mid_3_size' = 80*1 and offset__line_' = 0 and validity__line_' = 1 and havoc(validity__line_,offset__line_,mid_3_size,mid_3_base) } 
+ s180->s173 { free_mem' = free_mem+size_entry and havoc(free_mem) } 
+ s181->s184 { size_entry%4 != 0 and offset__inp_' = offset__inp_+(4-size_entry%4)*1 and validity__inp_' = validity__inp_ and havoc(validity__inp_,offset__inp_) } 
+ s181->s185 { size_entry%4 = 0 and havoc() } 
+ s182->s186 { size_entry%4 = 0 and havoc() } 
+ s182->s187 { size_entry%4 != 0 and offset__inp_' = offset__inp_+(4-size_entry%4)*1 and validity__inp_' = validity__inp_ and havoc(validity__inp_,offset__inp_) } 
+ s184->s189 { free_mem' = free_mem+4-size_entry%4 and havoc(free_mem) } 
+ s185->s191 { offset__inp_ = offset__head_+size*1 and offset__inp_' = offset__head_ and validity__inp_' = validity__head_ and havoc(validity__inp_,offset__inp_) } 
+ s185->sinter58 { offset__inp_ != offset__head_+size*1 and havoc() } 
+ s185->sinter59 { offset__inp_ != offset__head_+size*1 and havoc() } 
+ s187->s194 { free_mem' = free_mem+4-size_entry%4 and havoc(free_mem) } 
+ s189->s185 { havoc() } 
+ s19->s23 { havoc() } 
+ s191->sinter60 { havoc() } 
+ s193->s195 { havoc() } 
+ s194->s186 { havoc() } 
+ s195->s197 { offset__data_0_ = 0*4 and havoc() } 
+ s195->sinter0 { offset__data_0_ != 0*4 and havoc() } 
+ s196->s121 { havoc() } 
+ s197->sinter1 { havoc() } 
+ s198->s199 { havoc() } 
+ s199->s200 { havoc() } 
+ s2->s3 { havoc() } 
+ s20->s24 { havoc() } 
+ s200->s201 { offset__tmp_5_ = offset__line_ and havoc() } 
+ s200->s202 { offset__tmp_5_ != offset__line_ and havoc() } 
+ s201->s203 { havoc() } 
+ s202->s204 { havoc() } 
+ s203->s205 { __retres' = 0 and havoc(__retres) } 
+ s204->s206 { 80*1 <=  0 and validity__line_' = 0 and havoc(validity__line_) } 
+ s204->s207 { 80*1 > 0 and mid_10_base' = 10 and mid_10_size' = 80*1 and offset__line_' = 0 and validity__line_' = 1 and havoc(validity__line_,offset__line_,mid_10_size,mid_10_base) } 
+ s205->s208 { ret_val_' = __retres and havoc(ret_val_) } 
+ s206->s209 { havoc() } 
+ s207->s210 { havoc() } 
+ s209->sinter2 { havoc() } 
+ s21->s25 { havoc() } 
+ s210->sinter3 { havoc() } 
+ s211->s213 { havoc() } 
+ s212->s214 { havoc() } 
+ s213->s215 { havoc() } 
+ s214->s216 { havoc() } 
+ s215->s218 { offset__tmp_3_ != offset__line_ and havoc() } 
+ s215->sinter4 { offset__tmp_3_ = offset__line_ and havoc() } 
+ s216->s43 { offset__tmp_3_ != offset__line_ and havoc() } 
+ s216->sinter5 { offset__tmp_3_ = offset__line_ and havoc() } 
+ s217->s220 { havoc() } 
+ s218->sinter6 { havoc() } 
+ s219->s222 { havoc() } 
+ s22->s26 { havoc() } 
+ s220->sinter9 { havoc() } 
+ s221->s224 { havoc() } 
+ s222->sinter12 { havoc() } 
+ s223->s226 { size_mem_0' = tmp_2-2 and havoc(size_mem_0) } 
+ s224->s227 { havoc() } 
+ s225->s228 { size_mem_0' = tmp_2-2 and havoc(size_mem_0) } 
+ s226->s229 { offset__data_' = offset__line_+3*1 and validity__data_' = validity__line_ and havoc(validity__data_,offset__data_) } 
+ s227->s197 { offset__tmp_4_ != offset__line_ and havoc() } 
+ s227->s230 { offset__tmp_4_ = offset__line_ and havoc() } 
+ s228->s231 { offset__data_' = offset__line_+3*1 and validity__data_' = validity__line_ and havoc(validity__data_,offset__data_) } 
+ s229->s232 { havoc() } 
+ s23->sinter7 { havoc() } 
+ s230->s233 { havoc() } 
+ s231->s234 { havoc() } 
+ s232->s236 { free_mem >= 4+size_mem_0 and havoc() } 
+ s232->sinter14 { free_mem < 4+size_mem_0 and havoc() } 
+ s232->sinter15 { free_mem < 4+size_mem_0 and havoc() } 
+ s233->s238 { count != 0 and havoc(size_entry) } 
+ s233->sinter17 { count = 0 and havoc() } 
+ s233->sinter18 { count = 0 and havoc() } 
+ s234->s84 { free_mem >= 4+size_mem_0 and havoc() } 
+ s234->sinter20 { free_mem < 4+size_mem_0 and havoc() } 
+ s234->sinter21 { free_mem < 4+size_mem_0 and havoc() } 
+ s235->s218 { havoc() } 
+ s236->s240 { offset__outp_+4*1 <=  offset__head_+size*1 and havoc() } 
+ s236->s241 { offset__outp_+4*1 > offset__head_+size*1 and havoc() } 
+ s237->s195 { havoc() } 
+ s238->s242 { offset__inp_' = offset__inp_+4*1 and validity__inp_' = validity__inp_ and havoc(validity__inp_,offset__inp_) } 
+ s239->s43 { havoc() } 
+ s24->sinter8 { havoc() } 
+ s240->s243 { offset__outp_' = offset__outp_+4*1 and validity__outp_' = validity__outp_ and havoc(validity__outp_,offset__outp_) } 
+ s241->s245 { offset__outp_+size_mem_0*1 > offset__head_+size*1 and havoc(s) } 
+ s241->sinter24 { offset__outp_+size_mem_0*1 <=  offset__head_+size*1 and havoc() } 
+ s242->s246 { free_mem' = free_mem+4 and havoc(free_mem) } 
+ s243->s247 { free_mem' = free_mem-4 and havoc(free_mem) } 
+ s244->s248 { offset__outp_' = offset__outp_+size*1 and validity__outp_' = validity__outp_ and havoc(validity__outp_,offset__outp_) } 
+ s245->sinter26 { havoc() } 
+ s246->s250 { havoc() } 
+ s247->s251 { havoc() } 
+ s248->s252 { free_mem' = free_mem-size_mem_0 and havoc(free_mem) } 
+ s249->sinter30 { havoc() } 
+ s25->sinter10 { havoc() } 
+ s250->s132 { validity__size_entry_ != 1 and offset__inp_ != offset__head_+size*1 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s250->s133 { (validity__size_entry_ = 1 and size_entry <=  0) and offset__inp_ != offset__head_+size*1 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s250->s134 { (validity__size_entry_ = 1 and size_entry > 0) and offset__inp_ != offset__head_+size*1 and mid_13_base' = 13 and mid_13_size' = size_entry and offset__data_0_' = 0 and validity__data_0_' = 1 and havoc(validity__data_0_,offset__data_0_,mid_13_size,mid_13_base) } 
+ s250->s134 { (validity__size_entry_ = 1 and size_entry > 0) and offset__inp_ != offset__head_+size*1 and mid_11_base' = 11 and mid_11_size' = size_entry and offset__data_0_' = 0 and validity__data_0_' = 1 and havoc(validity__data_0_,offset__data_0_,mid_11_size,mid_11_base) } 
+ s250->s254 { offset__inp_ = offset__head_+size*1 and offset__inp_' = offset__head_ and validity__inp_' = validity__head_ and havoc(validity__inp_,offset__inp_) } 
+ s251->s241 { offset__outp_ != offset__head_+size*1 and havoc() } 
+ s251->s255 { offset__outp_ = offset__head_+size*1 and offset__outp_' = offset__head_ and validity__outp_' = validity__head_ and havoc(validity__outp_,offset__outp_) } 
+ s252->s256 { count' = count+1 and havoc(count) } 
+ s253->s257 { offset__outp_' = offset__head_+size_mem_0*1-s-1 and validity__outp_' = validity__head_ and havoc(validity__outp_,offset__outp_) } 
+ s254->s132 { validity__size_entry_ != 1 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s254->s133 { validity__size_entry_ = 1 and size_entry <=  0 and validity__data_0_' = 0 and havoc(validity__data_0_) } 
+ s254->s134 { validity__size_entry_ = 1 and size_entry > 0 and mid_15_base' = 15 and mid_15_size' = size_entry and offset__data_0_' = 0 and validity__data_0_' = 1 and havoc(validity__data_0_,offset__data_0_,mid_15_size,mid_15_base) } 
+ s255->s241 { havoc() } 
+ s256->s258 { havoc() } 
+ s257->s252 { free_mem' = free_mem-size_mem_0 and havoc(free_mem) } 
+ s258->s259 { size_mem_0%4 != 0 and offset__outp_' = offset__outp_+(4-size_mem_0%4)*1 and validity__outp_' = validity__outp_ and havoc(validity__outp_,offset__outp_) } 
+ s258->s260 { size_mem_0%4 = 0 and havoc() } 
+ s259->s261 { free_mem' = free_mem-(4-size_mem_0%4) and havoc(free_mem) } 
+ s26->sinter11 { havoc() } 
+ s260->s262 { offset__outp_ = offset__head_+size*1 and offset__outp_' = offset__head_ and validity__outp_' = validity__head_ and havoc(validity__outp_,offset__outp_) } 
+ s260->sinter31 { offset__outp_ != offset__head_+size*1 and havoc() } 
+ s260->sinter32 { offset__outp_ != offset__head_+size*1 and havoc() } 
+ s261->s260 { havoc() } 
+ s262->sinter33 { havoc() } 
+ s263->s218 { havoc() } 
+ s28->s32 { havoc() } 
+ s29->s33 { havoc() } 
+ s3->s4 { havoc() } 
+ s30->s34 { havoc() } 
+ s31->s35 { havoc() } 
+ s32->s36 { havoc() } 
+ s33->s37 { havoc() } 
+ s34->s38 { havoc() } 
+ s35->s39 { havoc() } 
+ s36->s42 { offset__tmp_3_ != offset__line_ and havoc() } 
+ s36->sinter13 { offset__tmp_3_ = offset__line_ and havoc() } 
+ s37->s43 { offset__tmp_3_ != offset__line_ and havoc() } 
+ s37->sinter16 { offset__tmp_3_ = offset__line_ and havoc() } 
+ s38->s43 { offset__tmp_3_ != offset__line_ and havoc() } 
+ s38->sinter19 { offset__tmp_3_ = offset__line_ and havoc() } 
+ s39->s43 { offset__tmp_3_ != offset__line_ and havoc() } 
+ s39->sinter22 { offset__tmp_3_ = offset__line_ and havoc() } 
+ s4->s6 { size_mem%4 != 0 and tmp' = 4-size_mem%4 and havoc(tmp) } 
+ s4->s8 { size_mem%4 = 0 and tmp' = 0 and havoc(tmp) } 
+ s41->s47 { havoc() } 
+ s42->sinter23 { havoc() } 
+ s44->s50 { havoc() } 
+ s45->s51 { havoc() } 
+ s46->s52 { havoc() } 
+ s47->sinter25 { havoc() } 
+ s49->s55 { havoc() } 
+ s50->sinter27 { havoc() } 
+ s51->sinter28 { havoc() } 
+ s52->sinter29 { havoc() } 
+ s54->s60 { size_mem_0' = tmp_2-2 and havoc(size_mem_0) } 
+ s55->s61 { havoc() } 
+ s56->s62 { size_mem_0' = tmp_2-2 and havoc(size_mem_0) } 
+ s57->s63 { size_mem_0' = tmp_2-2 and havoc(size_mem_0) } 
+ s58->s64 { size_mem_0' = tmp_2-2 and havoc(size_mem_0) } 
+ s6->s10 { size_mem' = size_mem+tmp and havoc(size_mem) } 
+ s60->s66 { offset__data_' = offset__line_+3*1 and validity__data_' = validity__line_ and havoc(validity__data_,offset__data_) } 
+ s61->s67 { offset__tmp_4_ = offset__line_ and havoc() } 
+ s61->s69 { offset__tmp_4_ != offset__line_ and havoc() } 
+ s62->s71 { offset__data_' = offset__line_+3*1 and validity__data_' = validity__line_ and havoc(validity__data_,offset__data_) } 
+ s63->s72 { offset__data_' = offset__line_+3*1 and validity__data_' = validity__line_ and havoc(validity__data_,offset__data_) } 
+ s64->s73 { offset__data_' = offset__line_+3*1 and validity__data_' = validity__line_ and havoc(validity__data_,offset__data_) } 
+ s66->s74 { havoc() } 
+ s67->s75 { havoc() } 
+ s69->sinter34 { havoc() } 
+ s71->s78 { havoc() } 
+ s72->s79 { havoc() } 
+ s73->s80 { havoc() } 
+ s74->s83 { free_mem >= 4+size_mem_0 and havoc() } 
+ s74->sinter35 { free_mem < 4+size_mem_0 and havoc() } 
+ s74->sinter36 { free_mem < 4+size_mem_0 and havoc() } 
+ s75->s88 { count != 0 and havoc(size_entry) } 
+ s75->sinter37 { count = 0 and havoc() } 
+ s75->sinter38 { count = 0 and havoc() } 
+ s77->s89 { havoc() } 
+ s78->s84 { free_mem >= 4+size_mem_0 and havoc() } 
+ s78->sinter39 { free_mem < 4+size_mem_0 and havoc() } 
+ s78->sinter40 { free_mem < 4+size_mem_0 and havoc() } 
+ s79->s84 { free_mem >= 4+size_mem_0 and havoc() } 
+ s79->sinter41 { free_mem < 4+size_mem_0 and havoc() } 
+ s79->sinter42 { free_mem < 4+size_mem_0 and havoc() } 
+ s8->s10 { size_mem' = size_mem+tmp and havoc(size_mem) } 
+ s80->s84 { free_mem >= 4+size_mem_0 and havoc() } 
+ s80->sinter43 { free_mem < 4+size_mem_0 and havoc() } 
+ s80->sinter44 { free_mem < 4+size_mem_0 and havoc() } 
+ s82->s42 { havoc() } 
+ s83->s94 { offset__outp_+4*1 <=  offset__head_+size*1 and havoc() } 
+ s83->s95 { offset__outp_+4*1 > offset__head_+size*1 and havoc() } 
+ s86->s97 { havoc() } 
+ s88->s99 { offset__inp_' = offset__inp_+4*1 and validity__inp_' = validity__inp_ and havoc(validity__inp_,offset__inp_) } 
+ s89->s100 { havoc() } 
+ s90->s43 { havoc() } 
+ s91->s43 { havoc() } 
+ s92->s43 { havoc() } 
+ s94->s102 { offset__outp_' = offset__outp_+4*1 and validity__outp_' = validity__outp_ and havoc(validity__outp_,offset__outp_) } 
+ s95->s106 { offset__outp_+size_mem_0*1 > offset__head_+size*1 and havoc(s) } 
+ s95->sinter45 { offset__outp_+size_mem_0*1 <=  offset__head_+size*1 and havoc() } 
+ s97->s69 { offset__data_0_ = 0*4 and havoc() } 
+ s97->sinter46 { offset__data_0_ != 0*4 and havoc() } 
+ s99->s110 { free_mem' = free_mem+4 and havoc(free_mem) } 
+ sinit->s0 { havoc() } 
+ sinter0->s196 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__data_0_,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter1->s198 { (validity__tmp_5_',offset__tmp_5_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_5_,offset__tmp_5_) } 
+ sinter10->s30 { (validity__tmp_3_',offset__tmp_3_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_3_,offset__tmp_3_) } 
+ sinter11->s31 { (validity__tmp_3_',offset__tmp_3_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_3_,offset__tmp_3_) } 
+ sinter12->s225 { (tmp_2',validity__tmp_2_')=strlen(offset__line_,0) and havoc(tmp_2,validity__tmp_2_) } 
+ sinter13->s41 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__line_+3*1,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter14->s235 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter15->s235 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter16->s44 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__line_+3*1,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter17->s237 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter18->s237 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter19->s45 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__line_+3*1,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter2->s211 { (validity__tmp_3_',offset__tmp_3_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_3_,offset__tmp_3_) } 
+ sinter20->s239 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter21->s239 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter22->s46 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__line_+3*1,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter23->s49 { (validity__tmp_4_',offset__tmp_4_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_4_,offset__tmp_4_) } 
+ sinter24->s244 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__outp_,-1,offset__data_,0,size,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter25->s54 { (tmp_2',validity__tmp_2_')=strlen(offset__line_,0) and havoc(tmp_2,validity__tmp_2_) } 
+ sinter26->s249 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__outp_,-1,offset__data_,0,s,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter27->s56 { (tmp_2',validity__tmp_2_')=strlen(offset__line_,0) and havoc(tmp_2,validity__tmp_2_) } 
+ sinter28->s57 { (tmp_2',validity__tmp_2_')=strlen(offset__line_,0) and havoc(tmp_2,validity__tmp_2_) } 
+ sinter29->s58 { (tmp_2',validity__tmp_2_')=strlen(offset__line_,0) and havoc(tmp_2,validity__tmp_2_) } 
+ sinter3->s212 { (validity__tmp_3_',offset__tmp_3_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_3_,offset__tmp_3_) } 
+ sinter30->s253 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__head_,-1,offset__data_+s*1,0,size_mem_0-s,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter31->s263 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter32->s263 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter33->s263 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter34->s77 { (validity__tmp_5_',offset__tmp_5_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_5_,offset__tmp_5_) } 
+ sinter35->s82 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter36->s82 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter37->s86 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter38->s86 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter39->s90 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter4->s217 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__line_+3*1,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter40->s90 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter41->s91 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter42->s91 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter43->s92 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter44->s92 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter45->s104 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__outp_,-1,offset__data_,0,size,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter46->s108 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__data_0_,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter47->s120 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__outp_,-1,offset__data_,0,s,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter48->s129 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__head_,-1,offset__data_+s*1,0,size_mem_0-s,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter49->s148 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__data_0_,0,offset__inp_,-1,size_entry,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter5->s219 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=printf(_ndet_arg_0,1,offset__line_+3*1,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter50->s151 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__data_0_,0,offset__inp_,-1,size_entry,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter51->s160 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__data_0_,0,offset__inp_,-1,s_0,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter52->s162 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__data_0_,0,offset__inp_,-1,s_0,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter53->s168 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter54->s168 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter55->s172 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__data_0_+s_0*1,0,offset__head_,-1,size_entry-s_0,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter56->s174 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=memcpy(offset__data_0_+s_0*1,0,offset__head_,-1,size_entry-s_0,-1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter57->s168 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter58->s193 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter59->s193 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter6->s221 { (validity__tmp_4_',offset__tmp_4_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_4_,offset__tmp_4_) } 
+ sinter60->s193 { trace(_ndet_arg_0,1) and havoc() } 
+ sinter7->s28 { (validity__tmp_3_',offset__tmp_3_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_3_,offset__tmp_3_) } 
+ sinter8->s29 { (validity__tmp_3_',offset__tmp_3_')=strstr(offset__line_,0,_ndet_arg_0,1) and havoc(validity__tmp_3_,offset__tmp_3_) } 
+ sinter9->s223 { (tmp_2',validity__tmp_2_')=strlen(offset__line_,0) and havoc(tmp_2,validity__tmp_2_) }
+}
+memcpy{
+in dest_off,dest_val,src_off,srv_val,sizein,size_val: int;
+
+out ret_addr,valid_ret: int;
+initial sinit;
+final s1;
+ 
+ s0->s1 { havoc() } 
+ sinit->s0 { ret_addr' = dest_off and valid_ret' = dest_val and havoc(ret_addr,valid_ret) }
+}
+printf{
+in a,b,c,d: int;
+
+out off,val: int;
+initial sinit;
+final sfinal;
+ 
+ sinit->sfinal { havoc(off,val) }
+}
+strlen{
+in ptr_off,ptr_valid: int;
+
+out len,valid_len: int;
+initial sinit;
+final s1;
+ 
+ s0->s1 { havoc() } 
+ sinit->s0 { valid_len' = ptr_valid and havoc(valid_len,len) }
+}
+strstr{
+in a,b,c,d: int;
+
+out off,val: int;
+initial sinit;
+final sfinal;
+ 
+ sinit->sfinal { val' = b and havoc(off,val) }
+}
+trace{
+in offset__msg_,validity__msg_: int;
+
+initial sinit;
+final s1;
+ 
+ s0->s1 { havoc() } 
+ sinit->s0 { havoc() }
+}
+
+ 

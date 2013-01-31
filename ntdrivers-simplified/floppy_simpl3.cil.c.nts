@@ -1,0 +1,966 @@
+nts __ntdrivers_simplified_floppy_simpl3_cil ; 
+validity__PagingMutex_,PagingMutex,validity__PagingReferenceCount_,PagingReferenceCount,validity__customIrp_,customIrp,validity__setEventCalled_,setEventCalled,validity__lowerDriverReturn_,lowerDriverReturn,validity__compRegistered_,compRegistered,validity__pended_,pended,validity__IPC_,IPC,validity__MPR3_,MPR3,validity__MPR1_,MPR1,validity__SKIP2_,SKIP2,validity__SKIP1_,SKIP1,validity__DC_,DC,validity__NP_,NP,validity__UNLOADED_,UNLOADED,validity__s_,s,validity__myStatus_,myStatus,validity__MOUNTDEV_MOUNTED_DEVICE_GUID_,MOUNTDEV_MOUNTED_DEVICE_GUID,validity__MaximumInterfaceType_,MaximumInterfaceType,validity__FlConfigCallBack_,FlConfigCallBack,validity__FloppyDiskPeripheral_,FloppyDiskPeripheral,validity__DiskController_,DiskController,validity__Executive_,Executive,validity__Suspended_,Suspended,validity__KernelMode_,KernelMode,validity__FloppyThread_,FloppyThread: int;
+FlAcpiConfigureFloppy{
+in DisketteExtension,validity__DisketteExtension_,FdcInfo,validity__FdcInfo_: int;
+
+__retres: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s3;
+error s1; 
+ s0->s2 { __retres' = 0 and havoc(__retres) } 
+ s2->s3 { ret_val_' = __retres and havoc(ret_val_) } 
+ sinit->s0 { havoc() }
+}
+FlFdcDeviceIo{
+in DeviceObject,validity__DeviceObject_,Ioctl,validity__Ioctl_,Data,validity__Data_: int;
+
+ntStatus,irp,irpStack,doneEvent,ioStatus,irp__Tail__Overlay__CurrentStackLocation,irpStack__Parameters__DeviceIoControl__Type3InputBuffer,__cil_tmp11,__retres,validity__ntStatus_,validity__irp_,validity____nts__naffected_ret_val__,__nts__naffected_ret_val_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s12;
+error s10,s13,s15,s18,s2,s21,s23,s25,s5,s8; 
+ s0->s1 { havoc() } 
+ s1->sinter0 { havoc() } 
+ s11->s14 { irpStack__Parameters__DeviceIoControl__Type3InputBuffer' = Data and havoc(irpStack__Parameters__DeviceIoControl__Type3InputBuffer) } 
+ s14->sinter1 { havoc() } 
+ s16->s17 { havoc() } 
+ s17->s19 { __cil_tmp11' = ntStatus and havoc(__cil_tmp11) } 
+ s19->s20 { havoc() } 
+ s20->s24 { __cil_tmp11 != 259 and __retres' = ntStatus and havoc(__retres) } 
+ s20->sinter2 { __cil_tmp11 = 259 and havoc() } 
+ s22->s26 { ntStatus' = myStatus and havoc(ntStatus) } 
+ s24->s12 { ret_val_' = __retres and havoc(ret_val_) } 
+ s26->s24 { __retres' = ntStatus and havoc(__retres) } 
+ s3->s4 { havoc() } 
+ s4->s6 { irp = 0 and __retres' = -1073741670 and havoc(__retres) } 
+ s4->s7 { irp != 0 and havoc() } 
+ s6->s9 { havoc() } 
+ s7->s11 { irpStack' = irp__Tail__Overlay__CurrentStackLocation-1 and havoc(irpStack) } 
+ s9->s12 { ret_val_' = __retres and havoc(ret_val_) } 
+ sinit->s0 { havoc() } 
+ sinter0->s3 { (irp',validity__irp_')=IoBuildDeviceIoControlRequest(Ioctl,-1,DeviceObject,-1,0,1,0,1,0,1,0,1,1,1,doneEvent,0,ioStatus,0) and havoc(irp,validity__irp_) } 
+ sinter1->s16 { (ntStatus',validity__ntStatus_')=IofCallDriver(DeviceObject,-1,irp,0) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter2->s22 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=KeWaitForSingleObject(doneEvent,0,Suspended,-1,KernelMode,-1,0,1,0,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) }
+}
+FlQueueIrpToThread{
+in Irp,validity__Irp_,DisketteExtension,validity__DisketteExtension_: int;
+
+status,threadHandle,DisketteExtension__PoweringDown,DisketteExtension__ThreadReferenceCount,DisketteExtension__FloppyThread,Irp__IoStatus__Status,Irp__IoStatus__Information,ObjAttributes,__retres,validity__status_,validity____nts__naffected_ret_val__,__nts__naffected_ret_val_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s27;
+error s11,s14,s15,s17,s19,s2,s21,s25,s29,s30,s34,s37,s38,s4,s40,s43,s45,s50,s6,s9; 
+ s0->s1 { havoc() } 
+ s1->s3 { DisketteExtension__PoweringDown = 1 and myStatus' = -1073741101 and havoc(myStatus) } 
+ s1->s5 { DisketteExtension__PoweringDown != 1 and DisketteExtension__ThreadReferenceCount' = DisketteExtension__ThreadReferenceCount+1 and havoc(DisketteExtension__ThreadReferenceCount) } 
+ s10->s16 { __retres' = -1073741101 and havoc(__retres) } 
+ s12->s18 { PagingReferenceCount' = PagingReferenceCount+1 and havoc(PagingReferenceCount) } 
+ s13->s20 { pended = 0 and pended' = 1 and havoc(pended) } 
+ s13->sinter0 { pended != 0 and havoc() } 
+ s13->sinter1 { pended != 0 and havoc() } 
+ s16->s23 { havoc() } 
+ s18->s24 { havoc() } 
+ s20->s26 { __retres' = 259 and havoc(__retres) } 
+ s22->s26 { __retres' = 259 and havoc(__retres) } 
+ s23->s27 { ret_val_' = __retres and havoc(ret_val_) } 
+ s24->s28 { havoc() } 
+ s26->s27 { ret_val_' = __retres and havoc(ret_val_) } 
+ s28->sinter2 { havoc() } 
+ s3->s7 { Irp__IoStatus__Status' = -1073741101 and havoc(Irp__IoStatus__Status) } 
+ s31->s32 { havoc() } 
+ s32->s33 { havoc() } 
+ s33->s35 { status < 0 and DisketteExtension__ThreadReferenceCount' = -1 and havoc(DisketteExtension__ThreadReferenceCount) } 
+ s33->s36 { status >= 0 and havoc() } 
+ s35->s39 { PagingReferenceCount' = PagingReferenceCount-1 and havoc(PagingReferenceCount) } 
+ s36->sinter3 { havoc() } 
+ s39->s42 { havoc() } 
+ s41->sinter4 { havoc() } 
+ s42->s46 { __retres' = status and havoc(__retres) } 
+ s44->s47 { havoc() } 
+ s46->s48 { havoc() } 
+ s47->s49 { havoc() } 
+ s48->s27 { ret_val_' = __retres and havoc(ret_val_) } 
+ s49->s13 { status >= 0 and havoc() } 
+ s49->s51 { status < 0 and __retres' = status and havoc(__retres) } 
+ s5->s8 { havoc() } 
+ s51->s52 { havoc() } 
+ s52->s27 { ret_val_' = __retres and havoc(ret_val_) } 
+ s7->s10 { Irp__IoStatus__Information' = 0 and havoc(Irp__IoStatus__Information) } 
+ s8->s12 { DisketteExtension__ThreadReferenceCount = 0 and DisketteExtension__ThreadReferenceCount' = DisketteExtension__ThreadReferenceCount+1 and havoc(DisketteExtension__ThreadReferenceCount) } 
+ s8->s13 { DisketteExtension__ThreadReferenceCount != 0 and havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s22 { errorFn() and havoc() } 
+ sinter1->s22 { errorFn() and havoc() } 
+ sinter2->s31 { (status',validity__status_')=PsCreateSystemThread(threadHandle,0,0,1,ObjAttributes,0,0,1,0,1,FloppyThread,-1,DisketteExtension,-1) and havoc(status,validity__status_) } 
+ sinter3->s41 { (status',validity__status_')=ObReferenceObjectByHandle(threadHandle,0,1048576,1,0,1,KernelMode,-1,DisketteExtension__FloppyThread,0,0,1) and havoc(status,validity__status_) } 
+ sinter4->s44 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=ZwClose(threadHandle,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) }
+}
+FloppyPnp{
+in DeviceObject,validity__DeviceObject_,Irp,validity__Irp_: int;
+
+DeviceObject__DeviceExtension,Irp__Tail__Overlay__CurrentStackLocation,Irp__IoStatus__Information,Irp__IoStatus__Status,Irp__CurrentLocation,disketteExtension__IsRemoved,disketteExtension__IsStarted,disketteExtension__TargetObject,disketteExtension__HoldNewRequests,disketteExtension__FloppyThread,disketteExtension__InterfaceString__Buffer,disketteExtension__InterfaceString,disketteExtension__ArcName__Length,disketteExtension__ArcName,irpSp__MinorFunction,IoGetConfigurationInformation__FloppyCount,irpSp,disketteExtension,ntStatus,doneEvent,irpSp___0,nextIrpSp,nextIrpSp__Control,irpSp___1,irpSp__Context,irpSp__Control,__cil_tmp29,__cil_tmp30,__retres,__if_ndet_cond__,validity__ntStatus_,validity____nts__naffected_ret_val__,__nts__naffected_ret_val_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s67;
+error s1,s100,s102,s104,s106,s109,s111,s114,s117,s119,s12,s121,s123,s126,s128,s130,s132,s134,s138,s14,s141,s142,s145,s148,s15,s150,s152,s155,s157,s159,s162,s165,s168,s170,s172,s175,s176,s178,s18,s180,s182,s184,s186,s189,s191,s193,s195,s197,s199,s20,s202,s205,s207,s21,s210,s212,s215,s217,s219,s221,s223,s228,s231,s232,s234,s236,s238,s240,s244,s246,s249,s25,s250,s252,s254,s256,s258,s260,s27,s28,s3,s30,s34,s36,s37,s42,s44,s45,s49,s52,s54,s56,s59,s6,s61,s64,s66,s69,s71,s73,s76,s77,s8,s80,s82,s83,s86,s88,s90,s92,s94,s97; 
+ s0->s2 { ntStatus' = 0 and havoc(ntStatus) } 
+ s10->s11 { disketteExtension__IsRemoved != 0 and havoc() } 
+ s10->s13 { disketteExtension__IsRemoved = 0 and havoc() } 
+ s101->s113 { havoc() } 
+ s103->s115 { irpSp___0' = Irp__Tail__Overlay__CurrentStackLocation and havoc(irpSp___0) } 
+ s105->s116 { havoc() } 
+ s107->s118 { disketteExtension__IsRemoved' = 1 and havoc(disketteExtension__IsRemoved) } 
+ s108->s120 { s = NP and s' = SKIP1 and havoc(s) } 
+ s108->sinter0 { s != NP and havoc() } 
+ s108->sinter1 { s != NP and havoc() } 
+ s11->s16 { Irp__IoStatus__Information' = 0 and havoc(Irp__IoStatus__Information) } 
+ s110->sinter2 { havoc() } 
+ s112->s125 { havoc() } 
+ s113->s127 { s = NP and s' = SKIP1 and havoc(s) } 
+ s113->sinter3 { s != NP and havoc() } 
+ s113->sinter4 { s != NP and havoc() } 
+ s115->s131 { nextIrpSp' = Irp__Tail__Overlay__CurrentStackLocation-1 and havoc(nextIrpSp) } 
+ s116->s133 { s = NP and s' = SKIP1 and havoc(s) } 
+ s116->sinter6 { s != NP and havoc() } 
+ s116->sinter7 { s != NP and havoc() } 
+ s118->s136 { havoc() } 
+ s120->s137 { havoc() } 
+ s122->s137 { havoc() } 
+ s124->s139 { __retres' = ntStatus and havoc(__retres) } 
+ s125->s140 { __cil_tmp29 = 259 and havoc() } 
+ s125->s143 { __cil_tmp29 != 259 and ntStatus' = -1073741823 and havoc(ntStatus) } 
+ s127->s144 { havoc() } 
+ s129->s144 { havoc() } 
+ s13->s17 { irpSp__MinorFunction = 0 and havoc() } 
+ s13->s19 { irpSp__MinorFunction != 0 and havoc() } 
+ s131->s146 { nextIrpSp__Control' = 0 and havoc(nextIrpSp__Control) } 
+ s133->s147 { havoc() } 
+ s135->s147 { havoc() } 
+ s136->s149 { s = NP and s' = SKIP1 and havoc(s) } 
+ s136->sinter15 { s != NP and havoc() } 
+ s136->sinter16 { s != NP and havoc() } 
+ s137->s153 { Irp__CurrentLocation' = Irp__CurrentLocation+1 and havoc(Irp__CurrentLocation) } 
+ s139->s154 { havoc() } 
+ s140->sinter17 { havoc() } 
+ s143->s158 { Irp__IoStatus__Status' = ntStatus and havoc(Irp__IoStatus__Status) } 
+ s144->s160 { Irp__CurrentLocation' = Irp__CurrentLocation+1 and havoc(Irp__CurrentLocation) } 
+ s146->s161 { havoc() } 
+ s147->s163 { Irp__CurrentLocation' = Irp__CurrentLocation+1 and havoc(Irp__CurrentLocation) } 
+ s149->s164 { havoc() } 
+ s151->s164 { havoc() } 
+ s153->s166 { Irp__Tail__Overlay__CurrentStackLocation' = Irp__Tail__Overlay__CurrentStackLocation+1 and havoc(Irp__Tail__Overlay__CurrentStackLocation) } 
+ s154->s67 { ret_val_' = __retres and havoc(ret_val_) } 
+ s156->s167 { havoc() } 
+ s158->s169 { myStatus' = ntStatus and havoc(myStatus) } 
+ s16->s22 { Irp__IoStatus__Status' = -1073741738 and havoc(Irp__IoStatus__Status) } 
+ s160->s171 { Irp__Tail__Overlay__CurrentStackLocation' = Irp__Tail__Overlay__CurrentStackLocation+1 and havoc(Irp__Tail__Overlay__CurrentStackLocation) } 
+ s161->s174 { s = NP and havoc() } 
+ s161->sinter22 { s != NP and havoc() } 
+ s161->sinter23 { s != NP and havoc() } 
+ s163->s177 { Irp__Tail__Overlay__CurrentStackLocation' = Irp__Tail__Overlay__CurrentStackLocation+1 and havoc(Irp__Tail__Overlay__CurrentStackLocation) } 
+ s164->s179 { Irp__CurrentLocation' = Irp__CurrentLocation+1 and havoc(Irp__CurrentLocation) } 
+ s166->sinter25 { havoc() } 
+ s167->s183 { disketteExtension__FloppyThread' = 0 and havoc(disketteExtension__FloppyThread) } 
+ s169->s185 { Irp__IoStatus__Information' = 0 and havoc(Irp__IoStatus__Information) } 
+ s17->s23 { havoc() } 
+ s171->sinter26 { havoc() } 
+ s173->s188 { havoc() } 
+ s174->s192 { compRegistered = 0 and compRegistered' = 1 and havoc(compRegistered) } 
+ s174->sinter28 { compRegistered != 0 and havoc() } 
+ s174->sinter29 { compRegistered != 0 and havoc() } 
+ s177->sinter30 { havoc() } 
+ s179->s196 { Irp__Tail__Overlay__CurrentStackLocation' = Irp__Tail__Overlay__CurrentStackLocation+1 and havoc(Irp__Tail__Overlay__CurrentStackLocation) } 
+ s181->s57 { PagingReferenceCount' = PagingReferenceCount-1 and havoc(PagingReferenceCount) } 
+ s183->s198 { Irp__IoStatus__Status' = 0 and havoc(Irp__IoStatus__Status) } 
+ s185->sinter31 { havoc() } 
+ s187->s201 { havoc() } 
+ s188->s203 { irpSp___1' = Irp__Tail__Overlay__CurrentStackLocation-1 and havoc(irpSp___1) } 
+ s19->s24 { irpSp__MinorFunction = 5 and havoc() } 
+ s19->s26 { irpSp__MinorFunction != 5 and havoc() } 
+ s190->s188 { havoc() } 
+ s192->s188 { havoc() } 
+ s194->s204 { havoc() } 
+ s196->s206 { Irp__IoStatus__Status' = 0 and havoc(Irp__IoStatus__Status) } 
+ s198->s208 { myStatus' = 0 and havoc(myStatus) } 
+ s2->s4 { PagingReferenceCount' = PagingReferenceCount+1 and havoc(PagingReferenceCount) } 
+ s200->s209 { havoc() } 
+ s201->s47 { havoc() } 
+ s203->s211 { irpSp__Context' = doneEvent and havoc(irpSp__Context) } 
+ s204->s47 { havoc() } 
+ s206->s213 { myStatus' = 0 and havoc(myStatus) } 
+ s208->s214 { havoc() } 
+ s209->s47 { havoc() } 
+ s211->s216 { irpSp__Control' = 224 and havoc(irpSp__Control) } 
+ s213->sinter5 { havoc() } 
+ s214->s220 { s = NP and s' = SKIP1 and havoc(s) } 
+ s214->sinter8 { s != NP and havoc() } 
+ s214->sinter9 { s != NP and havoc() } 
+ s216->sinter10 { havoc() } 
+ s218->s225 { havoc() } 
+ s22->s29 { myStatus' = -1073741738 and havoc(myStatus) } 
+ s220->s226 { havoc() } 
+ s222->s226 { havoc() } 
+ s224->s227 { havoc() } 
+ s225->s230 { disketteExtension__InterfaceString__Buffer = 0 and havoc() } 
+ s225->sinter13 { disketteExtension__InterfaceString__Buffer != 0 and havoc() } 
+ s226->s233 { Irp__CurrentLocation' = Irp__CurrentLocation+1 and havoc(Irp__CurrentLocation) } 
+ s227->s235 { __cil_tmp30' = ntStatus and havoc(__cil_tmp30) } 
+ s229->s230 { havoc() } 
+ s23->sinter11 { havoc() } 
+ s230->s239 { disketteExtension__ArcName__Length = 0 and IoGetConfigurationInformation__FloppyCount' = IoGetConfigurationInformation__FloppyCount-1 and havoc(IoGetConfigurationInformation__FloppyCount) } 
+ s230->sinter14 { disketteExtension__ArcName__Length != 0 and havoc() } 
+ s233->s241 { Irp__Tail__Overlay__CurrentStackLocation' = Irp__Tail__Overlay__CurrentStackLocation+1 and havoc(Irp__Tail__Overlay__CurrentStackLocation) } 
+ s235->s242 { havoc() } 
+ s237->s239 { IoGetConfigurationInformation__FloppyCount' = IoGetConfigurationInformation__FloppyCount-1 and havoc(IoGetConfigurationInformation__FloppyCount) } 
+ s239->s243 { havoc() } 
+ s24->s32 { havoc() } 
+ s241->sinter18 { havoc() } 
+ s242->s248 { __cil_tmp30 != 259 and havoc() } 
+ s242->sinter19 { __cil_tmp30 = 259 and havoc() } 
+ s243->s47 { havoc() } 
+ s245->s209 { havoc() } 
+ s247->s251 { ntStatus' = myStatus and havoc(ntStatus) } 
+ s248->s253 { disketteExtension__HoldNewRequests' = 0 and havoc(disketteExtension__HoldNewRequests) } 
+ s251->s248 { havoc() } 
+ s253->s255 { Irp__IoStatus__Status' = ntStatus and havoc(Irp__IoStatus__Status) } 
+ s255->s257 { myStatus' = ntStatus and havoc(myStatus) } 
+ s257->s259 { Irp__IoStatus__Information' = 0 and havoc(Irp__IoStatus__Information) } 
+ s259->sinter24 { havoc() } 
+ s26->s33 { irpSp__MinorFunction = 1 and havoc() } 
+ s26->s35 { irpSp__MinorFunction != 1 and havoc() } 
+ s261->s201 { havoc() } 
+ s29->sinter12 { havoc() } 
+ s31->s39 { havoc() } 
+ s32->s40 { havoc() } 
+ s33->s32 { havoc() } 
+ s35->s41 { irpSp__MinorFunction = 6 and havoc() } 
+ s35->s43 { irpSp__MinorFunction != 6 and havoc() } 
+ s38->s46 { __retres' = -1073741738 and havoc(__retres) } 
+ s39->s47 { havoc() } 
+ s4->s5 { havoc() } 
+ s40->s48 { havoc() } 
+ s41->s50 { havoc() } 
+ s43->s51 { irpSp__MinorFunction = 3 and havoc() } 
+ s43->s53 { irpSp__MinorFunction != 3 and havoc() } 
+ s46->s55 { havoc() } 
+ s47->s57 { PagingReferenceCount' = PagingReferenceCount-1 and havoc(PagingReferenceCount) } 
+ s48->s58 { __if_ndet_cond__ = 0 and havoc(__if_ndet_cond__) } 
+ s48->s60 { __if_ndet_cond__ != 0 and havoc(__if_ndet_cond__) } 
+ s5->s7 { disketteExtension' = DeviceObject__DeviceExtension and havoc(disketteExtension) } 
+ s50->s62 { havoc() } 
+ s51->s50 { havoc() } 
+ s53->s63 { irpSp__MinorFunction = 4 and havoc() } 
+ s53->s65 { irpSp__MinorFunction != 4 and havoc() } 
+ s55->s67 { ret_val_' = __retres and havoc(ret_val_) } 
+ s57->s68 { havoc() } 
+ s58->s70 { s = NP and s' = SKIP1 and havoc(s) } 
+ s58->sinter20 { s != NP and havoc() } 
+ s58->sinter21 { s != NP and havoc() } 
+ s60->s74 { disketteExtension__HoldNewRequests' = 1 and havoc(disketteExtension__HoldNewRequests) } 
+ s62->s75 { havoc() } 
+ s63->s78 { disketteExtension__IsStarted' = 0 and havoc(disketteExtension__IsStarted) } 
+ s65->s79 { irpSp__MinorFunction = 2 and havoc() } 
+ s65->s81 { irpSp__MinorFunction != 2 and havoc() } 
+ s68->s84 { __retres' = ntStatus and havoc(__retres) } 
+ s7->s9 { irpSp' = Irp__Tail__Overlay__CurrentStackLocation and havoc(irpSp) } 
+ s70->s85 { havoc() } 
+ s72->s85 { havoc() } 
+ s74->sinter27 { havoc() } 
+ s75->s89 { __if_ndet_cond__ = 0 and Irp__IoStatus__Status' = 0 and havoc(__if_ndet_cond__,Irp__IoStatus__Status) } 
+ s75->s91 { __if_ndet_cond__ != 0 and Irp__IoStatus__Status' = 0 and havoc(__if_ndet_cond__,Irp__IoStatus__Status) } 
+ s78->s93 { Irp__IoStatus__Status' = 0 and havoc(Irp__IoStatus__Status) } 
+ s79->s95 { disketteExtension__HoldNewRequests' = 0 and havoc(disketteExtension__HoldNewRequests) } 
+ s81->s96 { havoc() } 
+ s84->s67 { ret_val_' = __retres and havoc(ret_val_) } 
+ s85->s98 { Irp__CurrentLocation' = Irp__CurrentLocation+1 and havoc(Irp__CurrentLocation) } 
+ s87->s99 { havoc() } 
+ s89->s101 { myStatus' = 0 and havoc(myStatus) } 
+ s9->s10 { havoc() } 
+ s91->s103 { myStatus' = 0 and havoc(myStatus) } 
+ s93->s105 { myStatus' = 0 and havoc(myStatus) } 
+ s95->s107 { disketteExtension__IsStarted' = 0 and havoc(disketteExtension__IsStarted) } 
+ s96->s108 { havoc() } 
+ s98->s110 { Irp__Tail__Overlay__CurrentStackLocation' = Irp__Tail__Overlay__CurrentStackLocation+1 and havoc(Irp__Tail__Overlay__CurrentStackLocation) } 
+ s99->s112 { __cil_tmp29' = ntStatus and havoc(__cil_tmp29) } 
+ sinit->s0 { havoc() } 
+ sinter0->s122 { errorFn() and havoc() } 
+ sinter1->s122 { errorFn() and havoc() } 
+ sinter10->s224 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter11->s31 { (ntStatus',validity__ntStatus_')=FloppyStartDevice(DeviceObject,-1,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter12->s38 { IofCompleteRequest(Irp,-1,0,1) and havoc() } 
+ sinter13->s229 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=IoSetDeviceInterfaceState(disketteExtension__InterfaceString,0,0,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter14->s237 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=IoDeleteSymbolicLink(disketteExtension__ArcName,0) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter15->s151 { errorFn() and havoc() } 
+ sinter16->s151 { errorFn() and havoc() } 
+ sinter17->s156 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=KeWaitForSingleObject(disketteExtension__FloppyThread,0,Executive,-1,KernelMode,-1,0,1,0,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter18->s245 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter19->s247 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=KeWaitForSingleObject(doneEvent,0,Executive,-1,KernelMode,-1,0,1,0,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) } 
+ sinter2->s124 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter20->s72 { errorFn() and havoc() } 
+ sinter21->s72 { errorFn() and havoc() } 
+ sinter22->s173 { errorFn() and havoc() } 
+ sinter23->s173 { errorFn() and havoc() } 
+ sinter24->s261 { IofCompleteRequest(Irp,-1,0,1) and havoc() } 
+ sinter25->s181 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter26->s187 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter27->s87 { (ntStatus',validity__ntStatus_')=FlQueueIrpToThread(Irp,-1,disketteExtension,0) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter28->s190 { errorFn() and havoc() } 
+ sinter29->s190 { errorFn() and havoc() } 
+ sinter3->s129 { errorFn() and havoc() } 
+ sinter30->s194 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter31->s200 { IofCompleteRequest(Irp,-1,0,1) and havoc() } 
+ sinter4->s129 { errorFn() and havoc() } 
+ sinter5->s218 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter6->s135 { errorFn() and havoc() } 
+ sinter7->s135 { errorFn() and havoc() } 
+ sinter8->s222 { errorFn() and havoc() } 
+ sinter9->s222 { errorFn() and havoc() }
+}
+FloppyPnpComplete{
+in DeviceObject,validity__DeviceObject_,Irp,validity__Irp_,Context,validity__Context_: int;
+
+__retres,validity____nts__naffected_ret_val__,__nts__naffected_ret_val_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s6;
+error s2,s4; 
+ s0->s1 { havoc() } 
+ s1->sinter0 { havoc() } 
+ s3->s5 { __retres' = -1073741802 and havoc(__retres) } 
+ s5->s6 { ret_val_' = __retres and havoc(ret_val_) } 
+ sinit->s0 { havoc() } 
+ sinter0->s3 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=KeSetEvent(Context,-1,1,1,0,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) }
+}
+FloppyStartDevice{
+in DeviceObject,validity__DeviceObject_,Irp,validity__Irp_: int;
+
+DeviceObject__DeviceExtension,Irp__Tail__Overlay__CurrentStackLocation,Irp__IoStatus__Status,disketteExtension__TargetObject,disketteExtension__MaxTransferSize,disketteExtension__DriveType,disketteExtension__DeviceUnit,disketteExtension__UnderlyingPDO,disketteExtension__InterfaceString,disketteExtension__IsStarted,disketteExtension__HoldNewRequests,ntStatus,pnpStatus,doneEvent,fdcInfo,fdcInfo__BufferCount,fdcInfo__BufferSize,fdcInfo__MaxTransferSize,fdcInfo__AcpiBios,fdcInfo__AcpiFdiSupported,fdcInfo__PeripheralNumber,fdcInfo__BusType,fdcInfo__ControllerNumber,fdcInfo__UnitNumber,fdcInfo__BusNumber,Dc,Fp,disketteExtension,irpSp,irpSp___0,nextIrpSp,nextIrpSp__Control,irpSp___1,irpSp__Control,irpSp__Context,InterfaceType,KUSER_SHARED_DATA__AlternativeArchitecture_NEC98x86,__cil_tmp42,__cil_tmp43,__cil_tmp44,__cil_tmp45,__cil_tmp46,__cil_tmp47,__cil_tmp48,validity__pnpStatus_,validity__ntStatus_,validity____cil_tmp48_,validity____cil_tmp47_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s84;
+error s1,s102,s105,s107,s11,s110,s112,s114,s116,s118,s122,s123,s13,s16,s19,s21,s23,s25,s27,s29,s3,s31,s34,s37,s40,s41,s43,s45,s47,s49,s5,s51,s53,s55,s58,s61,s63,s66,s68,s69,s7,s72,s74,s76,s78,s80,s82,s87,s9,s90,s93,s95,s97; 
+ s0->s2 { Dc' = DiskController and havoc(Dc) } 
+ s10->s12 { nextIrpSp' = Irp__Tail__Overlay__CurrentStackLocation-1 and havoc(nextIrpSp) } 
+ s100->sinter0 { havoc() } 
+ s101->s104 { InterfaceType >= MaximumInterfaceType and havoc() } 
+ s101->s106 { InterfaceType < MaximumInterfaceType and havoc() } 
+ s103->s108 { havoc() } 
+ s104->s109 { havoc() } 
+ s106->s111 { fdcInfo__BusType' = InterfaceType and havoc(fdcInfo__BusType) } 
+ s108->s115 { pnpStatus < 0 and disketteExtension__IsStarted' = 1 and havoc(disketteExtension__IsStarted) } 
+ s108->sinter1 { pnpStatus >= 0 and havoc() } 
+ s109->s89 { havoc() } 
+ s111->sinter2 { havoc() } 
+ s113->s115 { disketteExtension__IsStarted' = 1 and havoc(disketteExtension__IsStarted) } 
+ s115->s119 { disketteExtension__HoldNewRequests' = 0 and havoc(disketteExtension__HoldNewRequests) } 
+ s117->s120 { havoc() } 
+ s119->s60 { havoc() } 
+ s12->s14 { nextIrpSp__Control' = 0 and havoc(nextIrpSp__Control) } 
+ s120->s121 { ntStatus >= 0 and havoc() } 
+ s120->s124 { ntStatus < 0 and InterfaceType' = InterfaceType+1 and havoc(InterfaceType) } 
+ s121->s109 { havoc() } 
+ s124->s91 { havoc() } 
+ s14->s15 { havoc() } 
+ s15->s18 { s = NP and havoc() } 
+ s15->sinter3 { s != NP and havoc() } 
+ s15->sinter4 { s != NP and havoc() } 
+ s17->s20 { havoc() } 
+ s18->s24 { compRegistered = 0 and compRegistered' = 1 and havoc(compRegistered) } 
+ s18->sinter5 { compRegistered != 0 and havoc() } 
+ s18->sinter6 { compRegistered != 0 and havoc() } 
+ s2->s4 { Fp' = FloppyDiskPeripheral and havoc(Fp) } 
+ s20->s26 { irpSp___1' = Irp__Tail__Overlay__CurrentStackLocation-1 and havoc(irpSp___1) } 
+ s22->s20 { havoc() } 
+ s24->s20 { havoc() } 
+ s26->s28 { irpSp__Context' = doneEvent and havoc(irpSp__Context) } 
+ s28->s30 { irpSp__Control' = 224 and havoc(irpSp__Control) } 
+ s30->sinter7 { havoc() } 
+ s32->s33 { havoc() } 
+ s33->s35 { __cil_tmp42' = ntStatus and havoc(__cil_tmp42) } 
+ s35->s36 { havoc() } 
+ s36->s39 { __cil_tmp42 != 259 and havoc() } 
+ s36->sinter8 { __cil_tmp42 = 259 and havoc() } 
+ s38->s42 { ntStatus' = myStatus and havoc(ntStatus) } 
+ s39->s44 { fdcInfo__BufferCount' = 0 and havoc(fdcInfo__BufferCount) } 
+ s4->s6 { disketteExtension' = DeviceObject__DeviceExtension and havoc(disketteExtension) } 
+ s42->s39 { havoc() } 
+ s44->s46 { fdcInfo__BufferSize' = 0 and havoc(fdcInfo__BufferSize) } 
+ s46->s48 { __cil_tmp43' = 3080 and havoc(__cil_tmp43) } 
+ s48->s50 { __cil_tmp44' = 458752 and havoc(__cil_tmp44) } 
+ s50->s52 { __cil_tmp45' = 461832 and havoc(__cil_tmp45) } 
+ s52->s54 { __cil_tmp46' = 461835 and havoc(__cil_tmp46) } 
+ s54->sinter9 { havoc() } 
+ s56->s57 { havoc() } 
+ s57->s59 { ntStatus >= 0 and disketteExtension__MaxTransferSize' = fdcInfo__MaxTransferSize and havoc(disketteExtension__MaxTransferSize) } 
+ s57->s60 { ntStatus < 0 and havoc() } 
+ s59->s62 { havoc() } 
+ s6->s8 { irpSp' = Irp__Tail__Overlay__CurrentStackLocation and havoc(irpSp) } 
+ s60->s64 { Irp__IoStatus__Status' = ntStatus and havoc(Irp__IoStatus__Status) } 
+ s62->s65 { fdcInfo__AcpiBios != 0 and havoc() } 
+ s62->s67 { fdcInfo__AcpiBios = 0 and havoc() } 
+ s64->s70 { myStatus' = ntStatus and havoc(myStatus) } 
+ s65->s71 { fdcInfo__AcpiFdiSupported != 0 and havoc() } 
+ s65->s73 { fdcInfo__AcpiFdiSupported = 0 and havoc() } 
+ s67->s75 { havoc() } 
+ s70->sinter10 { havoc() } 
+ s71->sinter11 { havoc() } 
+ s73->s67 { havoc() } 
+ s75->s83 { disketteExtension__DriveType != 4 and InterfaceType' = 0 and havoc(InterfaceType) } 
+ s75->sinter12 { disketteExtension__DriveType = 4 and havoc() } 
+ s77->s84 { ret_val_' = ntStatus and havoc(ret_val_) } 
+ s79->s85 { havoc() } 
+ s8->s10 { irpSp___0' = Irp__Tail__Overlay__CurrentStackLocation and havoc(irpSp___0) } 
+ s81->s83 { InterfaceType' = 0 and havoc(InterfaceType) } 
+ s83->s86 { havoc() } 
+ s85->s89 { disketteExtension__DriveType != 4 and havoc() } 
+ s85->sinter13 { disketteExtension__DriveType = 4 and havoc() } 
+ s86->s91 { havoc() } 
+ s88->s89 { havoc() } 
+ s89->s60 { ntStatus < 0 and havoc() } 
+ s89->s92 { ntStatus >= 0 and havoc() } 
+ s91->s94 { havoc() } 
+ s92->s96 { KUSER_SHARED_DATA__AlternativeArchitecture_NEC98x86 != 0 and disketteExtension__DeviceUnit' = fdcInfo__UnitNumber and havoc(disketteExtension__DeviceUnit) } 
+ s92->s98 { KUSER_SHARED_DATA__AlternativeArchitecture_NEC98x86 = 0 and disketteExtension__DeviceUnit' = fdcInfo__PeripheralNumber and havoc(disketteExtension__DeviceUnit) } 
+ s94->s99 { havoc() } 
+ s96->s100 { havoc() } 
+ s98->s100 { havoc() } 
+ s99->s101 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s103 { (pnpStatus',validity__pnpStatus_')=IoRegisterDeviceInterface(disketteExtension__UnderlyingPDO,0,MOUNTDEV_MOUNTED_DEVICE_GUID,-1,0,1,disketteExtension__InterfaceString,0) and havoc(pnpStatus,validity__pnpStatus_) } 
+ sinter1->s113 { (pnpStatus',validity__pnpStatus_')=IoSetDeviceInterfaceState(disketteExtension__InterfaceString,0,1,1) and havoc(pnpStatus,validity__pnpStatus_) } 
+ sinter10->s77 { IofCompleteRequest(Irp,-1,0,1) and havoc() } 
+ sinter11->s79 { (ntStatus',validity__ntStatus_')=FlAcpiConfigureFloppy(disketteExtension,0,fdcInfo,0) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter12->s81 { (__cil_tmp48',validity____cil_tmp48_')=uninf1() and havoc(__cil_tmp48,validity____cil_tmp48_) } 
+ sinter13->s88 { (__cil_tmp47',validity____cil_tmp47_')=uninf1() and havoc(__cil_tmp47,validity____cil_tmp47_) } 
+ sinter2->s117 { (ntStatus',validity__ntStatus_')=IoQueryDeviceDescription(fdcInfo__BusType,1,fdcInfo__BusNumber,0,Dc,-1,fdcInfo__ControllerNumber,0,Fp,-1,fdcInfo__PeripheralNumber,0,FlConfigCallBack,-1,disketteExtension,0) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter3->s17 { errorFn() and havoc() } 
+ sinter4->s17 { errorFn() and havoc() } 
+ sinter5->s22 { errorFn() and havoc() } 
+ sinter6->s22 { errorFn() and havoc() } 
+ sinter7->s32 { (ntStatus',validity__ntStatus_')=IofCallDriver(disketteExtension__TargetObject,0,Irp,-1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter8->s38 { (ntStatus',validity__ntStatus_')=KeWaitForSingleObject(doneEvent,0,Executive,-1,KernelMode,-1,0,1,0,1) and havoc(ntStatus,validity__ntStatus_) } 
+ sinter9->s56 { (ntStatus',validity__ntStatus_')=FlFdcDeviceIo(disketteExtension__TargetObject,0,__cil_tmp46,1,fdcInfo,0) and havoc(ntStatus,validity__ntStatus_) }
+}
+IoBuildDeviceIoControlRequest{
+in IoControlCode,validity__IoControlCode_,DeviceObject,validity__DeviceObject_,InputBuffer,validity__InputBuffer_,InputBufferLength,validity__InputBufferLength_,OutputBuffer,validity__OutputBuffer_,OutputBufferLength,validity__OutputBufferLength_,InternalDeviceIoControl,validity__InternalDeviceIoControl_,Event,validity__Event_,IoStatusBlock,validity__IoStatusBlock_: int;
+
+malloc,tmp_ndt_2,__retres,validity__tmp_ndt_2_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s16;
+error s1,s10,s14,s3,s7,s9; 
+ s0->s2 { customIrp' = 1 and havoc(customIrp) } 
+ s11->s13 { havoc() } 
+ s12->s15 { __retres' = 0 and havoc(__retres) } 
+ s13->s16 { ret_val_' = __retres and havoc(ret_val_) } 
+ s15->s17 { havoc() } 
+ s17->s16 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->sinter0 { havoc() } 
+ s4->s5 { havoc() } 
+ s5->s6 { tmp_ndt_2 = 0 and havoc() } 
+ s5->s8 { tmp_ndt_2 != 0 and havoc() } 
+ s6->s11 { __retres' = malloc and havoc(__retres) } 
+ s8->s12 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s4 { (tmp_ndt_2',validity__tmp_ndt_2_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_2,validity__tmp_ndt_2_) }
+}
+IoDeleteSymbolicLink{
+in SymbolicLinkName,validity__SymbolicLinkName_: int;
+
+tmp_ndt_3,__retres,validity__tmp_ndt_3_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s14;
+error s1,s12,s5,s7,s8; 
+ s0->sinter0 { havoc() } 
+ s10->s13 { __retres' = -1073741823 and havoc(__retres) } 
+ s11->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s13->s15 { havoc() } 
+ s15->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { havoc() } 
+ s3->s4 { tmp_ndt_3 = 0 and havoc() } 
+ s3->s6 { tmp_ndt_3 != 0 and havoc() } 
+ s4->s9 { __retres' = 0 and havoc(__retres) } 
+ s6->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp_ndt_3',validity__tmp_ndt_3_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_3,validity__tmp_ndt_3_) }
+}
+IoQueryDeviceDescription{
+in BusType,validity__BusType_,BusNumber,validity__BusNumber_,ControllerType,validity__ControllerType_,ControllerNumber,validity__ControllerNumber_,PeripheralType,validity__PeripheralType_,PeripheralNumber,validity__PeripheralNumber_,CalloutRoutine,validity__CalloutRoutine_,Context,validity__Context_: int;
+
+tmp_ndt_4,__retres,validity__tmp_ndt_4_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s14;
+error s1,s12,s5,s7,s8; 
+ s0->sinter0 { havoc() } 
+ s10->s13 { __retres' = -1073741823 and havoc(__retres) } 
+ s11->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s13->s15 { havoc() } 
+ s15->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { havoc() } 
+ s3->s4 { tmp_ndt_4 = 0 and havoc() } 
+ s3->s6 { tmp_ndt_4 != 0 and havoc() } 
+ s4->s9 { __retres' = 0 and havoc(__retres) } 
+ s6->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp_ndt_4',validity__tmp_ndt_4_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_4,validity__tmp_ndt_4_) }
+}
+IoRegisterDeviceInterface{
+in PhysicalDeviceObject,validity__PhysicalDeviceObject_,InterfaceClassGuid,validity__InterfaceClassGuid_,ReferenceString,validity__ReferenceString_,SymbolicLinkName,validity__SymbolicLinkName_: int;
+
+tmp_ndt_5,__retres,validity__tmp_ndt_5_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s14;
+error s1,s12,s5,s7,s8; 
+ s0->sinter0 { havoc() } 
+ s10->s13 { __retres' = -1073741808 and havoc(__retres) } 
+ s11->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s13->s15 { havoc() } 
+ s15->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { havoc() } 
+ s3->s4 { tmp_ndt_5 = 0 and havoc() } 
+ s3->s6 { tmp_ndt_5 != 0 and havoc() } 
+ s4->s9 { __retres' = 0 and havoc(__retres) } 
+ s6->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp_ndt_5',validity__tmp_ndt_5_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_5,validity__tmp_ndt_5_) }
+}
+IoSetDeviceInterfaceState{
+in SymbolicLinkName,validity__SymbolicLinkName_,Enable,validity__Enable_: int;
+
+tmp_ndt_6,__retres,validity__tmp_ndt_6_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s14;
+error s1,s12,s5,s7,s8; 
+ s0->sinter0 { havoc() } 
+ s10->s13 { __retres' = -1073741823 and havoc(__retres) } 
+ s11->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s13->s15 { havoc() } 
+ s15->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { havoc() } 
+ s3->s4 { tmp_ndt_6 = 0 and havoc() } 
+ s3->s6 { tmp_ndt_6 != 0 and havoc() } 
+ s4->s9 { __retres' = 0 and havoc(__retres) } 
+ s6->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp_ndt_6',validity__tmp_ndt_6_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_6,validity__tmp_ndt_6_) }
+}
+IofCallDriver{
+in DeviceObject,validity__DeviceObject_,Irp,validity__Irp_: int;
+
+returnVal2,compRetStatus1,lcontext,__cil_tmp7,tmp_ndt_7,tmp_ndt_8,validity__tmp_ndt_8_,validity__tmp_ndt_7_,validity__compRetStatus1_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s45;
+error s11,s12,s14,s16,s22,s24,s25,s28,s3,s30,s35,s38,s39,s4,s42,s44,s46,s48,s50,s52,s54,s56,s58,s6; 
+ s0->s1 { havoc() } 
+ s1->s2 { compRegistered != 0 and havoc() } 
+ s1->sinter0 { compRegistered = 0 and havoc() } 
+ s10->s17 { returnVal2' = 0 and havoc(returnVal2) } 
+ s13->s18 { havoc() } 
+ s15->s19 { havoc() } 
+ s17->s20 { havoc() } 
+ s18->s21 { tmp_ndt_8 = 1 and havoc() } 
+ s18->s23 { tmp_ndt_8 != 1 and havoc() } 
+ s19->sinter3 { __cil_tmp7 != -1073741802 and havoc() } 
+ s19->sinter4 { __cil_tmp7 = -1073741802 and havoc() } 
+ s19->sinter5 { __cil_tmp7 = -1073741802 and havoc() } 
+ s2->sinter1 { havoc() } 
+ s20->s27 { havoc() } 
+ s21->s29 { returnVal2' = -1073741823 and havoc(returnVal2) } 
+ s23->s31 { returnVal2' = 259 and havoc(returnVal2) } 
+ s26->sinter6 { havoc() } 
+ s27->s32 { havoc() } 
+ s29->s33 { havoc() } 
+ s31->s34 { havoc() } 
+ s32->s36 { s = NP and s' = IPC and havoc(s) } 
+ s32->s37 { s != NP and havoc() } 
+ s33->s27 { havoc() } 
+ s34->s27 { havoc() } 
+ s36->s40 { lowerDriverReturn' = returnVal2 and havoc(lowerDriverReturn) } 
+ s37->s41 { s = MPR1 and havoc() } 
+ s37->s43 { s != MPR1 and havoc() } 
+ s40->s45 { ret_val_' = returnVal2 and havoc(ret_val_) } 
+ s41->s47 { returnVal2 = 259 and s' = MPR3 and havoc(s) } 
+ s41->s49 { returnVal2 != 259 and s' = NP and havoc(s) } 
+ s43->s51 { s = SKIP1 and s' = SKIP2 and havoc(s) } 
+ s43->sinter7 { s != SKIP1 and havoc() } 
+ s43->sinter8 { s != SKIP1 and havoc() } 
+ s47->s55 { lowerDriverReturn' = returnVal2 and havoc(lowerDriverReturn) } 
+ s49->s57 { lowerDriverReturn' = returnVal2 and havoc(lowerDriverReturn) } 
+ s5->s8 { havoc() } 
+ s51->s59 { lowerDriverReturn' = returnVal2 and havoc(lowerDriverReturn) } 
+ s53->s45 { ret_val_' = returnVal2 and havoc(ret_val_) } 
+ s55->s45 { ret_val_' = returnVal2 and havoc(ret_val_) } 
+ s57->s45 { ret_val_' = returnVal2 and havoc(ret_val_) } 
+ s59->s45 { ret_val_' = returnVal2 and havoc(ret_val_) } 
+ s7->s9 { havoc() } 
+ s8->s10 { tmp_ndt_7 = 0 and havoc() } 
+ s8->sinter2 { tmp_ndt_7 != 0 and havoc() } 
+ s9->s15 { __cil_tmp7' = compRetStatus1 and havoc(__cil_tmp7) } 
+ sinit->s0 { havoc() } 
+ sinter0->s5 { (tmp_ndt_7',validity__tmp_ndt_7_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_7,validity__tmp_ndt_7_) } 
+ sinter1->s7 { (compRetStatus1',validity__compRetStatus1_')=FloppyPnpComplete(DeviceObject,-1,Irp,-1,lcontext,0) and havoc(compRetStatus1,validity__compRetStatus1_) } 
+ sinter2->s13 { (tmp_ndt_8',validity__tmp_ndt_8_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_8,validity__tmp_ndt_8_) } 
+ sinter3->s5 { (tmp_ndt_7',validity__tmp_ndt_7_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_7,validity__tmp_ndt_7_) } 
+ sinter4->s26 { stubMoreProcessingRequired() and havoc() } 
+ sinter5->s26 { stubMoreProcessingRequired() and havoc() } 
+ sinter6->s5 { (tmp_ndt_7',validity__tmp_ndt_7_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_7,validity__tmp_ndt_7_) } 
+ sinter7->s53 { errorFn() and havoc() } 
+ sinter8->s53 { errorFn() and havoc() }
+}
+IofCompleteRequest{
+in Irp,validity__Irp_,PriorityBoost,validity__PriorityBoost_: int;
+
+initial sinit;
+final s6;
+error s2,s4; 
+ s0->s1 { havoc() } 
+ s1->s3 { s = NP and s' = DC and havoc(s) } 
+ s1->sinter0 { s != NP and havoc() } 
+ s1->sinter1 { s != NP and havoc() } 
+ s3->s6 { havoc() } 
+ s5->s6 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s5 { errorFn() and havoc() } 
+ sinter1->s5 { errorFn() and havoc() }
+}
+KeSetEvent{
+in Event,validity__Event_,Increment,validity__Increment_,Wait,validity__Wait_: int;
+
+l: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s3;
+error s1; 
+ s0->s2 { setEventCalled' = 1 and havoc(setEventCalled) } 
+ s2->s3 { ret_val_' = l and havoc(ret_val_) } 
+ sinit->s0 { havoc() }
+}
+KeWaitForSingleObject{
+in Object,validity__Object_,WaitReason,validity__WaitReason_,WaitMode,validity__WaitMode_,Alertable,validity__Alertable_,Timeout,validity__Timeout_: int;
+
+tmp_ndt_9,__retres,validity__tmp_ndt_9_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s34;
+error s11,s13,s16,s17,s19,s21,s25,s27,s28,s3,s32,s5,s6,s9; 
+ s0->s1 { havoc() } 
+ s1->s2 { s = MPR3 and havoc() } 
+ s1->s4 { s != MPR3 and havoc() } 
+ s10->s14 { customIrp = 1 and s' = NP and havoc(s) } 
+ s10->s15 { customIrp != 1 and havoc() } 
+ s12->sinter0 { havoc() } 
+ s14->s20 { customIrp' = 0 and havoc(customIrp) } 
+ s15->sinter1 { s != MPR3 and havoc() } 
+ s15->sinter2 { s = MPR3 and havoc() } 
+ s15->sinter3 { s = MPR3 and havoc() } 
+ s18->s23 { havoc() } 
+ s2->s7 { setEventCalled = 1 and s' = NP and havoc(s) } 
+ s2->s8 { setEventCalled != 1 and havoc() } 
+ s20->sinter4 { havoc() } 
+ s22->sinter5 { havoc() } 
+ s23->s24 { tmp_ndt_9 = 0 and havoc() } 
+ s23->s26 { tmp_ndt_9 != 0 and havoc() } 
+ s24->s29 { __retres' = 0 and havoc(__retres) } 
+ s26->s30 { havoc() } 
+ s29->s31 { havoc() } 
+ s30->s33 { __retres' = -1073741823 and havoc(__retres) } 
+ s31->s34 { ret_val_' = __retres and havoc(ret_val_) } 
+ s33->s35 { havoc() } 
+ s35->s34 { ret_val_' = __retres and havoc(ret_val_) } 
+ s4->s10 { havoc() } 
+ s7->s12 { setEventCalled' = 0 and havoc(setEventCalled) } 
+ s8->s4 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s18 { (tmp_ndt_9',validity__tmp_ndt_9_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_9,validity__tmp_ndt_9_) } 
+ sinter1->s18 { (tmp_ndt_9',validity__tmp_ndt_9_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_9,validity__tmp_ndt_9_) } 
+ sinter2->s22 { errorFn() and havoc() } 
+ sinter3->s22 { errorFn() and havoc() } 
+ sinter4->s18 { (tmp_ndt_9',validity__tmp_ndt_9_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_9,validity__tmp_ndt_9_) } 
+ sinter5->s18 { (tmp_ndt_9',validity__tmp_ndt_9_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_9,validity__tmp_ndt_9_) }
+}
+ObReferenceObjectByHandle{
+in Handle,validity__Handle_,DesiredAccess,validity__DesiredAccess_,ObjectType,validity__ObjectType_,AccessMode,validity__AccessMode_,Object,validity__Object_,HandleInformation,validity__HandleInformation_: int;
+
+tmp_ndt_10,__retres,validity__tmp_ndt_10_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s14;
+error s1,s12,s5,s7,s8; 
+ s0->sinter0 { havoc() } 
+ s10->s13 { __retres' = -1073741823 and havoc(__retres) } 
+ s11->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s13->s15 { havoc() } 
+ s15->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { havoc() } 
+ s3->s4 { tmp_ndt_10 = 0 and havoc() } 
+ s3->s6 { tmp_ndt_10 != 0 and havoc() } 
+ s4->s9 { __retres' = 0 and havoc(__retres) } 
+ s6->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp_ndt_10',validity__tmp_ndt_10_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_10,validity__tmp_ndt_10_) }
+}
+PsCreateSystemThread{
+in ThreadHandle,validity__ThreadHandle_,DesiredAccess,validity__DesiredAccess_,ObjectAttributes,validity__ObjectAttributes_,ProcessHandle,validity__ProcessHandle_,ClientId,validity__ClientId_,StartRoutine,validity__StartRoutine_,StartContext,validity__StartContext_: int;
+
+tmp_ndt_11,__retres,validity__tmp_ndt_11_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s14;
+error s1,s12,s5,s7,s8; 
+ s0->sinter0 { havoc() } 
+ s10->s13 { __retres' = -1073741823 and havoc(__retres) } 
+ s11->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s13->s15 { havoc() } 
+ s15->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { havoc() } 
+ s3->s4 { tmp_ndt_11 = 0 and havoc() } 
+ s3->s6 { tmp_ndt_11 != 0 and havoc() } 
+ s4->s9 { __retres' = 0 and havoc(__retres) } 
+ s6->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp_ndt_11',validity__tmp_ndt_11_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_11,validity__tmp_ndt_11_) }
+}
+ZwClose{
+in Handle,validity__Handle_: int;
+
+tmp_ndt_12,__retres,validity__tmp_ndt_12_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s14;
+error s1,s12,s5,s7,s8; 
+ s0->sinter0 { havoc() } 
+ s10->s13 { __retres' = -1073741823 and havoc(__retres) } 
+ s11->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s13->s15 { havoc() } 
+ s15->s14 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { havoc() } 
+ s3->s4 { tmp_ndt_12 = 0 and havoc() } 
+ s3->s6 { tmp_ndt_12 != 0 and havoc() } 
+ s4->s9 { __retres' = 0 and havoc(__retres) } 
+ s6->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp_ndt_12',validity__tmp_ndt_12_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_12,validity__tmp_ndt_12_) }
+}
+_BLAST_init{
+
+initial sinit;
+final s29;
+error s1,s11,s13,s15,s17,s19,s21,s23,s25,s27,s3,s5,s7,s9; 
+ s0->s2 { UNLOADED' = 0 and havoc(UNLOADED) } 
+ s10->s12 { MPR1' = 5 and havoc(MPR1) } 
+ s12->s14 { MPR3' = 6 and havoc(MPR3) } 
+ s14->s16 { IPC' = 7 and havoc(IPC) } 
+ s16->s18 { s' = UNLOADED and havoc(s) } 
+ s18->s20 { pended' = 0 and havoc(pended) } 
+ s2->s4 { NP' = 1 and havoc(NP) } 
+ s20->s22 { compRegistered' = 0 and havoc(compRegistered) } 
+ s22->s24 { lowerDriverReturn' = 0 and havoc(lowerDriverReturn) } 
+ s24->s26 { setEventCalled' = 0 and havoc(setEventCalled) } 
+ s26->s28 { customIrp' = 0 and havoc(customIrp) } 
+ s28->s29 { havoc() } 
+ s4->s6 { DC' = 2 and havoc(DC) } 
+ s6->s8 { SKIP1' = 3 and havoc(SKIP1) } 
+ s8->s10 { SKIP2' = 4 and havoc(SKIP2) } 
+ sinit->s0 { havoc() }
+}
+__VERIFIER_nondet_int{
+
+out ndet,validity_ndet_: int;
+initial sinit;
+final s1;
+ 
+ s0->s1 { havoc() } 
+ sinit->s0 { havoc(ndet,validity_ndet_) }
+}
+errorFn{
+
+initial sinit;
+final no_rechable_final_state;
+error s1; 
+ s0->s1 { havoc() } 
+ sinit->s0 { havoc() }
+}
+main{
+
+status,irp,pirp,pirp__IoStatus__Status,irp_choice,devobj,tmp_ndt_1,__retres,validity__tmp_ndt_1_,validity__status_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s94;
+error s1,s100,s101,s104,s106,s109,s11,s111,s113,s116,s117,s120,s122,s124,s125,s127,s129,s13,s132,s134,s136,s138,s141,s143,s148,s15,s150,s153,s155,s17,s19,s21,s23,s25,s27,s29,s3,s31,s33,s35,s37,s39,s41,s43,s45,s47,s5,s51,s53,s55,s58,s61,s62,s65,s67,s68,s7,s70,s73,s75,s77,s80,s82,s83,s85,s87,s9,s90,s92,s96,s97; 
+ s0->s2 { FloppyThread' = 0 and havoc(FloppyThread) } 
+ s10->s12 { FloppyDiskPeripheral' = 0 and havoc(FloppyDiskPeripheral) } 
+ s102->s107 { havoc() } 
+ s103->s108 { s != IPC and havoc() } 
+ s103->s110 { s = IPC and havoc() } 
+ s105->s112 { havoc() } 
+ s107->s114 { irp_choice = 0 and pirp__IoStatus__Status' = -1073741637 and havoc(pirp__IoStatus__Status) } 
+ s107->s115 { irp_choice != 0 and havoc() } 
+ s108->s119 { s = DC and havoc() } 
+ s108->sinter0 { s != DC and havoc() } 
+ s108->sinter1 { s != DC and havoc() } 
+ s110->s105 { havoc() } 
+ s112->s121 { pended = 1 and havoc() } 
+ s112->s123 { pended != 1 and havoc() } 
+ s114->s126 { myStatus' = -1073741637 and havoc(myStatus) } 
+ s115->sinter2 { havoc() } 
+ s118->s78 { status' = 0 and havoc(status) } 
+ s119->s105 { havoc() } 
+ s12->s14 { FlConfigCallBack' = 0 and havoc(FlConfigCallBack) } 
+ s121->s130 { status != 259 and status' = 0 and havoc(status) } 
+ s121->s78 { status = 259 and status' = 0 and havoc(status) } 
+ s123->s131 { s = DC and havoc() } 
+ s123->s133 { s != DC and havoc() } 
+ s126->s115 { havoc() } 
+ s128->s135 { havoc() } 
+ s130->s78 { status' = 0 and havoc(status) } 
+ s131->s78 { status != 259 and status' = 0 and havoc(status) } 
+ s131->sinter3 { status = 259 and havoc() } 
+ s131->sinter4 { status = 259 and havoc() } 
+ s133->s78 { status = lowerDriverReturn and status' = 0 and havoc(status) } 
+ s133->sinter5 { status != lowerDriverReturn and havoc() } 
+ s133->sinter6 { status != lowerDriverReturn and havoc() } 
+ s135->s140 { havoc() } 
+ s137->s78 { status' = 0 and havoc(status) } 
+ s139->s78 { status' = 0 and havoc(status) } 
+ s14->s16 { MaximumInterfaceType' = 0 and havoc(MaximumInterfaceType) } 
+ s140->s142 { status < 0 and __retres' = -1 and havoc(__retres) } 
+ s140->sinter7 { status >= 0 and havoc() } 
+ s142->s145 { havoc() } 
+ s144->s146 { havoc() } 
+ s145->s94 { ret_val_' = __retres and havoc(ret_val_) } 
+ s146->s147 { tmp_ndt_1 = 3 and havoc() } 
+ s146->s149 { tmp_ndt_1 != 3 and havoc() } 
+ s147->s151 { havoc() } 
+ s149->s152 { havoc() } 
+ s151->sinter8 { havoc() } 
+ s152->s156 { __retres' = -1 and havoc(__retres) } 
+ s154->s157 { havoc() } 
+ s156->s158 { havoc() } 
+ s157->s159 { havoc() } 
+ s158->s94 { ret_val_' = __retres and havoc(ret_val_) } 
+ s159->s60 { havoc() } 
+ s16->s18 { MOUNTDEV_MOUNTED_DEVICE_GUID' = 0 and havoc(MOUNTDEV_MOUNTED_DEVICE_GUID) } 
+ s18->s20 { myStatus' = 0 and havoc(myStatus) } 
+ s2->s4 { KernelMode' = 0 and havoc(KernelMode) } 
+ s20->s22 { s' = 0 and havoc(s) } 
+ s22->s24 { UNLOADED' = 0 and havoc(UNLOADED) } 
+ s24->s26 { NP' = 0 and havoc(NP) } 
+ s26->s28 { DC' = 0 and havoc(DC) } 
+ s28->s30 { SKIP1' = 0 and havoc(SKIP1) } 
+ s30->s32 { SKIP2' = 0 and havoc(SKIP2) } 
+ s32->s34 { MPR1' = 0 and havoc(MPR1) } 
+ s34->s36 { MPR3' = 0 and havoc(MPR3) } 
+ s36->s38 { IPC' = 0 and havoc(IPC) } 
+ s38->s40 { pended' = 0 and havoc(pended) } 
+ s4->s6 { Suspended' = 0 and havoc(Suspended) } 
+ s40->s42 { compRegistered' = 0 and havoc(compRegistered) } 
+ s42->s44 { lowerDriverReturn' = 0 and havoc(lowerDriverReturn) } 
+ s44->s46 { setEventCalled' = 0 and havoc(setEventCalled) } 
+ s46->s48 { customIrp' = 0 and havoc(customIrp) } 
+ s48->s49 { havoc() } 
+ s49->s50 { havoc() } 
+ s50->s52 { status' = 0 and havoc(status) } 
+ s52->s54 { pirp' = irp and havoc(pirp) } 
+ s54->sinter9 { havoc() } 
+ s56->s57 { havoc() } 
+ s57->s59 { status >= 0 and s' = NP and havoc(s) } 
+ s57->s60 { status < 0 and havoc() } 
+ s59->s63 { customIrp' = 0 and havoc(customIrp) } 
+ s6->s8 { Executive' = 0 and havoc(Executive) } 
+ s60->s64 { pended = 1 and havoc() } 
+ s60->s66 { pended != 1 and havoc() } 
+ s63->s69 { setEventCalled' = customIrp and havoc(setEventCalled) } 
+ s64->s71 { s = NP and s' = NP and havoc(s) } 
+ s64->s72 { s != NP and havoc() } 
+ s66->s74 { havoc() } 
+ s69->s76 { lowerDriverReturn' = setEventCalled and havoc(lowerDriverReturn) } 
+ s71->s78 { status' = 0 and havoc(status) } 
+ s72->s66 { havoc() } 
+ s74->s79 { pended = 1 and havoc() } 
+ s74->s81 { pended != 1 and havoc() } 
+ s76->s84 { compRegistered' = lowerDriverReturn and havoc(compRegistered) } 
+ s78->s86 { __retres' = status and havoc(__retres) } 
+ s79->s88 { s = MPR3 and s' = MPR3 and havoc(s) } 
+ s79->s89 { s != MPR3 and havoc() } 
+ s8->s10 { DiskController' = 0 and havoc(DiskController) } 
+ s81->s91 { havoc() } 
+ s84->s93 { pended' = compRegistered and havoc(pended) } 
+ s86->s94 { ret_val_' = __retres and havoc(ret_val_) } 
+ s88->s78 { status' = 0 and havoc(status) } 
+ s89->s81 { havoc() } 
+ s91->s78 { s = UNLOADED and status' = 0 and havoc(status) } 
+ s91->s95 { s != UNLOADED and havoc() } 
+ s93->s98 { pirp__IoStatus__Status' = 0 and havoc(pirp__IoStatus__Status) } 
+ s95->s78 { status = -1 and status' = 0 and havoc(status) } 
+ s95->s99 { status != -1 and havoc() } 
+ s98->s102 { myStatus' = 0 and havoc(myStatus) } 
+ s99->s103 { s != SKIP2 and havoc() } 
+ s99->s105 { s = SKIP2 and havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s118 { errorFn() and havoc() } 
+ sinter1->s118 { errorFn() and havoc() } 
+ sinter2->s128 { stub_driver_init() and havoc() } 
+ sinter3->s137 { errorFn() and havoc() } 
+ sinter4->s137 { errorFn() and havoc() } 
+ sinter5->s139 { errorFn() and havoc() } 
+ sinter6->s139 { errorFn() and havoc() } 
+ sinter7->s144 { (tmp_ndt_1',validity__tmp_ndt_1_')=__VERIFIER_nondet_int() and havoc(tmp_ndt_1,validity__tmp_ndt_1_) } 
+ sinter8->s154 { (status',validity__status_')=FloppyPnp(devobj,0,pirp,0) and havoc(status,validity__status_) } 
+ sinter9->s56 { _BLAST_init() and havoc() }
+}
+stubMoreProcessingRequired{
+
+initial sinit;
+final s6;
+error s2,s4; 
+ s0->s1 { havoc() } 
+ s1->s3 { s = NP and s' = MPR1 and havoc(s) } 
+ s1->sinter0 { s != NP and havoc() } 
+ s1->sinter1 { s != NP and havoc() } 
+ s3->s6 { havoc() } 
+ s5->s6 { havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s5 { errorFn() and havoc() } 
+ sinter1->s5 { errorFn() and havoc() }
+}
+stub_driver_init{
+
+initial sinit;
+final s13;
+error s1,s11,s3,s5,s7,s9; 
+ s0->s2 { s' = NP and havoc(s) } 
+ s10->s12 { customIrp' = 0 and havoc(customIrp) } 
+ s12->s13 { havoc() } 
+ s2->s4 { pended' = 0 and havoc(pended) } 
+ s4->s6 { compRegistered' = 0 and havoc(compRegistered) } 
+ s6->s8 { lowerDriverReturn' = 0 and havoc(lowerDriverReturn) } 
+ s8->s10 { setEventCalled' = 0 and havoc(setEventCalled) } 
+ sinit->s0 { havoc() }
+}
+uninf1{
+
+tmp,validity__tmp_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s3;
+error s1; 
+ s0->sinter0 { havoc() } 
+ s2->s3 { ret_val_' = tmp and havoc(ret_val_) } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { (tmp',validity__tmp_')=__VERIFIER_nondet_int() and havoc(tmp,validity__tmp_) }
+}
+
+ 

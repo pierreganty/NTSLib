@@ -1,0 +1,47 @@
+nts __IntDualyzer_tab_acc ; 
+iplus{
+in a,validity__a_,b,validity__b_: int;
+
+__retres: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s3;
+error s1; 
+ s0->s2 { __retres' = a+b and havoc(__retres) } 
+ s2->s3 { ret_val_' = __retres and havoc(ret_val_) } 
+ sinit->s0 { havoc() }
+}
+main{
+
+val,offset__g_,__retres,_ndet_arg_0,_ndet_arg_1,validity__val_,validity__g_,mid_1_size,mid_2_size,mid_2_base,mid_3_size: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s20,s21;
+error s1,s10,s12,s5; 
+ s0->s1 { not (2 < 5 and 2 >= 0) and havoc() } 
+ s0->s2 { 2 < 5 and 2 >= 0 and havoc() } 
+ s11->s16 { havoc() } 
+ s13->s17 { havoc() } 
+ s14->s18 { havoc() } 
+ s15->s19 { havoc() } 
+ s16->s20 { ret_val_' = __retres and havoc(ret_val_) } 
+ s17->s20 { ret_val_' = __retres and havoc(ret_val_) } 
+ s18->s21 { ret_val_' = __retres and havoc(ret_val_) } 
+ s19->s21 { ret_val_' = __retres and havoc(ret_val_) } 
+ s2->s3 { 10*4 <=  0 and validity__g_' = 0 and havoc(validity__g_) } 
+ s2->s4 { 10*4 > 0 and mid_2_base' = 2 and mid_2_size' = 10*4 and offset__g_' = 0 and validity__g_' = 1 and havoc(validity__g_,offset__g_,mid_2_size,mid_2_base) } 
+ s3->sinter0 { havoc(_ndet_arg_1) } 
+ s4->s5 { not (((offset__g_+2*4 < mid_2_size and offset__g_+2*4 >= 0) and (offset__g_+2*4)%4 = 0) and ((offset__g_+0*4 < mid_2_size and offset__g_+0*4 >= 0) and (offset__g_+0*4)%4 = 0)) and havoc() } 
+ s4->sinter1 { ((offset__g_+2*4 < mid_2_size and offset__g_+2*4 >= 0) and (offset__g_+2*4)%4 = 0) and ((offset__g_+0*4 < mid_2_size and offset__g_+0*4 >= 0) and (offset__g_+0*4)%4 = 0) and havoc(_ndet_arg_1) } 
+ s6->s8 { havoc() } 
+ s7->s9 { havoc() } 
+ s8->s11 { val > 1 and __retres' = 0 and havoc(__retres) } 
+ s8->s13 { val <=  1 and __retres' = 1 and havoc(__retres) } 
+ s9->s14 { val > 1 and __retres' = 0 and havoc(__retres) } 
+ s9->s15 { val <=  1 and __retres' = 1 and havoc(__retres) } 
+ sinit->s0 { mid_1_size' = 5*4 and mid_3_size' = 5*4 and havoc() } 
+ sinter0->s6 { (val',validity__val_')=iplus(_ndet_arg_0,0,_ndet_arg_1,0) and havoc(val,validity__val_) } 
+ sinter1->s7 { (val',validity__val_')=iplus(_ndet_arg_0,0,_ndet_arg_1,0) and havoc(val,validity__val_) }
+}
+
+ 

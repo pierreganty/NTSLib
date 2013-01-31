@@ -1,0 +1,331 @@
+nts __Dualyzer_SOR;
+validity__dim_,dim : int; 
+init_arrF2{
+in offset__a_,validity__a_,i,validity__i_,j,validity__j_,m,validity__m_,n,validity__n_: int;
+
+__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_0 :real, _ndet_arg_0: int  ;
+initial sinit ;
+final s11;
+error s4,s6,s7,s14,s16,s20,s22,s23,s26,s28,s29,s32,s34,s36,s38,s39,s41; sinit->s0 {  } 
+ s0->s1 { havoc() } 
+ s1->s2 { havoc() } 
+ s2->s3 { i <=  n and havoc() } 
+ s2->s5 { i > n and havoc() } 
+ s3->s8 { j'=0 and havoc(j) } 
+ s5->s9 { havoc() } 
+ s8->s10 { havoc() } 
+ s9->s11 { havoc() } 
+ s10->s12 { havoc() } 
+ s12->s13 { j <=  m and havoc() } 
+ s12->s15 { j > m and havoc() } 
+ s13->s17 { havoc() } 
+ s15->s18 { havoc() } 
+ s17->s19 { i < 0 and havoc() } 
+ s17->s21 { i >= 0 and havoc() } 
+ s18->s24 { i'=i+1 and havoc(i) } 
+ s19->s25 { havoc() } 
+ s21->s25 { i >= dim and havoc() } 
+ s21->s27 { i < dim and havoc() } 
+ s24->s1 { havoc() } 
+ s25->sinter0 { havoc() } 
+ sinter0->s30 { _error() and havoc() } 
+ s27->s31 { j < 0 and havoc() } 
+ s27->s33 { j >= 0 and havoc() } 
+ s30->s27 { havoc() } 
+ s31->s35 { havoc() } 
+ s33->s35 { j >= dim and havoc() } 
+ s33->s37 { j < dim and havoc() } 
+ s35->sinter1 { havoc() } 
+ sinter1->s40 { _error() and havoc() } 
+ s37->s42 { j'=j+1 and havoc(j) } 
+ s40->s37 { havoc() } 
+ s42->s10 { havoc() }
+}
+main{
+
+mid_2_base,mid_2_size,mid_1_base,mid_1_size,__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,validity__A_,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_5 :real, _ndet_arg_5 : int, real_typed_ndet_arg_4 :real, _ndet_arg_4 : int, real_typed_ndet_arg_3 :real, _ndet_arg_3 : int, real_typed_ndet_arg_2 :real, _ndet_arg_2 : int, real_typed_ndet_arg_1 :real, _ndet_arg_1 : int, real_typed_ndet_arg_0 :real, _ndet_arg_0: int  ;
+initial sinit ;
+final s5;
+error s1,s3; sinit->s0 { mid_1_size'=(10*10)*4 and mid_2_size'=(10*10)*4 } 
+ s0->sinter0 { havoc() } 
+ sinter0->s2 { init_arrF2(_ndet_arg_0,1,0,1,0,1,dim-1,-1,dim-1,-1) and havoc() } 
+ s2->sinter1 { havoc() } 
+ sinter1->s4 { SOR_execute(dim,-1,dim,-1,1.250000,1,_ndet_arg_0,1,1,1) and havoc() } 
+ s4->s5 { havoc() }
+}
+_error{
+
+__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_0 :real, _ndet_arg_0: int  ;
+initial sinit ;
+
+error s1; sinit->s0 {  } 
+ s0->s1 { havoc() }
+}
+SOR_execute{
+in M,validity__M_,N,validity__N_ : int, omega :real, validity__omega_,offset__G_,validity__G_,num_iterations,validity__num_iterations_: int;
+
+__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,validity__Gi_,validity__Gim1_,validity__Gip1_,validity__Mm1_,validity__Nm1_,validity__i_,validity__j_,validity__omega_over_four_,validity__one_minus_omega_,validity__p_,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_0 :real, _ndet_arg_0,offset__Gip1_,offset__Gim1_,offset__Gi_,j,i,p,Nm1,Mm1 : int, one_minus_omega,omega_over_four: real  ;
+initial sinit ;
+final s19,s152;
+error s98,s100,s3,s5,s104,s7,s106,s12,s110,s14,s15,s113,s115,s22,s120,s24,s122,s28,s126,s30,s31,s129,s131,s34,s35,s37,s137,s41,s139,s43,s45,s46,s144,s48,s147,s149,s52,s54,s56,s154,s57,s156,s59,s61,s159,s161,s66,s68,s72,s74,s75,s78,s80,s82,s85,s87,s90,s92,s95; sinit->s0 {  } 
+ s97->s103 { havoc() } 
+ s0->s1 { havoc() } 
+ s1->s2 { havoc() } 
+ s99->s103 { j >= dim and havoc() } 
+ s99->s105 { j < dim and havoc() } 
+ s2->s4 { Mm1'=M-1 and havoc(Mm1) } 
+ s101->s107 { i < 0 and havoc() } 
+ s101->s108 { i >= 0 and havoc() } 
+ s4->s6 { Nm1'=N-1 and havoc(Nm1) } 
+ s102->s109 { p'=p+1 and havoc(p) } 
+ s103->sinter0 { havoc() } 
+ sinter0->s111 { _error() and havoc() } 
+ s6->s8 { p'=0 and havoc(p) } 
+ s105->s112 { j-1 < 0 and havoc() } 
+ s105->s114 { j-1 >= 0 and havoc() } 
+ s8->s9 { havoc() } 
+ s9->s10 { havoc() } 
+ s107->s116 { havoc() } 
+ s10->s11 { p < num_iterations and havoc() } 
+ s10->s13 { p >= num_iterations and havoc() } 
+ s108->s116 { i >= dim and havoc() } 
+ s108->s117 { validity__Gi_'=validity__G_ and i < dim and havoc(validity__Gi_,offset__Gi_) } 
+ s11->s16 { i'=1 and havoc(i) } 
+ s109->s118 { havoc() } 
+ s13->s17 { havoc() } 
+ s111->s105 { havoc() } 
+ s112->s119 { havoc() } 
+ s16->s18 { havoc() } 
+ s114->s119 { j-1 >= dim and havoc() } 
+ s114->s121 { j-1 < dim and havoc() } 
+ s17->s19 { havoc() } 
+ s18->s20 { havoc() } 
+ s116->sinter1 { havoc() } 
+ sinter1->s123 { _error() and havoc() } 
+ s117->s124 { havoc() } 
+ s20->s21 { i < Mm1 and havoc() } 
+ s20->s23 { i >= Mm1 and havoc() } 
+ s118->s125 { havoc() } 
+ s21->s25 { havoc() } 
+ s119->sinter2 { havoc() } 
+ sinter2->s127 { _error() and havoc() } 
+ s23->s26 { havoc() } 
+ s121->s128 { j+1 < 0 and havoc() } 
+ s121->s130 { j+1 >= 0 and havoc() } 
+ s25->s27 { i < 0 and havoc() } 
+ s25->s29 { i >= 0 and havoc() } 
+ s123->s117 { validity__Gi_'=validity__G_ and havoc(validity__Gi_,offset__Gi_) } 
+ s26->s32 { p'=p+1 and havoc(p) } 
+ s124->s132 { i-1 < 0 and havoc() } 
+ s124->s133 { i-1 >= 0 and havoc() } 
+ s27->s33 { havoc() } 
+ s125->s134 { p < num_iterations and havoc() } 
+ s125->s135 { p >= num_iterations and havoc() } 
+ s29->s33 { i >= dim and havoc() } 
+ s29->s36 { validity__Gi_'=validity__G_ and i < dim and havoc(validity__Gi_,offset__Gi_) } 
+ s127->s121 { havoc() } 
+ s128->s136 { havoc() } 
+ s32->s9 { havoc() } 
+ s130->s136 { j+1 >= dim and havoc() } 
+ s130->s138 { j+1 < dim and havoc() } 
+ s33->sinter3 { havoc() } 
+ sinter3->s38 { _error() and havoc() } 
+ s132->s140 { havoc() } 
+ s133->s140 { i-1 >= dim and havoc() } 
+ s133->s141 { validity__Gim1_'=validity__G_ and i-1 < dim and havoc(validity__Gim1_,offset__Gim1_) } 
+ s36->s39 { havoc() } 
+ s134->s142 { i'=1 and havoc(i) } 
+ s135->s143 { havoc() } 
+ s38->s36 { validity__Gi_'=validity__G_ and havoc(validity__Gi_,offset__Gi_) } 
+ s136->sinter4 { havoc() } 
+ sinter4->s145 { _error() and havoc() } 
+ s39->s40 { i-1 < 0 and havoc() } 
+ s39->s42 { i-1 >= 0 and havoc() } 
+ s40->s44 { havoc() } 
+ s138->s146 { j < 0 and havoc() } 
+ s138->s148 { j >= 0 and havoc() } 
+ s42->s44 { i-1 >= dim and havoc() } 
+ s42->s47 { validity__Gim1_'=validity__G_ and i-1 < dim and havoc(validity__Gim1_,offset__Gim1_) } 
+ s140->sinter5 { havoc() } 
+ sinter5->s150 { _error() and havoc() } 
+ s141->s151 { havoc() } 
+ s44->sinter6 { havoc() } 
+ sinter6->s49 { _error() and havoc() } 
+ s142->s81 { havoc() } 
+ s143->s152 { havoc() } 
+ s47->s50 { havoc() } 
+ s145->s138 { havoc() } 
+ s146->s153 { havoc() } 
+ s49->s47 { validity__Gim1_'=validity__G_ and havoc(validity__Gim1_,offset__Gim1_) } 
+ s50->s51 { i+1 < 0 and havoc() } 
+ s50->s53 { i+1 >= 0 and havoc() } 
+ s148->s153 { j >= dim and havoc() } 
+ s148->s155 { j < dim and havoc() } 
+ s51->s55 { havoc() } 
+ s150->s141 { validity__Gim1_'=validity__G_ and havoc(validity__Gim1_,offset__Gim1_) } 
+ s53->s55 { i+1 >= dim and havoc() } 
+ s53->s58 { validity__Gip1_'=validity__G_ and i+1 < dim and havoc(validity__Gip1_,offset__Gip1_) } 
+ s151->s157 { i+1 < 0 and havoc() } 
+ s151->s158 { i+1 >= 0 and havoc() } 
+ s55->sinter7 { havoc() } 
+ sinter7->s60 { _error() and havoc() } 
+ s153->sinter8 { havoc() } 
+ sinter8->s160 { _error() and havoc() } 
+ s155->s162 { j'=j+1 and havoc(j) } 
+ s58->s62 { j'=1 and havoc(j) } 
+ s157->s163 { havoc() } 
+ s60->s58 { validity__Gip1_'=validity__G_ and havoc(validity__Gip1_,offset__Gip1_) } 
+ s158->s58 { validity__Gip1_'=validity__G_ and i+1 < dim and havoc(validity__Gip1_,offset__Gip1_) } 
+ s158->s163 { i+1 >= dim and havoc() } 
+ s62->s63 { havoc() } 
+ s160->s155 { havoc() } 
+ s63->s64 { havoc() } 
+ s64->s65 { j < Nm1 and havoc() } 
+ s64->s67 { j >= Nm1 and havoc() } 
+ s162->s63 { havoc() } 
+ s65->s69 { havoc() } 
+ s163->sinter9 { havoc() } 
+ sinter9->s164 { _error() and havoc() } 
+ s164->s58 { validity__Gip1_'=validity__G_ and havoc(validity__Gip1_,offset__Gip1_) } 
+ s67->s70 { havoc() } 
+ s69->s71 { j < 0 and havoc() } 
+ s69->s73 { j >= 0 and havoc() } 
+ s70->s76 { i'=i+1 and havoc(i) } 
+ s71->s77 { havoc() } 
+ s73->s77 { j >= dim and havoc() } 
+ s73->s79 { j < dim and havoc() } 
+ s76->s81 { havoc() } 
+ s77->sinter10 { havoc() } 
+ sinter10->s83 { _error() and havoc() } 
+ s79->s84 { j < 0 and havoc() } 
+ s79->s86 { j >= 0 and havoc() } 
+ s81->s88 { havoc() } 
+ s83->s79 { havoc() } 
+ s84->s89 { havoc() } 
+ s86->s89 { j >= dim and havoc() } 
+ s86->s91 { j < dim and havoc() } 
+ s88->s93 { i < Mm1 and havoc() } 
+ s88->s94 { i >= Mm1 and havoc() } 
+ s89->sinter11 { havoc() } 
+ sinter11->s96 { _error() and havoc() } 
+ s91->s97 { j < 0 and havoc() } 
+ s91->s99 { j >= 0 and havoc() } 
+ s93->s101 { havoc() } 
+ s94->s102 { havoc() } 
+ s96->s91 { havoc() }
+}
+__assert_fail{
+in a,b,c,d,e,f,g,h : int;
+initial sinit ;
+error s0;
+sinit->s0 { true and havoc() }
+}
+
+NonDetInt{
+out ndet, validity_ndet_: int;
+initial sinit;
+final s1;
+
+sinit->s0{ havoc(ndet,  validity_ndet_)}
+s0->s1{havoc()}
+
+}
+
+__VERIFIER_nondet_int{
+out ndet, validity_ndet_: int;
+initial sinit;
+final s1;
+
+sinit->s0{ havoc(ndet,  validity_ndet_)}
+s0->s1{havoc()}
+
+}
+
+__NdetValInRange {
+ out ndval, ndvalid : int;
+ in lowerb, lbval, upperb, upbval : int;
+ initial sinit;
+ final s1;
+
+ sinit->s1 { ndval' <= upperb and ndval' >= lowerb and ndvalid'=1 and havoc(ndval, ndvalid) }
+
+}
+
+strlen{
+ out len, valid_len : int;
+ in ptr_off, ptr_valid : int;
+
+ initial sinit;
+ final s1;
+ sinit->s0 {valid_len'=ptr_valid and havoc(valid_len,len)}
+ s0->s1 { havoc()}
+}
+
+memcpy{
+ in dest_off, dest_val, src_off, srv_val, sizein, size_val : int;
+ out ret_addr, valid_ret : int;
+ initial sinit;
+ final s1;
+
+ sinit -> s0 {ret_addr'=dest_off and valid_ret'=dest_val and havoc(ret_addr,valid_ret)}
+ s0->s1 {havoc()}
+}
+
+strstr{
+ in a,b,c,d : int;
+ out off, val : int;
+
+ initial  sinit;
+ final  sfinal;
+
+ sinit->sfinal {val' = b and havoc(off,val) }
+}
+
+printf{
+ in a,b,c,d : int;
+ out off, val : int;
+
+ initial  sinit;
+ final  sfinal;
+
+ sinit->sfinal { havoc(off,val) }
+
+}
+
+
+abs{
+ in x, val : int ;
+ out y, val_y : int ;
+
+  initial sinit ;
+ final  sfinal ;
+
+ sinit->sfinal { x>= 0 and y'=x and val_y' = val and havoc(y,val_y)}
+ sinit->sfinal { x < 0 and y'=-x and val_y' = val and havoc(y,val_y)}
+ 
+ 
+
+
+}
+
+fabs{
+ in x : real, val : int;
+ out res : real, val_out : int ;
+ initial sinit ;
+ final  sfinal ;
+
+ sinit->sfinal { x >= 0.0 and res'= x and val_out'=val and havoc(res,val_out)}
+ sinit->sfinal { x< 0.0 and res'= -x and val_out'=val and havoc(res,val_out)}
+
+}
+
+__builtin_alloca{
+ in x, val_x : int;
+ out y, vx : int ;
+
+ initial sinit ;
+ final  sfinal ;
+ 
+ sinit->sfinal { y'=x and vx'= val_x and havoc(y,vx) }
+
+}
