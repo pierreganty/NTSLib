@@ -1,0 +1,949 @@
+nts __IntDualyzer_LU ; 
+validity__dim_,dim: int;
+LU_factor{
+in M,validity__M_,N,validity__N_,offset__A_,validity__A_,offset__pivot_,validity__pivot_: int;
+
+minMN,tmp,j,jp,i,ii,k,jj,t,ab,AiiJ,offset__tA_,offset__Aii_,offset__Aj_,recp,__retres,_ndet_arg_0,__if_ndet_cond__,validity__tA_,validity__t_,validity__ab_,validity__Aj_,validity__Aii_: int;
+out ret_val_,validity__ret_val__: int;
+initial sinit;
+final s28,s311,s434,s516;
+error s10,s100,s102,s105,s107,s109,s111,s112,s114,s117,s120,s122,s124,s126,s128,s130,s132,s133,s136,s138,s139,s141,s143,s147,s149,s15,s152,s154,s155,s158,s160,s163,s165,s167,s168,s17,s171,s173,s174,s177,s179,s18,s180,s182,s187,s188,s192,s194,s195,s2,s200,s201,s204,s206,s208,s210,s211,s215,s216,s22,s221,s223,s224,s228,s230,s232,s233,s238,s240,s241,s248,s25,s251,s253,s255,s257,s263,s264,s267,s268,s27,s275,s277,s279,s281,s30,s303,s305,s32,s321,s323,s324,s33,s334,s336,s344,s347,s349,s358,s359,s36,s369,s371,s38,s4,s40,s41,s43,s45,s50,s52,s56,s58,s6,s61,s63,s65,s67,s68,s71,s73,s75,s76,s79,s8,s80,s82,s85,s89,s91,s92,s94,s97,s99; 
+ s0->s1 { havoc() } 
+ s1->s3 { M < N and tmp' = M and havoc(tmp) } 
+ s1->s5 { M >= N and tmp' = N and havoc(tmp) } 
+ s101->s95 { i' = i+1 and havoc(i) } 
+ s103->s98 { havoc() } 
+ s104->s108 { havoc() } 
+ s106->s108 { j >= dim and havoc() } 
+ s106->s110 { j < dim and havoc() } 
+ s108->sinter26 { havoc() } 
+ s11->s12 { havoc() } 
+ s110->s115 { __if_ndet_cond__ = 0 and __retres' = 1 and havoc(__if_ndet_cond__,__retres) } 
+ s110->s116 { __if_ndet_cond__ != 0 and havoc(__if_ndet_cond__) } 
+ s113->s110 { havoc() } 
+ s115->s118 { havoc() } 
+ s116->s119 { jp != j and havoc() } 
+ s116->s121 { jp = j and havoc() } 
+ s118->s28 { ret_val_' = __retres and havoc(ret_val_) } 
+ s119->s123 { j < 0 and havoc() } 
+ s119->s125 { j >= 0 and havoc() } 
+ s12->s13 { havoc() } 
+ s121->s127 { j < M-1 and havoc() } 
+ s121->s129 { j >= M-1 and havoc() } 
+ s123->s131 { havoc() } 
+ s125->s131 { j >= dim and havoc() } 
+ s125->s134 { j < dim and validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s127->s135 { j < 0 and havoc() } 
+ s127->s137 { j >= 0 and havoc() } 
+ s129->s140 { j < minMN-1 and ii' = j+1 and havoc(ii) } 
+ s129->s142 { j >= minMN-1 and j' = j+1 and havoc(j) } 
+ s13->s14 { j < minMN and havoc() } 
+ s13->s16 { j >= minMN and havoc() } 
+ s131->sinter32 { havoc() } 
+ s134->s145 { havoc() } 
+ s135->s146 { havoc() } 
+ s137->s146 { j >= dim and havoc() } 
+ s137->s148 { j < dim and havoc() } 
+ s14->s19 { jp' = j and havoc(jp) } 
+ s140->s150 { havoc() } 
+ s142->s12 { havoc() } 
+ s144->s134 { validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s145->s151 { j < 0 and havoc() } 
+ s145->s153 { j >= 0 and havoc() } 
+ s146->sinter37 { havoc() } 
+ s148->s157 { j < 0 and havoc() } 
+ s148->s159 { j >= 0 and havoc() } 
+ s150->s161 { havoc() } 
+ s151->s162 { havoc() } 
+ s153->s162 { j >= dim and havoc() } 
+ s153->s164 { j < dim and havoc() } 
+ s156->s148 { havoc() } 
+ s157->s166 { havoc() } 
+ s159->s166 { j >= dim and havoc() } 
+ s159->s169 { j < dim and havoc(recp) } 
+ s16->s20 { havoc() } 
+ s161->s170 { ii < M and havoc() } 
+ s161->s172 { ii >= M and havoc() } 
+ s162->sinter41 { havoc() } 
+ s164->s176 { jp < 0 and havoc() } 
+ s164->s178 { jp >= 0 and havoc() } 
+ s166->sinter42 { havoc() } 
+ s169->s183 { k' = j+1 and havoc(k) } 
+ s170->s184 { havoc() } 
+ s172->s185 { havoc() } 
+ s175->s164 { havoc() } 
+ s176->s186 { havoc() } 
+ s178->s186 { jp >= dim and havoc() } 
+ s178->s189 { jp < dim and havoc() } 
+ s181->s169 { havoc(recp) } 
+ s183->s190 { havoc() } 
+ s184->s191 { ii < 0 and havoc() } 
+ s184->s193 { ii >= 0 and havoc() } 
+ s185->s142 { j' = j+1 and havoc(j) } 
+ s186->sinter45 { havoc() } 
+ s189->s197 { havoc() } 
+ s19->s21 { havoc() } 
+ s190->s198 { havoc() } 
+ s191->s199 { havoc() } 
+ s193->s199 { ii >= dim and havoc() } 
+ s193->s202 { ii < dim and validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s196->s189 { havoc() } 
+ s197->s203 { jp < 0 and havoc() } 
+ s197->s205 { jp >= 0 and havoc() } 
+ s198->s207 { k < M and havoc() } 
+ s198->s209 { k >= M and havoc() } 
+ s199->sinter49 { havoc() } 
+ s20->s23 { __retres' = 0 and havoc(__retres) } 
+ s202->s213 { havoc() } 
+ s203->s214 { havoc() } 
+ s205->s214 { jp >= dim and havoc() } 
+ s205->s217 { jp < dim and havoc() } 
+ s207->s218 { havoc() } 
+ s209->s219 { havoc() } 
+ s21->s24 { j < 0 and havoc() } 
+ s21->s26 { j >= 0 and havoc() } 
+ s212->s202 { validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s213->s220 { j < 0 and havoc() } 
+ s213->s222 { j >= 0 and havoc() } 
+ s214->sinter54 { havoc() } 
+ s217->s226 { havoc() } 
+ s218->s227 { k < 0 and havoc() } 
+ s218->s229 { k >= 0 and havoc() } 
+ s219->s129 { havoc() } 
+ s220->s231 { havoc() } 
+ s222->s231 { j >= dim and havoc() } 
+ s222->s234 { j < dim and validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s225->s217 { havoc() } 
+ s226->s235 { j < M-1 and havoc() } 
+ s226->s236 { j >= M-1 and havoc() } 
+ s227->s237 { havoc() } 
+ s229->s237 { k >= dim and havoc() } 
+ s229->s239 { k < dim and havoc() } 
+ s23->s28 { ret_val_' = __retres and havoc(ret_val_) } 
+ s231->sinter58 { havoc() } 
+ s234->s243 { havoc() } 
+ s235->s244 { j < 0 and havoc() } 
+ s235->s245 { j >= 0 and havoc() } 
+ s236->s246 { j < minMN-1 and ii' = j+1 and havoc(ii) } 
+ s236->s247 { j >= minMN-1 and j' = j+1 and havoc(j) } 
+ s237->sinter59 { havoc() } 
+ s239->s250 { j < 0 and havoc() } 
+ s239->s252 { j >= 0 and havoc() } 
+ s24->s29 { havoc() } 
+ s242->s234 { validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s243->s254 { j < 0 and havoc() } 
+ s243->s256 { j >= 0 and havoc() } 
+ s244->s258 { havoc() } 
+ s245->s258 { j >= dim and havoc() } 
+ s245->s259 { j < dim and havoc() } 
+ s246->s260 { havoc() } 
+ s247->s261 { havoc() } 
+ s249->s239 { havoc() } 
+ s250->s262 { havoc() } 
+ s252->s262 { j >= dim and havoc() } 
+ s252->s265 { j < dim and havoc() } 
+ s254->s266 { havoc() } 
+ s256->s266 { j >= dim and havoc() } 
+ s256->s269 { j < dim and havoc(AiiJ) } 
+ s258->sinter63 { havoc() } 
+ s259->s271 { j < 0 and havoc() } 
+ s259->s272 { j >= 0 and havoc() } 
+ s26->s29 { j >= dim and havoc() } 
+ s26->s31 { j < dim and havoc() } 
+ s260->s273 { havoc() } 
+ s261->s274 { havoc() } 
+ s262->sinter64 { havoc() } 
+ s265->s278 { k' = k+1 and havoc(k) } 
+ s266->sinter67 { havoc() } 
+ s269->s282 { jj' = j+1 and havoc(jj) } 
+ s270->s259 { havoc() } 
+ s271->s283 { havoc() } 
+ s272->s283 { j >= dim and havoc() } 
+ s272->s284 { j < dim and havoc(recp) } 
+ s273->s285 { ii < M and havoc() } 
+ s273->s286 { ii >= M and havoc() } 
+ s274->s287 { j < minMN and havoc() } 
+ s274->s288 { j >= minMN and havoc() } 
+ s276->s265 { havoc() } 
+ s278->s190 { havoc() } 
+ s280->s269 { havoc(AiiJ) } 
+ s282->s289 { havoc() } 
+ s283->sinter69 { havoc() } 
+ s284->s291 { k' = j+1 and havoc(k) } 
+ s285->s292 { havoc() } 
+ s286->s293 { havoc() } 
+ s287->s294 { jp' = j and havoc(jp) } 
+ s288->s295 { havoc() } 
+ s289->s296 { havoc() } 
+ s29->sinter4 { havoc() } 
+ s290->s284 { havoc(recp) } 
+ s291->s297 { havoc() } 
+ s292->s298 { ii < 0 and havoc() } 
+ s292->s299 { ii >= 0 and havoc() } 
+ s293->s247 { j' = j+1 and havoc(j) } 
+ s294->s300 { havoc() } 
+ s295->s301 { __retres' = 0 and havoc(__retres) } 
+ s296->s302 { jj < N and havoc() } 
+ s296->s304 { jj >= N and havoc() } 
+ s297->s306 { havoc() } 
+ s298->s307 { havoc() } 
+ s299->s307 { ii >= dim and havoc() } 
+ s299->s308 { ii < dim and validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s3->s7 { minMN' = tmp and havoc(minMN) } 
+ s300->s309 { j < 0 and havoc() } 
+ s300->s310 { j >= 0 and havoc() } 
+ s301->s311 { ret_val_' = __retres and havoc(ret_val_) } 
+ s302->s312 { havoc() } 
+ s304->s313 { havoc() } 
+ s306->s314 { k < M and havoc() } 
+ s306->s315 { k >= M and havoc() } 
+ s307->sinter72 { havoc() } 
+ s308->s317 { havoc() } 
+ s309->s318 { havoc() } 
+ s31->s35 { j < 0 and havoc() } 
+ s31->s37 { j >= 0 and havoc() } 
+ s310->s318 { j >= dim and havoc() } 
+ s310->s319 { j < dim and havoc() } 
+ s312->s320 { jj < 0 and havoc() } 
+ s312->s322 { jj >= 0 and havoc() } 
+ s313->s325 { ii' = ii+1 and havoc(ii) } 
+ s314->s326 { havoc() } 
+ s315->s327 { havoc() } 
+ s316->s308 { validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s317->s328 { j < 0 and havoc() } 
+ s317->s329 { j >= 0 and havoc() } 
+ s318->sinter73 { havoc() } 
+ s319->s331 { j < 0 and havoc() } 
+ s319->s332 { j >= 0 and havoc() } 
+ s320->s333 { havoc() } 
+ s322->s333 { jj >= dim and havoc() } 
+ s322->s335 { jj < dim and havoc() } 
+ s325->s337 { havoc() } 
+ s326->s338 { k < 0 and havoc() } 
+ s326->s339 { k >= 0 and havoc() } 
+ s327->s236 { havoc() } 
+ s328->s340 { havoc() } 
+ s329->s340 { j >= dim and havoc() } 
+ s329->s341 { j < dim and validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s330->s319 { havoc() } 
+ s331->s342 { havoc() } 
+ s332->s342 { j >= dim and havoc() } 
+ s332->sinter74 { j < dim and havoc() } 
+ s333->sinter75 { havoc() } 
+ s335->s346 { jj < 0 and havoc() } 
+ s335->s348 { jj >= 0 and havoc() } 
+ s337->s350 { havoc() } 
+ s338->s351 { havoc() } 
+ s339->s351 { k >= dim and havoc() } 
+ s339->s352 { k < dim and havoc() } 
+ s34->s31 { havoc() } 
+ s340->sinter76 { havoc() } 
+ s341->s354 { havoc() } 
+ s342->sinter77 { havoc() } 
+ s343->s356 { i' = j+1 and havoc(i) } 
+ s345->s335 { havoc() } 
+ s346->s357 { havoc() } 
+ s348->s357 { jj >= dim and havoc() } 
+ s348->s360 { jj < dim and havoc() } 
+ s35->s39 { havoc() } 
+ s350->s361 { ii < M and havoc() } 
+ s350->s362 { ii >= M and havoc() } 
+ s351->sinter78 { havoc() } 
+ s352->s364 { j < 0 and havoc() } 
+ s352->s365 { j >= 0 and havoc() } 
+ s353->s341 { validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s354->s366 { j < 0 and havoc() } 
+ s354->s367 { j >= 0 and havoc() } 
+ s355->sinter79 { havoc() } 
+ s356->s368 { havoc() } 
+ s357->sinter80 { havoc() } 
+ s360->s372 { jj' = jj+1 and havoc(jj) } 
+ s361->s373 { havoc() } 
+ s362->s374 { havoc() } 
+ s363->s352 { havoc() } 
+ s364->s375 { havoc() } 
+ s365->s375 { j >= dim and havoc() } 
+ s365->s376 { j < dim and havoc() } 
+ s366->s377 { havoc() } 
+ s367->s377 { j >= dim and havoc() } 
+ s367->s378 { j < dim and havoc(AiiJ) } 
+ s368->s379 { havoc() } 
+ s37->s39 { j >= dim and havoc() } 
+ s37->sinter6 { j < dim and havoc() } 
+ s370->s360 { havoc() } 
+ s372->s289 { havoc() } 
+ s373->s380 { ii < 0 and havoc() } 
+ s373->s381 { ii >= 0 and havoc() } 
+ s374->s382 { j' = j+1 and havoc(j) } 
+ s375->sinter81 { havoc() } 
+ s376->s384 { k' = k+1 and havoc(k) } 
+ s377->sinter82 { havoc() } 
+ s378->s386 { jj' = j+1 and havoc(jj) } 
+ s379->s387 { i < M and havoc() } 
+ s379->s388 { i >= M and havoc() } 
+ s380->s389 { havoc() } 
+ s381->s389 { ii >= dim and havoc() } 
+ s381->s390 { ii < dim and validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s382->s391 { havoc() } 
+ s383->s376 { havoc() } 
+ s384->s297 { havoc() } 
+ s385->s378 { havoc(AiiJ) } 
+ s386->s392 { havoc() } 
+ s387->s393 { havoc() } 
+ s388->s394 { havoc() } 
+ s389->sinter83 { havoc() } 
+ s39->sinter7 { havoc() } 
+ s390->s396 { havoc() } 
+ s391->s397 { havoc() } 
+ s392->s398 { havoc() } 
+ s393->s399 { i < 0 and havoc() } 
+ s393->s400 { i >= 0 and havoc() } 
+ s394->s401 { havoc() } 
+ s395->s390 { validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s396->s402 { j < 0 and havoc() } 
+ s396->s403 { j >= 0 and havoc() } 
+ s397->s404 { j < minMN and havoc() } 
+ s397->s405 { j >= minMN and havoc() } 
+ s398->s406 { jj < N and havoc() } 
+ s398->s407 { jj >= N and havoc() } 
+ s399->s408 { havoc() } 
+ s400->s408 { i >= dim and havoc() } 
+ s400->s409 { i < dim and havoc() } 
+ s401->s410 { j < 0 and havoc() } 
+ s401->s411 { j >= 0 and havoc() } 
+ s402->s412 { havoc() } 
+ s403->s234 { j < dim and validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s403->s412 { j >= dim and havoc() } 
+ s404->s413 { jp' = j and havoc(jp) } 
+ s405->s414 { havoc() } 
+ s406->s415 { havoc() } 
+ s407->s416 { havoc() } 
+ s408->sinter0 { havoc() } 
+ s409->s418 { j < 0 and havoc() } 
+ s409->s419 { j >= 0 and havoc() } 
+ s410->s420 { havoc() } 
+ s411->s420 { j >= dim and havoc() } 
+ s411->s421 { j < dim and havoc() } 
+ s412->sinter1 { havoc() } 
+ s413->s423 { havoc() } 
+ s414->s424 { __retres' = 0 and havoc(__retres) } 
+ s415->s425 { jj < 0 and havoc() } 
+ s415->s426 { jj >= 0 and havoc() } 
+ s416->s427 { ii' = ii+1 and havoc(ii) } 
+ s417->s409 { havoc() } 
+ s418->s428 { havoc() } 
+ s419->s428 { j >= dim and havoc() } 
+ s419->sinter2 { j < dim and havoc() } 
+ s42->s46 { i' = j+1 and havoc(i) } 
+ s420->sinter3 { havoc() } 
+ s421->s431 { havoc() } 
+ s422->s234 { validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s423->s432 { j < 0 and havoc() } 
+ s423->s433 { j >= 0 and havoc() } 
+ s424->s434 { ret_val_' = __retres and havoc(ret_val_) } 
+ s425->s435 { havoc() } 
+ s426->s435 { jj >= dim and havoc() } 
+ s426->s436 { jj < dim and havoc() } 
+ s427->s437 { havoc() } 
+ s428->sinter5 { havoc() } 
+ s429->s439 { havoc() } 
+ s430->s421 { havoc() } 
+ s431->s440 { jp < 0 and havoc() } 
+ s431->s441 { jp >= 0 and havoc() } 
+ s432->s442 { havoc() } 
+ s433->s442 { j >= dim and havoc() } 
+ s433->s443 { j < dim and havoc() } 
+ s435->sinter8 { havoc() } 
+ s436->s445 { jj < 0 and havoc() } 
+ s436->s446 { jj >= 0 and havoc() } 
+ s437->s447 { havoc() } 
+ s438->sinter10 { havoc() } 
+ s439->s448 { ab > t and jp' = i and havoc(jp) } 
+ s439->s449 { ab <=  t and i' = i+1 and havoc(i) } 
+ s44->sinter9 { havoc() } 
+ s440->s450 { havoc() } 
+ s441->s450 { jp >= dim and havoc() } 
+ s441->s451 { jp < dim and havoc() } 
+ s442->sinter11 { havoc() } 
+ s443->s453 { j < 0 and havoc() } 
+ s443->s454 { j >= 0 and havoc() } 
+ s444->s436 { havoc() } 
+ s445->s455 { havoc() } 
+ s446->s455 { jj >= dim and havoc() } 
+ s446->s456 { jj < dim and havoc() } 
+ s447->s457 { ii < M and havoc() } 
+ s447->s458 { ii >= M and havoc() } 
+ s448->s459 { t' = ab and havoc(t) } 
+ s449->s368 { havoc() } 
+ s450->sinter12 { havoc() } 
+ s451->s461 { j < 0 and havoc() } 
+ s451->s462 { j >= 0 and havoc() } 
+ s452->s443 { havoc() } 
+ s453->s463 { havoc() } 
+ s454->s463 { j >= dim and havoc() } 
+ s454->sinter14 { j < dim and havoc() } 
+ s455->sinter15 { havoc() } 
+ s456->s466 { jj' = jj+1 and havoc(jj) } 
+ s457->s467 { havoc() } 
+ s458->s468 { havoc() } 
+ s459->s449 { i' = i+1 and havoc(i) } 
+ s46->s47 { havoc() } 
+ s460->s451 { havoc() } 
+ s461->s469 { havoc() } 
+ s462->s469 { j >= dim and havoc() } 
+ s462->s470 { j < dim and havoc() } 
+ s463->sinter16 { havoc() } 
+ s464->s472 { i' = j+1 and havoc(i) } 
+ s465->s456 { havoc() } 
+ s466->s392 { havoc() } 
+ s467->s473 { ii < 0 and havoc() } 
+ s467->s474 { ii >= 0 and havoc() } 
+ s468->s475 { j' = j+1 and havoc(j) } 
+ s469->sinter19 { havoc() } 
+ s47->s48 { havoc() } 
+ s470->s477 { __if_ndet_cond__ = 0 and __retres' = 1 and havoc(__if_ndet_cond__,__retres) } 
+ s470->s478 { __if_ndet_cond__ != 0 and havoc(__if_ndet_cond__) } 
+ s471->sinter21 { havoc() } 
+ s472->s479 { havoc() } 
+ s473->s480 { havoc() } 
+ s474->s480 { ii >= dim and havoc() } 
+ s474->s481 { ii < dim and validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s475->s482 { havoc() } 
+ s476->s470 { havoc() } 
+ s477->s483 { havoc() } 
+ s478->s226 { jp = j and havoc() } 
+ s478->s484 { jp != j and havoc() } 
+ s479->s485 { havoc() } 
+ s48->s49 { i < M and havoc() } 
+ s48->s51 { i >= M and havoc() } 
+ s480->sinter23 { havoc() } 
+ s481->s487 { havoc() } 
+ s482->s488 { havoc() } 
+ s483->s311 { ret_val_' = __retres and havoc(ret_val_) } 
+ s484->s489 { j < 0 and havoc() } 
+ s484->s490 { j >= 0 and havoc() } 
+ s485->s491 { i < M and havoc() } 
+ s485->s492 { i >= M and havoc() } 
+ s486->s481 { validity__Aii_' = validity__A_ and havoc(validity__Aii_,offset__Aii_) } 
+ s487->s493 { j < 0 and havoc() } 
+ s487->s494 { j >= 0 and havoc() } 
+ s488->s495 { j < minMN and havoc() } 
+ s488->s496 { j >= minMN and havoc() } 
+ s489->s497 { havoc() } 
+ s49->s53 { havoc() } 
+ s490->s134 { j < dim and validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s490->s497 { j >= dim and havoc() } 
+ s491->s498 { havoc() } 
+ s492->s499 { havoc() } 
+ s493->s500 { havoc() } 
+ s494->s341 { j < dim and validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s494->s500 { j >= dim and havoc() } 
+ s495->s501 { jp' = j and havoc(jp) } 
+ s496->s502 { havoc() } 
+ s497->sinter25 { havoc() } 
+ s498->s504 { i < 0 and havoc() } 
+ s498->s505 { i >= 0 and havoc() } 
+ s499->s506 { havoc() } 
+ s5->s7 { minMN' = tmp and havoc(minMN) } 
+ s500->sinter27 { havoc() } 
+ s501->s508 { havoc() } 
+ s502->s509 { __retres' = 0 and havoc(__retres) } 
+ s503->s134 { validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s504->s510 { havoc() } 
+ s505->s510 { i >= dim and havoc() } 
+ s505->s511 { i < dim and havoc() } 
+ s506->s512 { j < 0 and havoc() } 
+ s506->s513 { j >= 0 and havoc() } 
+ s507->s341 { validity__Aj_' = validity__A_ and havoc(validity__Aj_,offset__Aj_) } 
+ s508->s514 { j < 0 and havoc() } 
+ s508->s515 { j >= 0 and havoc() } 
+ s509->s516 { ret_val_' = __retres and havoc(ret_val_) } 
+ s51->s54 { havoc() } 
+ s510->sinter28 { havoc() } 
+ s511->s518 { j < 0 and havoc() } 
+ s511->s519 { j >= 0 and havoc() } 
+ s512->s520 { havoc() } 
+ s513->s520 { j >= dim and havoc() } 
+ s513->s521 { j < dim and havoc() } 
+ s514->s522 { havoc() } 
+ s515->s522 { j >= dim and havoc() } 
+ s515->s523 { j < dim and havoc() } 
+ s517->s511 { havoc() } 
+ s518->s524 { havoc() } 
+ s519->s524 { j >= dim and havoc() } 
+ s519->sinter29 { j < dim and havoc() } 
+ s520->sinter30 { havoc() } 
+ s521->s527 { havoc() } 
+ s522->sinter31 { havoc() } 
+ s523->s529 { j < 0 and havoc() } 
+ s523->s530 { j >= 0 and havoc() } 
+ s524->sinter33 { havoc() } 
+ s525->s532 { havoc() } 
+ s526->s521 { havoc() } 
+ s527->s533 { jp < 0 and havoc() } 
+ s527->s534 { jp >= 0 and havoc() } 
+ s528->s523 { havoc() } 
+ s529->s535 { havoc() } 
+ s53->s55 { i < 0 and havoc() } 
+ s53->s57 { i >= 0 and havoc() } 
+ s530->s535 { j >= dim and havoc() } 
+ s530->sinter34 { j < dim and havoc() } 
+ s531->sinter35 { havoc() } 
+ s532->s537 { ab > t and jp' = i and havoc(jp) } 
+ s532->s538 { ab <=  t and i' = i+1 and havoc(i) } 
+ s533->s539 { havoc() } 
+ s534->s539 { jp >= dim and havoc() } 
+ s534->s540 { jp < dim and havoc() } 
+ s535->sinter36 { havoc() } 
+ s536->s542 { i' = j+1 and havoc(i) } 
+ s537->s543 { t' = ab and havoc(t) } 
+ s538->s479 { havoc() } 
+ s539->sinter38 { havoc() } 
+ s54->s59 { havoc() } 
+ s540->s545 { j < 0 and havoc() } 
+ s540->s546 { j >= 0 and havoc() } 
+ s541->sinter39 { havoc() } 
+ s542->s547 { havoc() } 
+ s543->s538 { i' = i+1 and havoc(i) } 
+ s544->s540 { havoc() } 
+ s545->s548 { havoc() } 
+ s546->s548 { j >= dim and havoc() } 
+ s546->s549 { j < dim and havoc() } 
+ s547->s550 { havoc() } 
+ s548->sinter40 { havoc() } 
+ s549->s552 { __if_ndet_cond__ = 0 and __retres' = 1 and havoc(__if_ndet_cond__,__retres) } 
+ s549->s553 { __if_ndet_cond__ != 0 and havoc(__if_ndet_cond__) } 
+ s55->s60 { havoc() } 
+ s550->s554 { i < M and havoc() } 
+ s550->s555 { i >= M and havoc() } 
+ s551->s549 { havoc() } 
+ s552->s556 { havoc() } 
+ s553->s557 { jp != j and havoc() } 
+ s553->s558 { jp = j and havoc() } 
+ s554->s559 { havoc() } 
+ s555->s560 { havoc() } 
+ s556->s434 { ret_val_' = __retres and havoc(ret_val_) } 
+ s557->s561 { j < 0 and havoc() } 
+ s557->s562 { j >= 0 and havoc() } 
+ s558->s563 { j < M-1 and havoc() } 
+ s558->s564 { j >= M-1 and havoc() } 
+ s559->s565 { i < 0 and havoc() } 
+ s559->s566 { i >= 0 and havoc() } 
+ s560->s567 { havoc() } 
+ s561->s568 { havoc() } 
+ s562->s568 { j >= dim and havoc() } 
+ s562->s569 { j < dim and validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s563->s570 { j < 0 and havoc() } 
+ s563->s571 { j >= 0 and havoc() } 
+ s564->s382 { j >= minMN-1 and j' = j+1 and havoc(j) } 
+ s564->s572 { j < minMN-1 and ii' = j+1 and havoc(ii) } 
+ s565->s573 { havoc() } 
+ s566->s573 { i >= dim and havoc() } 
+ s566->s574 { i < dim and havoc() } 
+ s567->s575 { j < 0 and havoc() } 
+ s567->s576 { j >= 0 and havoc() } 
+ s568->sinter43 { havoc() } 
+ s569->s578 { havoc() } 
+ s57->s60 { i >= dim and havoc() } 
+ s57->s62 { i < dim and havoc() } 
+ s570->s579 { havoc() } 
+ s571->s579 { j >= dim and havoc() } 
+ s571->s580 { j < dim and havoc() } 
+ s572->s337 { havoc() } 
+ s573->sinter44 { havoc() } 
+ s574->s582 { j < 0 and havoc() } 
+ s574->s583 { j >= 0 and havoc() } 
+ s575->s584 { havoc() } 
+ s576->s584 { j >= dim and havoc() } 
+ s576->s585 { j < dim and havoc() } 
+ s577->s569 { validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s578->s586 { j < 0 and havoc() } 
+ s578->s587 { j >= 0 and havoc() } 
+ s579->sinter46 { havoc() } 
+ s580->s589 { j < 0 and havoc() } 
+ s580->s590 { j >= 0 and havoc() } 
+ s581->s574 { havoc() } 
+ s582->s591 { havoc() } 
+ s583->s591 { j >= dim and havoc() } 
+ s583->sinter47 { j < dim and havoc() } 
+ s584->sinter48 { havoc() } 
+ s585->s594 { havoc() } 
+ s586->s595 { havoc() } 
+ s587->s595 { j >= dim and havoc() } 
+ s587->s596 { j < dim and havoc() } 
+ s588->s580 { havoc() } 
+ s589->s597 { havoc() } 
+ s59->s64 { j < 0 and havoc() } 
+ s59->s66 { j >= 0 and havoc() } 
+ s590->s597 { j >= dim and havoc() } 
+ s590->s598 { j < dim and havoc(recp) } 
+ s591->sinter50 { havoc() } 
+ s592->s600 { havoc() } 
+ s593->s585 { havoc() } 
+ s594->s601 { jp < 0 and havoc() } 
+ s594->s602 { jp >= 0 and havoc() } 
+ s595->sinter51 { havoc() } 
+ s596->s604 { jp < 0 and havoc() } 
+ s596->s605 { jp >= 0 and havoc() } 
+ s597->sinter52 { havoc() } 
+ s598->s607 { k' = j+1 and havoc(k) } 
+ s599->sinter53 { havoc() } 
+ s60->sinter13 { havoc() } 
+ s600->s608 { ab > t and jp' = i and havoc(jp) } 
+ s600->s609 { ab <=  t and i' = i+1 and havoc(i) } 
+ s601->s610 { havoc() } 
+ s602->s610 { jp >= dim and havoc() } 
+ s602->s611 { jp < dim and havoc() } 
+ s603->s596 { havoc() } 
+ s604->s612 { havoc() } 
+ s605->s612 { jp >= dim and havoc() } 
+ s605->s613 { jp < dim and havoc() } 
+ s606->s598 { havoc(recp) } 
+ s607->s614 { havoc() } 
+ s608->s615 { t' = ab and havoc(t) } 
+ s609->s547 { havoc() } 
+ s610->sinter55 { havoc() } 
+ s611->s617 { j < 0 and havoc() } 
+ s611->s618 { j >= 0 and havoc() } 
+ s612->sinter56 { havoc() } 
+ s613->s620 { havoc() } 
+ s614->s621 { havoc() } 
+ s615->s609 { i' = i+1 and havoc(i) } 
+ s616->s611 { havoc() } 
+ s617->s622 { havoc() } 
+ s618->s622 { j >= dim and havoc() } 
+ s618->s623 { j < dim and havoc() } 
+ s619->s613 { havoc() } 
+ s62->s70 { j < 0 and havoc() } 
+ s62->s72 { j >= 0 and havoc() } 
+ s620->s624 { jp < 0 and havoc() } 
+ s620->s625 { jp >= 0 and havoc() } 
+ s621->s626 { k < M and havoc() } 
+ s621->s627 { k >= M and havoc() } 
+ s622->sinter57 { havoc() } 
+ s623->s629 { __if_ndet_cond__ = 0 and __retres' = 1 and havoc(__if_ndet_cond__,__retres) } 
+ s623->s630 { __if_ndet_cond__ != 0 and havoc(__if_ndet_cond__) } 
+ s624->s631 { havoc() } 
+ s625->s631 { jp >= dim and havoc() } 
+ s625->s632 { jp < dim and havoc() } 
+ s626->s633 { havoc() } 
+ s627->s634 { havoc() } 
+ s628->s623 { havoc() } 
+ s629->s635 { havoc() } 
+ s630->s636 { jp != j and havoc() } 
+ s630->s637 { jp = j and havoc() } 
+ s631->sinter60 { havoc() } 
+ s632->s637 { havoc() } 
+ s633->s639 { k < 0 and havoc() } 
+ s633->s640 { k >= 0 and havoc() } 
+ s634->s564 { havoc() } 
+ s635->s516 { ret_val_' = __retres and havoc(ret_val_) } 
+ s636->s641 { j < 0 and havoc() } 
+ s636->s642 { j >= 0 and havoc() } 
+ s637->s643 { j < M-1 and havoc() } 
+ s637->s644 { j >= M-1 and havoc() } 
+ s638->s632 { havoc() } 
+ s639->s645 { havoc() } 
+ s64->s74 { havoc() } 
+ s640->s645 { k >= dim and havoc() } 
+ s640->s646 { k < dim and havoc() } 
+ s641->s647 { havoc() } 
+ s642->s569 { j < dim and validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s642->s647 { j >= dim and havoc() } 
+ s643->s648 { j < 0 and havoc() } 
+ s643->s649 { j >= 0 and havoc() } 
+ s644->s475 { j >= minMN-1 and j' = j+1 and havoc(j) } 
+ s644->s650 { j < minMN-1 and ii' = j+1 and havoc(ii) } 
+ s645->sinter61 { havoc() } 
+ s646->s652 { j < 0 and havoc() } 
+ s646->s653 { j >= 0 and havoc() } 
+ s647->sinter62 { havoc() } 
+ s648->s655 { havoc() } 
+ s649->s655 { j >= dim and havoc() } 
+ s649->s656 { j < dim and havoc() } 
+ s650->s437 { havoc() } 
+ s651->s646 { havoc() } 
+ s652->s657 { havoc() } 
+ s653->s657 { j >= dim and havoc() } 
+ s653->s658 { j < dim and havoc() } 
+ s654->s569 { validity__tA_' = validity__A_ and havoc(validity__tA_,offset__tA_) } 
+ s655->sinter65 { havoc() } 
+ s656->s660 { j < 0 and havoc() } 
+ s656->s661 { j >= 0 and havoc() } 
+ s657->sinter66 { havoc() } 
+ s658->s663 { k' = k+1 and havoc(k) } 
+ s659->s656 { havoc() } 
+ s66->s74 { j >= dim and havoc() } 
+ s66->s77 { j < dim and havoc() } 
+ s660->s664 { havoc() } 
+ s661->s664 { j >= dim and havoc() } 
+ s661->s665 { j < dim and havoc(recp) } 
+ s662->s658 { havoc() } 
+ s663->s614 { havoc() } 
+ s664->sinter68 { havoc() } 
+ s665->s667 { k' = j+1 and havoc(k) } 
+ s666->s665 { havoc(recp) } 
+ s667->s668 { havoc() } 
+ s668->s669 { havoc() } 
+ s669->s670 { k < M and havoc() } 
+ s669->s671 { k >= M and havoc() } 
+ s670->s672 { havoc() } 
+ s671->s673 { havoc() } 
+ s672->s674 { k < 0 and havoc() } 
+ s672->s675 { k >= 0 and havoc() } 
+ s673->s644 { havoc() } 
+ s674->s676 { havoc() } 
+ s675->s676 { k >= dim and havoc() } 
+ s675->s677 { k < dim and havoc() } 
+ s676->sinter70 { havoc() } 
+ s677->s679 { j < 0 and havoc() } 
+ s677->s680 { j >= 0 and havoc() } 
+ s678->s677 { havoc() } 
+ s679->s681 { havoc() } 
+ s680->s681 { j >= dim and havoc() } 
+ s680->s682 { j < dim and havoc() } 
+ s681->sinter71 { havoc() } 
+ s682->s684 { k' = k+1 and havoc(k) } 
+ s683->s682 { havoc() } 
+ s684->s668 { havoc() } 
+ s69->s62 { havoc() } 
+ s7->s9 { j' = 0 and havoc(j) } 
+ s70->s78 { havoc() } 
+ s72->s78 { j >= dim and havoc() } 
+ s72->sinter17 { j < dim and havoc() } 
+ s74->sinter18 { havoc() } 
+ s77->s84 { havoc() } 
+ s78->sinter20 { havoc() } 
+ s81->s87 { havoc() } 
+ s83->s77 { havoc() } 
+ s84->s88 { jp < 0 and havoc() } 
+ s84->s90 { jp >= 0 and havoc() } 
+ s86->sinter22 { havoc() } 
+ s87->s93 { ab > t and jp' = i and havoc(jp) } 
+ s87->s95 { ab <=  t and i' = i+1 and havoc(i) } 
+ s88->s96 { havoc() } 
+ s9->s11 { j' = 0 and havoc(j) } 
+ s90->s96 { jp >= dim and havoc() } 
+ s90->s98 { jp < dim and havoc() } 
+ s93->s101 { t' = ab and havoc(t) } 
+ s95->s47 { havoc() } 
+ s96->sinter24 { havoc() } 
+ s98->s104 { j < 0 and havoc() } 
+ s98->s106 { j >= 0 and havoc() } 
+ sinit->s0 { havoc() } 
+ sinter0->s417 { error_() and havoc() } 
+ sinter1->s422 { error_() and havoc() } 
+ sinter10->s429 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter11->s452 { error_() and havoc() } 
+ sinter12->s460 { error_() and havoc() } 
+ sinter13->s69 { error_() and havoc() } 
+ sinter14->s464 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) } 
+ sinter15->s465 { error_() and havoc() } 
+ sinter16->s471 { error_() and havoc() } 
+ sinter17->s81 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter18->s83 { error_() and havoc() } 
+ sinter19->s476 { error_() and havoc() } 
+ sinter2->s429 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter20->s86 { error_() and havoc() } 
+ sinter21->s464 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) } 
+ sinter22->s81 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter23->s486 { error_() and havoc() } 
+ sinter24->s103 { error_() and havoc() } 
+ sinter25->s503 { error_() and havoc() } 
+ sinter26->s113 { error_() and havoc() } 
+ sinter27->s507 { error_() and havoc() } 
+ sinter28->s517 { error_() and havoc() } 
+ sinter29->s525 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter3->s430 { error_() and havoc() } 
+ sinter30->s526 { error_() and havoc() } 
+ sinter31->s528 { error_() and havoc() } 
+ sinter32->s144 { error_() and havoc() } 
+ sinter33->s531 { error_() and havoc() } 
+ sinter34->s536 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) } 
+ sinter35->s525 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter36->s541 { error_() and havoc() } 
+ sinter37->s156 { error_() and havoc() } 
+ sinter38->s544 { error_() and havoc() } 
+ sinter39->s536 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) } 
+ sinter4->s34 { error_() and havoc() } 
+ sinter40->s551 { error_() and havoc() } 
+ sinter41->s175 { error_() and havoc() } 
+ sinter42->s181 { error_() and havoc() } 
+ sinter43->s577 { error_() and havoc() } 
+ sinter44->s581 { error_() and havoc() } 
+ sinter45->s196 { error_() and havoc() } 
+ sinter46->s588 { error_() and havoc() } 
+ sinter47->s592 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter48->s593 { error_() and havoc() } 
+ sinter49->s212 { error_() and havoc() } 
+ sinter5->s438 { error_() and havoc() } 
+ sinter50->s599 { error_() and havoc() } 
+ sinter51->s603 { error_() and havoc() } 
+ sinter52->s606 { error_() and havoc() } 
+ sinter53->s592 { (ab',validity__ab_')=abs(_ndet_arg_0,-1) and havoc(ab,validity__ab_) } 
+ sinter54->s225 { error_() and havoc() } 
+ sinter55->s616 { error_() and havoc() } 
+ sinter56->s619 { error_() and havoc() } 
+ sinter57->s628 { error_() and havoc() } 
+ sinter58->s242 { error_() and havoc() } 
+ sinter59->s249 { error_() and havoc() } 
+ sinter6->s42 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) } 
+ sinter60->s638 { error_() and havoc() } 
+ sinter61->s651 { error_() and havoc() } 
+ sinter62->s654 { error_() and havoc() } 
+ sinter63->s270 { error_() and havoc() } 
+ sinter64->s276 { error_() and havoc() } 
+ sinter65->s659 { error_() and havoc() } 
+ sinter66->s662 { error_() and havoc() } 
+ sinter67->s280 { error_() and havoc() } 
+ sinter68->s666 { error_() and havoc() } 
+ sinter69->s290 { error_() and havoc() } 
+ sinter7->s44 { error_() and havoc() } 
+ sinter70->s678 { error_() and havoc() } 
+ sinter71->s683 { error_() and havoc() } 
+ sinter72->s316 { error_() and havoc() } 
+ sinter73->s330 { error_() and havoc() } 
+ sinter74->s343 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) } 
+ sinter75->s345 { error_() and havoc() } 
+ sinter76->s353 { error_() and havoc() } 
+ sinter77->s355 { error_() and havoc() } 
+ sinter78->s363 { error_() and havoc() } 
+ sinter79->s343 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) } 
+ sinter8->s444 { error_() and havoc() } 
+ sinter80->s370 { error_() and havoc() } 
+ sinter81->s383 { error_() and havoc() } 
+ sinter82->s385 { error_() and havoc() } 
+ sinter83->s395 { error_() and havoc() } 
+ sinter9->s42 { (t',validity__t_')=abs(_ndet_arg_0,-1) and havoc(t,validity__t_) }
+}
+__assert_fail{
+in a,b,c,d,e,f,g,h: int;
+
+initial sinit;
+final none;
+error s0; 
+ sinit->s0 { havoc() }
+}
+abs{
+in x,val: int;
+
+out y,val_y: int;
+initial sinit;
+final sfinal;
+ 
+ sinit->sfinal { x >= 0 and y' = x and val_y' = val and havoc(y,val_y) } 
+ sinit->sfinal { x < 0 and y' = -x and val_y' = val and havoc(y,val_y) }
+}
+error_{
+
+_ndet_arg_0,_ndet_arg_1,_ndet_arg_2: int;
+initial sinit;
+final no_rechable_final_state;
+error s1,s2; 
+ s0->sinter0 { havoc(_ndet_arg_1,_ndet_arg_2) } 
+ sinit->s0 { havoc() } 
+ sinter0->s2 { __assert_fail(_ndet_arg_0,1,_ndet_arg_1,1,13,1,_ndet_arg_2,1) and havoc() }
+}
+init_arrF2{
+in offset__a_,validity__a_,i,validity__i_,j,validity__j_,m,validity__m_,n,validity__n_: int;
+
+initial sinit;
+final s10;
+error s12,s14,s17,s19,s21,s4,s6; 
+ s0->s1 { havoc() } 
+ s1->s2 { havoc() } 
+ s11->s15 { havoc() } 
+ s13->s16 { havoc() } 
+ s15->s18 { j' = j+1 and havoc(j) } 
+ s16->s20 { j' = 0 and havoc(j) } 
+ s18->s7 { havoc() } 
+ s2->s3 { i <=  n and havoc() } 
+ s2->s5 { i > n and havoc() } 
+ s20->s22 { i' = i+1 and havoc(i) } 
+ s22->s1 { havoc() } 
+ s3->s7 { havoc() } 
+ s5->s8 { havoc() } 
+ s7->s9 { havoc() } 
+ s8->s10 { havoc() } 
+ s9->s11 { j <=  m and havoc() } 
+ s9->s13 { j > m and havoc() } 
+ sinit->s0 { havoc() }
+}
+main{
+
+jp,t,offset__A_,_ndet_arg_0,validity__A_,validity____nts__naffected_ret_val__,__nts__naffected_ret_val_,mid_1_size,mid_2_size: int;
+initial sinit;
+final s14;
+error s1,s10,s12,s3,s5,s8; 
+ s0->s2 { jp' = 1 and havoc(jp) } 
+ s11->sinter6 { havoc() } 
+ s13->s14 { havoc() } 
+ s2->s4 { t' = 0 and havoc(t) } 
+ s4->sinter0 { havoc() } 
+ s6->s7 { havoc() } 
+ s7->sinter1 { offset__A_ = 0*4 and havoc() } 
+ s7->sinter2 { offset__A_ = 0*4 and havoc() } 
+ s7->sinter3 { offset__A_ != 0*4 and havoc() } 
+ s7->sinter4 { offset__A_ != 0*4 and havoc() } 
+ s9->sinter5 { havoc() } 
+ sinit->s0 { mid_1_size' = 10*4 and mid_2_size' = 10*4 and havoc() } 
+ sinter0->s6 { (validity__A_',offset__A_')=new_Array2D_double(dim,-1,dim,-1) and havoc(validity__A_,offset__A_) } 
+ sinter1->s9 { error_() and havoc() } 
+ sinter2->s9 { error_() and havoc() } 
+ sinter3->s11 { init_arrF2(offset__A_,0,0,1,0,1,dim-1,-1,dim-1,-1) and havoc() } 
+ sinter4->s11 { init_arrF2(offset__A_,0,0,1,0,1,dim-1,-1,dim-1,-1) and havoc() } 
+ sinter5->s11 { init_arrF2(offset__A_,0,0,1,0,1,dim-1,-1,dim-1,-1) and havoc() } 
+ sinter6->s13 { (__nts__naffected_ret_val_',validity____nts__naffected_ret_val__')=LU_factor(dim,-1,dim,-1,offset__A_,0,_ndet_arg_0,1) and havoc(__nts__naffected_ret_val_,validity____nts__naffected_ret_val__) }
+}
+new_Array2D_double{
+in M,validity__M_,N,validity__N_: int;
+
+i,failed,offset__A_,offset____retres_,__if_ndet_cond__,validity____retres_,validity__A_,mid_1_size,mid_1_base: int;
+out offset__ret_val__,validity__ret_val__: int;
+initial sinit;
+final s18,s41;
+error s1,s11,s12,s22,s24,s29,s3,s31,s33,s35,s42,s44,s46,s5; 
+ s0->s2 { i' = 0 and havoc(i) } 
+ s10->s15 { havoc() } 
+ s13->s16 { havoc() } 
+ s14->s17 { havoc() } 
+ s15->s18 { offset__ret_val__' = offset____retres_ and validity__ret_val__' = 0 and havoc(validity__ret_val__,offset__ret_val__) } 
+ s16->s19 { havoc() } 
+ s17->s20 { havoc() } 
+ s19->s21 { i < M and havoc() } 
+ s19->s23 { i >= M and havoc() } 
+ s2->s4 { failed' = 0 and havoc(failed) } 
+ s20->s22 { i < M and havoc() } 
+ s20->s24 { i >= M and havoc() } 
+ s21->s25 { havoc() } 
+ s23->s26 { havoc() } 
+ s25->s27 { havoc() } 
+ s26->s28 { havoc() } 
+ s27->s30 { __if_ndet_cond__ = 0 and failed' = 1 and havoc(__if_ndet_cond__,failed) } 
+ s27->s32 { __if_ndet_cond__ != 0 and i' = i+1 and havoc(__if_ndet_cond__,i) } 
+ s28->s34 { failed != 0 and i' = i-1 and havoc(i) } 
+ s28->s36 { failed = 0 and offset____retres_' = offset__A_ and validity____retres_' = validity__A_ and havoc(validity____retres_,offset____retres_) } 
+ s30->s37 { havoc() } 
+ s32->s16 { havoc() } 
+ s34->s38 { havoc() } 
+ s36->s39 { havoc() } 
+ s37->s26 { havoc() } 
+ s38->s40 { havoc() } 
+ s39->s41 { offset__ret_val__' = offset____retres_ and validity__ret_val__' = 0 and havoc(validity__ret_val__,offset__ret_val__) } 
+ s4->s5 { validity__M_ != 1 and validity__A_' = 0 and havoc(validity__A_) } 
+ s4->s6 { validity__M_ = 1 and 4*M <=  0 and validity__A_' = 0 and havoc(validity__A_) } 
+ s4->s7 { validity__M_ = 1 and 4*M > 0 and mid_1_base' = 1 and mid_1_size' = 4*M and offset__A_' = 0 and validity__A_' = 1 and havoc(validity__A_,offset__A_,mid_1_size,mid_1_base) } 
+ s40->s42 { i <=  0 and havoc() } 
+ s40->s43 { i > 0 and havoc() } 
+ s43->s45 { havoc() } 
+ s45->s46 { havoc() } 
+ s6->s8 { havoc() } 
+ s7->s9 { havoc() } 
+ s8->s10 { offset__A_ = 0*4 and havoc() } 
+ s8->s13 { offset__A_ != 0*4 and i' = 0 and havoc(i) } 
+ s9->s11 { offset__A_ = 0*4 and havoc() } 
+ s9->s14 { offset__A_ != 0*4 and i' = 0 and havoc(i) } 
+ sinit->s0 { havoc() }
+}
+
+ 

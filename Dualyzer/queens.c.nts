@@ -1,0 +1,276 @@
+nts __Dualyzer_queens;
+validity__dim_,dim : int; 
+test{
+in j,validity__j_,i,validity__i_,qi,validity__qi_,offset__board_,validity__board_: int;
+
+__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,validity____retres_,validity__qj_,validity__tmp_,validity__tmp_0_,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_4 :real, _ndet_arg_4 : int, real_typed_ndet_arg_3 :real, _ndet_arg_3 : int, real_typed_ndet_arg_2 :real, _ndet_arg_2 : int, real_typed_ndet_arg_1 :real, _ndet_arg_1 : int, real_typed_ndet_arg_0 :real, _ndet_arg_0,__retres,tmp_0,tmp,qj: int  ;
+
+ out ret_val_, validity__ret_val__  : int;
+initial sinit ;
+final s11;
+error s2,s5,s8,s10,s13,s14,s16,s18,s21,s24,s26,s30,s32,s35; sinit->s0 {  } 
+ s0->s1 { havoc() } 
+ s1->s3 { __retres'=1 and j >= i and havoc(__retres) } 
+ s1->s4 { j < i and havoc() } 
+ s3->s6 { havoc() } 
+ s4->s7 { j < 0 and havoc() } 
+ s4->s9 { j >= 0 and havoc() } 
+ s6->s11 { ret_val_'=__retres and havoc(ret_val_) } 
+ s7->s12 { havoc() } 
+ s9->s12 { j >= dim and havoc() } 
+ s9->s15 { j < dim and havoc(qj) } 
+ s12->sinter0 { havoc() } 
+ sinter0->s17 { error_() and havoc() } 
+ s15->s19 { qi'=qj and havoc(qi) } 
+ s17->s15 { havoc(qj) } 
+ s19->s20 { havoc() } 
+ s20->s22 { __retres'=1 and qi != 0 and havoc(__retres) } 
+ s20->s23 { qi = 0 and havoc() } 
+ s22->s25 { havoc() } 
+ s23->sinter1 { havoc() } 
+ sinter1->s27 { (tmp_0',validity__tmp_0_')=abs(qi-qj,-1) and havoc(tmp_0,validity__tmp_0_) } 
+ s25->s11 { ret_val_'=__retres and havoc(ret_val_) } 
+ s27->s28 { havoc() } 
+ s28->s29 { havoc() } 
+ s29->s31 { __retres'=0 and tmp_0 = i-j and havoc(__retres) } 
+ s29->sinter2 { tmp_0 != i-j and havoc() } 
+ sinter2->s33 { (tmp',validity__tmp_')=test(j+1,-1,i,-1,qi,-1,offset__board_,-1) and havoc(tmp,validity__tmp_) } 
+ s31->s34 { havoc() } 
+ s33->s36 { __retres'=tmp and havoc(__retres) } 
+ s34->s11 { ret_val_'=__retres and havoc(ret_val_) } 
+ s36->s37 { havoc() } 
+ s37->s11 { ret_val_'=__retres and havoc(ret_val_) }
+}
+main{
+
+mid_2_base,mid_2_size,mid_1_base,mid_1_size,__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,validity____retres_,validity__a_,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_2 :real, _ndet_arg_2 : int, real_typed_ndet_arg_1 :real, _ndet_arg_1 : int, real_typed_ndet_arg_0 :real, _ndet_arg_0,__retres: int  ;
+
+ out ret_val_, validity__ret_val__  : int;
+initial sinit ;
+final s21;
+error s1,s3,s5,s7,s9,s11,s13,s15,s17,s19; sinit->s0 { mid_1_size'=8*4 and mid_2_size'=8*4 } 
+ s0->s1 { not (0 < 8 and 0 >= 0) and havoc() } 
+ s0->s2 { 0 < 8 and 0 >= 0 and havoc() } 
+ s2->s3 { not (1 < 8 and 1 >= 0) and havoc() } 
+ s2->s4 { 1 < 8 and 1 >= 0 and havoc() } 
+ s4->s5 { not (2 < 8 and 2 >= 0) and havoc() } 
+ s4->s6 { 2 < 8 and 2 >= 0 and havoc() } 
+ s6->s7 { not (3 < 8 and 3 >= 0) and havoc() } 
+ s6->s8 { 3 < 8 and 3 >= 0 and havoc() } 
+ s8->s9 { not (4 < 8 and 4 >= 0) and havoc() } 
+ s8->s10 { 4 < 8 and 4 >= 0 and havoc() } 
+ s10->s11 { not (5 < 8 and 5 >= 0) and havoc() } 
+ s10->s12 { 5 < 8 and 5 >= 0 and havoc() } 
+ s12->s13 { not (6 < 8 and 6 >= 0) and havoc() } 
+ s12->s14 { 6 < 8 and 6 >= 0 and havoc() } 
+ s14->s15 { not (7 < 8 and 7 >= 0) and havoc() } 
+ s14->s16 { 7 < 8 and 7 >= 0 and havoc() } 
+ s16->sinter0 { havoc() } 
+ sinter0->s18 { queens(_ndet_arg_0,1,dim,-1) and havoc() } 
+ s18->s20 { __retres'=0 and havoc(__retres) } 
+ s20->s21 { ret_val_'=__retres and havoc(ret_val_) }
+}
+error_{
+
+__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_0 :real, _ndet_arg_0: int  ;
+initial sinit ;
+
+error s1; sinit->s0 {  } 
+ s0->s1 { havoc() }
+}
+queens{
+in offset__board_,validity__board_,size,validity__size_: int;
+
+__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_3 :real, _ndet_arg_3 : int, real_typed_ndet_arg_2 :real, _ndet_arg_2 : int, real_typed_ndet_arg_1 :real, _ndet_arg_1 : int, real_typed_ndet_arg_0 :real, _ndet_arg_0: int  ;
+initial sinit ;
+final s3;
+error s1; sinit->s0 {  } 
+ s0->sinter0 { havoc() } 
+ sinter0->s2 { loopQ(0,1,size,-1,offset__board_,-1) and havoc() } 
+ s2->s3 { havoc() }
+}
+loopQ{
+in i,validity__i_,size,validity__size_,offset__board_,validity__board_: int;
+
+__nts__naffected_ret_val_,validity____nts__naffected_ret_val__,validity__next_,validity__tmp_,__ndet_cond__,__if_ndet_cond__ : int, real_typed_ndet_arg_4 :real, _ndet_arg_4 : int, real_typed_ndet_arg_3 :real, _ndet_arg_3 : int, real_typed_ndet_arg_2 :real, _ndet_arg_2 : int, real_typed_ndet_arg_1 :real, _ndet_arg_1 : int, real_typed_ndet_arg_0 :real, _ndet_arg_0,tmp,next: int  ;
+initial sinit ;
+final s10;
+error s3,s5,s7,s9,s12,s13,s15,s19,s21,s23,s25,s27,s29,s31,s32,s35,s36,s38,s41,s43,s46,s47,s52,s53,s55,s57; sinit->s0 {  } 
+ s0->s1 { havoc() } 
+ s1->s2 { i < size and havoc() } 
+ s1->s4 { i >= size and havoc() } 
+ s2->s6 { i < 0 and havoc() } 
+ s2->s8 { i >= 0 and havoc() } 
+ s4->s10 { havoc() } 
+ s6->s11 { havoc() } 
+ s8->s11 { i >= dim and havoc() } 
+ s8->s14 { i < dim and havoc(next) } 
+ s11->sinter0 { havoc() } 
+ sinter0->s16 { error_() and havoc() } 
+ s14->s17 { havoc() } 
+ s16->s14 { havoc(next) } 
+ s17->s18 { next > size and havoc() } 
+ s17->s20 { next <=  size and havoc() } 
+ s18->s22 { i < 0 and havoc() } 
+ s18->s24 { i >= 0 and havoc() } 
+ s20->s26 { i < 0 and havoc() } 
+ s20->s28 { i >= 0 and havoc() } 
+ s22->s30 { havoc() } 
+ s24->s30 { i >= dim and havoc() } 
+ s24->s33 { i < dim and havoc() } 
+ s26->s34 { havoc() } 
+ s28->s34 { i >= dim and havoc() } 
+ s28->s37 { i < dim and havoc() } 
+ s30->sinter1 { havoc() } 
+ sinter1->s39 { error_() and havoc() } 
+ s33->s40 { havoc() } 
+ s34->sinter2 { havoc() } 
+ sinter2->s42 { error_() and havoc() } 
+ s37->sinter3 { havoc() } 
+ sinter3->s44 { (tmp',validity__tmp_')=test(0,1,i,-1,next,-1,offset__board_,-1) and havoc(tmp,validity__tmp_) } 
+ s39->s33 { havoc() } 
+ s40->s45 { i = 0 and havoc() } 
+ s40->sinter4 { i != 0 and havoc() } 
+ sinter4->s48 { loopQ(i-1,-1,size,-1,offset__board_,-1) and havoc() } 
+ s40->sinter5 { i != 0 and havoc() } 
+ sinter5->s48 { loopQ(i-1,-1,size,-1,offset__board_,-1) and havoc() } 
+ s42->s37 { havoc() } 
+ s44->s49 { havoc() } 
+ s45->s10 { havoc() } 
+ s48->s50 { havoc() } 
+ s49->s51 { tmp = 1 and havoc() } 
+ s49->sinter6 { tmp != 1 and havoc() } 
+ sinter6->s54 { loopQ(i,-1,size,-1,offset__board_,-1) and havoc() } 
+ s49->sinter7 { tmp != 1 and havoc() } 
+ sinter7->s54 { loopQ(i,-1,size,-1,offset__board_,-1) and havoc() } 
+ s50->s10 { havoc() } 
+ s51->sinter8 { i+1 = size and havoc() } 
+ sinter8->s56 { loopQ(i,-1,size,-1,offset__board_,-1) and havoc() } 
+ s51->sinter9 { i+1 = size and havoc() } 
+ sinter9->s56 { loopQ(i,-1,size,-1,offset__board_,-1) and havoc() } 
+ s51->sinter10 { i+1 != size and havoc() } 
+ sinter10->s58 { loopQ(i+1,-1,size,-1,offset__board_,-1) and havoc() } 
+ s51->sinter11 { i+1 != size and havoc() } 
+ sinter11->s58 { loopQ(i+1,-1,size,-1,offset__board_,-1) and havoc() } 
+ s54->s59 { havoc() } 
+ s56->s60 { havoc() } 
+ s58->s61 { havoc() } 
+ s59->s10 { havoc() } 
+ s60->s10 { havoc() } 
+ s61->s10 { havoc() }
+}
+__assert_fail{
+in a,b,c,d,e,f,g,h : int;
+initial sinit ;
+error s0;
+sinit->s0 { true and havoc() }
+}
+
+NonDetInt{
+out ndet, validity_ndet_: int;
+initial sinit;
+final s1;
+
+sinit->s0{ havoc(ndet,  validity_ndet_)}
+s0->s1{havoc()}
+
+}
+
+__VERIFIER_nondet_int{
+out ndet, validity_ndet_: int;
+initial sinit;
+final s1;
+
+sinit->s0{ havoc(ndet,  validity_ndet_)}
+s0->s1{havoc()}
+
+}
+
+__NdetValInRange {
+ out ndval, ndvalid : int;
+ in lowerb, lbval, upperb, upbval : int;
+ initial sinit;
+ final s1;
+
+ sinit->s1 { ndval' <= upperb and ndval' >= lowerb and ndvalid'=1 and havoc(ndval, ndvalid) }
+
+}
+
+strlen{
+ out len, valid_len : int;
+ in ptr_off, ptr_valid : int;
+
+ initial sinit;
+ final s1;
+ sinit->s0 {valid_len'=ptr_valid and havoc(valid_len,len)}
+ s0->s1 { havoc()}
+}
+
+memcpy{
+ in dest_off, dest_val, src_off, srv_val, sizein, size_val : int;
+ out ret_addr, valid_ret : int;
+ initial sinit;
+ final s1;
+
+ sinit -> s0 {ret_addr'=dest_off and valid_ret'=dest_val and havoc(ret_addr,valid_ret)}
+ s0->s1 {havoc()}
+}
+
+strstr{
+ in a,b,c,d : int;
+ out off, val : int;
+
+ initial  sinit;
+ final  sfinal;
+
+ sinit->sfinal {val' = b and havoc(off,val) }
+}
+
+printf{
+ in a,b,c,d : int;
+ out off, val : int;
+
+ initial  sinit;
+ final  sfinal;
+
+ sinit->sfinal { havoc(off,val) }
+
+}
+
+
+abs{
+ in x, val : int ;
+ out y, val_y : int ;
+
+  initial sinit ;
+ final  sfinal ;
+
+ sinit->sfinal { x>= 0 and y'=x and val_y' = val and havoc(y,val_y)}
+ sinit->sfinal { x < 0 and y'=-x and val_y' = val and havoc(y,val_y)}
+ 
+ 
+
+
+}
+
+fabs{
+ in x : real, val : int;
+ out res : real, val_out : int ;
+ initial sinit ;
+ final  sfinal ;
+
+ sinit->sfinal { x >= 0.0 and res'= x and val_out'=val and havoc(res,val_out)}
+ sinit->sfinal { x< 0.0 and res'= -x and val_out'=val and havoc(res,val_out)}
+
+}
+
+__builtin_alloca{
+ in x, val_x : int;
+ out y, vx : int ;
+
+ initial sinit ;
+ final  sfinal ;
+ 
+ sinit->sfinal { y'=x and vx'= val_x and havoc(y,vx) }
+
+}
