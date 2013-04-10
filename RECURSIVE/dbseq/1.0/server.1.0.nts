@@ -69,7 +69,7 @@ error L23;
  L7->L8 { num__0 = num_A2S_0__0 and num__1 = num_A2S_0__1 and havoc() } 
  L8->L9 { len_A2S_next__0' = len_A2S_guess__0 and havoc(len_A2S_next__0) } 
  L9->L10 { len_A2S_next__1' = len_A2S_guess__1 and havoc(len_A2S_next__1) } 
- anon0->L1 { Seq_flag' = 1 and havoc(Seq_flag) }
+ anon0->L1 { Seq_flag' = 0 and havoc(Seq_flag) }
 }
 server{
 in k_0 : int;
